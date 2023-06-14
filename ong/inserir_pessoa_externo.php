@@ -17,6 +17,7 @@ $telefone = mysqli_real_escape_string($conn, $_POST['telefone']);
 $cpf = mysqli_real_escape_string($conn, $_POST['cpf']);
 $endereco = mysqli_real_escape_string($conn, $_POST['endereco']);
 $nivelUsuario = mysqli_real_escape_string($conn, $_POST['nivelUsuario']);
+$password = mysqli_real_escape_string($conn, sha1($_POST['password']));
 
 if($nivelUsuario == 'Voluntario' || $nivelUsuario == 'NaoVoluntario'){
   $status = mysqli_real_escape_string($conn, "Inativo");
@@ -26,9 +27,9 @@ if($nivelUsuario == 'Voluntario' || $nivelUsuario == 'NaoVoluntario'){
   $matriculausuario = mysqli_real_escape_string($conn, '');
 }
 
-$sql = "INSERT INTO pessoas (nome_completo, email, cpf, endereco, telefone, matriculausuario,
+$sql = "INSERT INTO pessoas (nome_completo, email, cpf, endereco, telefone, matriculausuario, password,
     nivelUsuario, status)
-  VALUES ('$nomeusuario', '$email', '$cpf', '$endereco', '$telefone', '$matriculausuario', 
+  VALUES ('$nomeusuario', '$email', '$cpf', '$endereco', '$telefone', '$matriculausuario', SHA1('$password'),
     '$nivelUsuario', '$status')";
 
 $inserir = mysqli_query($conn, $sql);

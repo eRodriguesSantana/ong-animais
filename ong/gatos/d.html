@@ -1,0 +1,33 @@
+<script>
+
+function habilitarCampos() {
+	if($("#banco").val() == 'CC') {
+		$("#nomebanco").prop('disabled', false);
+	} else {
+  	$("#nomebanco").prop('disabled', true);
+  }
+}
+</script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<div class="form-group">                    
+    <label>Tipo de Conta</label>
+    <select class="form-control" id="banco" name="banco" onchange='habilitarCampos()'>
+        <option value="" selected>Selecione</option>
+        <option value="CC">Conta Corrente</option>
+        <option value="CP">Conta Poupança</option>
+        <option value="CE">Caixa (em espécie)</option>
+    </select>
+</div>
+
+<div class="form-group">                    
+    <label>Nome do Banco</label>
+    <select class="form-control" id="nomebanco" name="banco">
+        <option value="" selected>Selecione</option>
+        <option value="0">Santander</option>
+        <option value="1">Caixa</option>
+        <option value="2">Banco do Brasil</option>
+    </select>
+</div>

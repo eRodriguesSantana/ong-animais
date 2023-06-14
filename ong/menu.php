@@ -13,105 +13,146 @@ $matricula = $_SESSION['matricula'];
 
 include "conexao.php";
 
-$sql = "SELECT nivelUsuario FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nivelUsuario, nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
-$nivel = $arr['nivelUsuario'];
+$nome_completo = $arr['nome_completo'];
+$nivel = $arr['nivelUsuario']
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-BR"> 
-  <head>
-    <meta charset="utf-8">
-    <title>Opções</title>
-    <link rel="stylesheet" href="css/bootstrap.css">   
-  </head>
+<!DOCTYPE html>
+<html lang="pt-b">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet">
+      <link rel="stylesheet" href="css/bootstrap.css">
+  <title>ONG Sistema de Adoção Pet</title>
+</head>
 
-  <body>
-    <div class="container" style="margin-top: 100px">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#" role="button" class="btn btn-danger" style="margin-left: 25px">
-              Matrícula: <?php echo $matricula; ?></a>
-            <a class="nav-item nav-link active" href="sair.php" role="button" class="btn btn-danger" style="margin-left: 25px">Sair</a>
+<body>
+  <div id="ong" class="container-ong" style="margin: 0 auto">
+    <div class="row">
+      <div id="menu-lateral" class="col-2" style="height: 0 auto">
+        <div class="titulos-ong">
+          <h4>ONG</h4>
+          <h4>Animais Pirapozinho</h4>
+        </div>
+        <div class="btn-group-vertical" role="group" aria-label="Basic example">
+          <a href="menu.php" class="btn-menu btn" role="button">Início</a> 
+          <button type="button" class="btn-menu btn">Gerenciar Pessoas</button>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn-menu btn dropdown-toggle" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false"> Gerenciar Pets</button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+              <a class="dropdown-item" href="#">Entrada Pet</a>
+              <a class="dropdown-item" href="#">Saída Pet</a>
+            </div>
           </div>
-      </nav>
-      <div class="row">       
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Adicionar Registro de Voluntariado</h5>
-              <p class="card-text">Opção para gravar marcações diárias dentro do expediente na ONG.</p>
-              <!--<a href="adicionar_ponto.php?mat=<?php echo $matricula; ?>" class="btn btn-primary">Adicionar Registro</a>-->
-              <a href="adicionar_ponto.php" class="btn btn-primary">Adicionar Registro</a>
+          <button type="button" class="btn-menu btn">Gerenciar Produtos</button>
+          <button type="button" class="btn-menu btn">Gerenciar Fornecedores</button>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn-menu btn dropdown-toggle" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false"> Financeiro</button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+              <a class="dropdown-item" href="#">Registrar Despesas</a>
+              <a class="dropdown-item" href="#">Registrar Compras</a>
+              <a class="dropdown-item" href="#">Registrar Doação</a>
             </div>
           </div>
         </div>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Listar Registros de Pontos</h5>
-              <p class="card-text">Opção para visualizar, editar e excluir registros cadastrados.</p>
-              <a href="listar_pontos.php" class="btn btn-primary">Listar Registros</a>
-            </div>
-          </div>
+        <div class="sair-rodape">
+          <a class="btn-sair" href="#"><span><i class="bi bi-person-circle"></i></span>Nome do Usuário
+              Logado: <?php echo $nome_completo; ?></a>
+          <a class="btn-sair" href="sair.php"><span><i class="bi bi-box-arrow-right"></i></span>Sair</a>
         </div>
-        <div class="col-sm-6" style="margin-top: 20px">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Adicionar Usuário / Adotante</h5>
-              <p class="card-text">Opção para adicionar usuário (pendente de ativação do perfil criado) ou adotante (permissão já incluída e com cadastro sem necessidade de aprovação).</p>
-              <a href="cadastro_pessoa_externo.php" class="btn btn-primary">Adicionar Usuário / Adotante</a>
-            </div>
-          </div>
-        </div>
-        <?php
-          if(($nivel == 'Gerente')){
-        ?>
-        <div class="col-sm-6" style="margin-top: 20px">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Ativar Voluntariados</h5>
-              <p class="card-text">Ativar cadastro de voluntário.</p>
-              <a href="aprovar_pessoa.php" class="btn btn-primary">Ativar Voluntariados</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6" style="margin-top: 20px">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Adicionar animal</h5>
-              <p class="card-text">Opção para cadastrar animal abandonado.</p>
-              <a href="cadastro_animal.php" class="btn btn-primary">Adicionar animal</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6" style="margin-top: 20px">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Exibir animais cadastrados</h5>
-              <p class="card-text">Opção para visualizar todos animais cadastrados na ONG.</p>
-              <a href="listar_animais.php" class="btn btn-primary">Exibir animais cadastrados</a>
-            </div>
-          </div>
-        </div>
-        <?php
-          if(($nivel == 'Voluntario' || $nivel == 'NaoVoluntario')){
-        ?>
-          <div class="col-sm-6" style="margin-top: 20px">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Adicionar Usuário / Adotante</h5>
-                <p class="card-text">Opção para adicionar usuário (pendente de ativação do perfil criado) ou adotante (permissão já incluída e com cadastro sem necessidade de aprovação).</p>
-                <a href="cadastro_pessoa.php" class="btn btn-primary">Adicionar Usuário / Adotante</a>
+      </div> <!--Menu lateral FIM-->
+      <div id="container-cadastro-pet" class="principal col">
+        <div class="cadastro-pet">
+          <div class="container" style="width: 700px; margin-top: 40px">
+      
+            <div class="row">       
+              <div class="col-sm-6">
+                <div class="card h-200 w-200">
+                  <div class="card-body">
+                    <h5 class="card-title">Adicionar Registro de Voluntariado</h5>
+                    <p class="card-text">Opção para gravar marcações diárias dentro do expediente na ONG.</p>
+                    <!--<a href="adicionar_ponto.php?mat=<?php echo $matricula; ?>" class="btn btn-primary">Adicionar Registro</a>-->
+                    <a href="adicionar_ponto.php" class="btn btn-primary">Adicionar Registro</a>
+                  </div>
+                </div>
               </div>
-            </div>
+              <div class="col-sm-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Listar Registros de Pontos</h5>
+                    <p class="card-text">Opção para visualizar, editar e excluir registros cadastrados.</p>
+                    <a href="listar_pontos.php" class="btn btn-primary">Listar Registros</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Adicionar Usuário / Adotante</h5>
+                    <p class="card-text">Opção para adicionar usuário (pendente de ativação do perfil criado) ou adotante (permissão já incluída e com cadastro sem necessidade de aprovação).</p>
+                    <a href="cadastro_pessoa_externo.php" class="btn btn-primary">Adicionar Usuário / Adotante</a>
+                  </div>
+                </div>
+              </div>
+              <?php
+                if(($matricula == 12)){
+              ?>
+              <div class="col-sm-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Ativar Voluntariados</h5>
+                    <p class="card-text">Ativar cadastro de voluntário.</p>
+                    <a href="aprovar_pessoa.php" class="btn btn-primary">Ativar Voluntariados</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Cadastrar animais</h5>
+                    <p class="card-text">Opção para cadastrar animais abandonados.</p>
+                    <a href="cadastro_animal.php" class="btn btn-primary">Adicionar Animal :)</a>
+                  </div>
+                </div>
+              </div>
+              <?php
+                if(($nivel == 'Voluntario' || $nivel == 'NaoVoluntario')){
+              ?>
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Adicionar Usuário / Adotante</h5>
+                      <p class="card-text">Opção para adicionar usuário (pendente de ativação do perfil criado) ou adotante (permissão já incluída e com cadastro sem necessidade de aprovação).</p>
+                      <a href="cadastro_pessoa.php" class="btn btn-primary">Adicionar Usuário / Adotante</a>
+                    </div>
+                  </div>
+                </div>
+                <?php } ?>
+              <?php } ?>        
+            </div>      
           </div>
-          <?php } ?>
-        <?php } ?>        
-      </div>      
+        </div>
+      </div>
     </div>
+  </div>
 
-    <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
   </body>
 </html>

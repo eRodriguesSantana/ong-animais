@@ -63,6 +63,12 @@
                 autocomplete="off"
                 placeholder="Matrícula do usuário">
         </div>
+        <div class="form-group">
+          <label>Informe sua senha</label>
+          <input type="password" name="password" class="form-control" required="required" 
+                autocomplete="off"
+                placeholder="Senha do usuário">
+        </div>
         <div style="text-align: right">
           <button type="submit" class="btn btn-sm btn-success">Cadastrar</button>
         </div>

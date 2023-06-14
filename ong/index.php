@@ -1,3 +1,7 @@
+<?php
+// Inicia a sessão
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-BR"> 
   <head>
@@ -19,11 +23,19 @@
         <center>
           <img src="img/logo_tela_login.jpg" width="100px" height="100px">
         </center>
-        <form action="index1.php" method="post">
+        <form action="login.php" method="post">
           <div class="form-group">
             <label>Matricula</label>
             <input type="number" name="matricula" class="form-control" 
                    placeholder="Informe sua matrícula"
+                   autocomplete="off"
+                   required="required">
+          </div>
+
+          <div class="form-group">
+            <label>Senha</label>
+            <input type="password" name="senha" class="form-control" 
+                   placeholder="Informe sua senha"
                    autocomplete="off"
                    required="required">
           </div>
