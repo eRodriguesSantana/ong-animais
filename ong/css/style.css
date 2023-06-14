@@ -235,6 +235,22 @@ input::-moz-placeholder {
     font-weight: 500;
 }
 
+/*Container Menu*/
+#container-menu {
+    display: block;
+    padding: 15px 15px;
+    margin: auto;
+    height: 100vh;
+}
+
+.card-altura{
+    height: 14rem;
+}
+
+.espaco-card{
+    margin-top: 10px;
+}
+
 /*Cadastro Pet Inicio*/
 #container-cadastro-pet {
     display: block;

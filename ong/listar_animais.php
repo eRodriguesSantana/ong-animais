@@ -156,7 +156,7 @@ function formataData($date){
                                 </a>  
                               </div>
                               <div class="col-md-6 col-xs-6">
-                                <a class="btn btn-danger btn-sm" href="confirmar_exclusao_animal.php?id_gato=<?php echo $id_gato; ?>" 
+                                <a class="btn btn-danger btn-sm" href="confirmar_exclusao_animal.php?id_animal=<?php echo $id_animal; ?>" 
                                   role="button"><i class="fas fa-eye"></i>Excluir
                                 </a>
                               </div>

@@ -28,7 +28,7 @@ if($nivel == 'Voluntario'){
 if($nivel == 'NaoVoluntario'){
   $updte = "UPDATE `pessoas`
             SET status = 'Ativo',
-            nivelUsuario = 'Não Voluntario'
+            nivelUsuario = 'NaoVoluntario'
             WHERE id_pessoa = $id";
   $posicao = "Não Voluntario";
 }

@@ -24,7 +24,6 @@ $telefone = mysqli_real_escape_string($conn, $_POST['telefone']);
 $cpf = mysqli_real_escape_string($conn, $_POST['cpf']);
 $endereco = mysqli_real_escape_string($conn, $_POST['endereco']);
 $nivelUsuario = mysqli_real_escape_string($conn, $_POST['nivelUsuario']);
-//$senha = mysqli_real_escape_string($conn, sha1($_POST['senha']));
 
 if($nivelUsuario == 'Voluntario' || $nivelUsuario == 'NaoVoluntario'){
   $status = mysqli_real_escape_string($conn, "Inativo");

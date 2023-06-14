@@ -108,6 +108,9 @@ $nome_completo = $arr['nome_completo'];
                         $matricula_usuario = $array['matriculausuario'];
                         $nivel_usuario = $array['nivelUsuario'];
                         $status = $array['status'];
+
+                        if($nivel_usuario == "NaoVoluntario")
+                            $nivel_usuario = "Não Voluntário"
                       ?>
                         <tr>
                           <td><?php echo $nome_usuario; ?></td>

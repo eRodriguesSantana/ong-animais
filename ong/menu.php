@@ -37,14 +37,14 @@ $nivel = $arr['nivelUsuario']
   <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet">
-      <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
   <title>ONG Sistema de Adoção Pet</title>
 </head>
 
 <body>
-  <div id="ong" class="container-ong" style="margin: 0 auto">
+  <div id="ong" class="container-ong">
     <div class="row">
-      <div id="menu-lateral" class="col-2" style="height: 0 auto">
+      <div id="menu-lateral" class="col-2">
         <div class="titulos-ong">
           <h4>ONG</h4>
           <h4>Animais Pirapozinho</h4>
@@ -78,14 +78,14 @@ $nivel = $arr['nivelUsuario']
           <a class="btn-sair" href="sair.php"><span><i class="bi bi-box-arrow-right"></i></span>Sair</a>
         </div>
       </div> <!--Menu lateral FIM-->
-      <div id="container-cadastro-pet" class="principal col">
-        <div class="cadastro-pet">
-          <div class="container" style="width: 700px; margin-top: 40px">
+      <div id="container-menu" class="principal col" style="height: 100vh;">
+        <div>
+          <div class="container">
       
             <div class="row">       
               <div class="col-sm-6">
-                <div class="card h-200 w-200">
-                  <div class="card-body">
+                <div class="card espaco-card">
+                  <div class="card-body card-altura">
                     <h5 class="card-title">Adicionar Registro de Voluntariado</h5>
                     <p class="card-text">Opção para gravar marcações diárias dentro do expediente na ONG.</p>
                     <!--<a href="adicionar_ponto.php?mat=<?php echo $matricula; ?>" class="btn btn-primary">Adicionar Registro</a>-->
@@ -94,8 +94,8 @@ $nivel = $arr['nivelUsuario']
                 </div>
               </div>
               <div class="col-sm-6">
-                <div class="card">
-                  <div class="card-body">
+                <div class="card espaco-card">
+                  <div class="card-body card-altura">
                     <h5 class="card-title">Listar Registros de Pontos</h5>
                     <p class="card-text">Opção para visualizar, editar e excluir registros cadastrados.</p>
                     <a href="listar_pontos.php" class="btn btn-primary">Listar Registros</a>
@@ -103,8 +103,8 @@ $nivel = $arr['nivelUsuario']
                 </div>
               </div>
               <div class="col-sm-6">
-                <div class="card">
-                  <div class="card-body">
+                <div class="card espaco-card">
+                  <div class="card-body card-altura">
                     <h5 class="card-title">Adicionar Usuário / Adotante</h5>
                     <p class="card-text">Opção para adicionar usuário (pendente de ativação do perfil criado) ou adotante (permissão já incluída e com cadastro sem necessidade de aprovação).</p>
                     <a href="cadastro_pessoa.php" class="btn btn-primary">Adicionar Usuário / Adotante</a>
@@ -115,8 +115,8 @@ $nivel = $arr['nivelUsuario']
                 if(($matricula == 12)){
               ?>
               <div class="col-sm-6">
-                <div class="card">
-                  <div class="card-body">
+                <div class="card espaco-card">
+                  <div class="card-body card-altura">
                     <h5 class="card-title">Ativar Voluntariados</h5>
                     <p class="card-text">Ativar cadastro de voluntário.</p>
                     <a href="aprovar_pessoa.php" class="btn btn-primary">Ativar Voluntariados</a>
@@ -124,8 +124,8 @@ $nivel = $arr['nivelUsuario']
                 </div>
               </div>
               <div class="col-sm-6">
-                <div class="card">
-                  <div class="card-body">
+                <div class="card espaco-card">
+                  <div class="card-body card-altura">
                     <h5 class="card-title">Cadastrar animais</h5>
                     <p class="card-text">Opção para cadastrar animais abandonados.</p>
                     <a href="cadastro_animal.php" class="btn btn-primary">Adicionar Animal :)</a>
@@ -136,8 +136,8 @@ $nivel = $arr['nivelUsuario']
                 if(($nivel == 'Voluntario' || $nivel == 'NaoVoluntario')){
               ?>
                 <div class="col-sm-6">
-                  <div class="card">
-                    <div class="card-body">
+                  <div class="card espaco-card">
+                    <div class="card-body card-altura">
                       <h5 class="card-title">Adicionar Usuário / Adotante</h5>
                       <p class="card-text">Opção para adicionar usuário (pendente de ativação do perfil criado) ou adotante (permissão já incluída e com cadastro sem necessidade de aprovação).</p>
                       <a href="cadastro_pessoa.php" class="btn btn-primary">Adicionar Usuário / Adotante</a>
