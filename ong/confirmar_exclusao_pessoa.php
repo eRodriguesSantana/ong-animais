@@ -1,54 +1,26 @@
 <?php
 session_start();
 
-// Impede o acesso direto via url a esse script
-if(!$_POST)
+// Se o usuário não estiver logado e tentar acessar a página diretamente pela url
+// o mesmo será redirecionado para a tela de login
+if(!isset($_SESSION['matricula']) || empty($_SESSION['matricula']))
 {
-  unset($_SERVER['nomeusuario']);
-  unset($_SESSION['matriculausuario']);
-  header('Location:index.php');
+  unset($_SESSION['matricula']);
+  header('Location: index.php');
 }
- 
-include "conexao.php";
 
 $matricula = $_SESSION['matricula'];
+
+include "conexao.php";
 
 $sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
 
-$nomeusuario = mysqli_real_escape_string($conn, $_POST['nomeusuario']);
-$email = mysqli_real_escape_string($conn, $_POST['email']);
-$telefone = mysqli_real_escape_string($conn, $_POST['telefone']);
-$cpf = mysqli_real_escape_string($conn, $_POST['cpf']);
-$endereco = mysqli_real_escape_string($conn, $_POST['endereco']);
-$nivelUsuario = mysqli_real_escape_string($conn, $_POST['nivelUsuario']);
-//$senha = mysqli_real_escape_string($conn, sha1($_POST['senha']));
-
-if($nivelUsuario == 'Voluntario' || $nivelUsuario == 'NaoVoluntario'){
-  $status = mysqli_real_escape_string($conn, "Inativo");
-  $matriculausuario = mysqli_real_escape_string($conn, $_POST['matriculausuario']);
-} else {
-  $status = mysqli_real_escape_string($conn, "Ativo");
-  $matriculausuario = mysqli_real_escape_string($conn, '');
-}
-
-if(isset($_POST['senha']))
-  $senha = $_POST['senha'];
-else
-  $senha = "";
-
-$sql = "INSERT INTO pessoas (nome_completo, email, cpf, endereco, telefone, matriculausuario, senha,
-    nivelUsuario, status)
-  VALUES ('$nomeusuario', '$email', '$cpf', '$endereco', '$telefone', '$matriculausuario', SHA1('$senha'),
-    '$nivelUsuario', '$status')";
-
-$inserir = mysqli_query($conn, $sql);
-
-mysqli_close($conn);
-
+$id_pessoa = $_GET['id_pessoa'];
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-b">
 <head>
@@ -68,6 +40,7 @@ mysqli_close($conn);
         <link rel="stylesheet" href="css/bootstrap.css">
     <title>ONG Sistema de Adoção Pet</title>
 </head>
+
 <body>
   <div id="ong" class="container-ong">
     <div class="row">
@@ -77,7 +50,7 @@ mysqli_close($conn);
           <h4>Animais Pirapozinho</h4>
         </div>
         <div class="btn-group-vertical" role="group" aria-label="Basic example">
-          <a href="menu.php" class="btn-menu btn" role="button">Início</a>
+          <a href="menu.php" class="btn-menu btn" role="button">Início</a> 
           <button type="button" class="btn-menu btn">Gerenciar Pessoas</button>
           <div class="btn-group" role="group">
             <button type="button" class="btn-menu btn dropdown-toggle" data-toggle="dropdown"
@@ -109,15 +82,13 @@ mysqli_close($conn);
       <div class="cadastro-pet">
       <div class="container" style="width: 700px; margin-top: 40px">
         <center>
-          <?php if($nivelUsuario == 'Voluntario' || $nivelUsuario == 'NaoVoluntario'){ ?>
-            <h4>Voluntário/Não Voluntário adicionado e pendente de ativação.</h4>
-          <?php } else {?>
-            <h4>Adotante adicionado e ativo com sucesso.</h4>
-          <?php } ?>
+        <h4 class="titulos-topo">Confirma exclusão da pessoa ?</h4>
         </center>
-        <div style="padding-top: 20px"></div>
         <center>
-          <a href="menu.php" role="button" class="btn btn-success">Voltar</a>
+          <form action="" method="post">
+            <a href="deletar_pessoa.php?id_pessoa=<?php echo $id_pessoa; ?>" role="button" class="btn btn-danger">Sim</a>
+            <a href='listar_pessoas.php' role='button' class='btn btn-success'>Não</a>
+          </form>
         </center>
       </div>
     </div>

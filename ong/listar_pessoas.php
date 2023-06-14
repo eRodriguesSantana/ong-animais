@@ -17,13 +17,6 @@ $sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula an
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
-
-function formataData($date){
-    $newDate = explode("/", $date);
-    $newDate2 = explode(" ", $newDate[2]);
-      
-    return $newDate2[0]."-".$newDate[1]."-".$newDate[0]." ".$newDate2[1]."<br>";
-}
 ?>
 
 <!DOCTYPE html>
@@ -85,78 +78,73 @@ function formataData($date){
             </div> <!--Menu Lateral-->
 
             <div id="container-adocao-listagem" class="principal col">
-                <h4 class="titulos-topo">Todos os animais na ONG</h4>
+                <h4 class="titulos-topo">Voluntários / Não Voluntários</h4>
                 <div class="btn-grupo-principal">
-                    <a href="cadastro_animal.php" class="btn btn-grupo" role="button">Cadastrar Animal</a><!--Entrada Pet-->
-                    <a href="#" class="btn btn-grupo" role="button">Nova Adoção</a><!--Saída Pet-->
+                    <a href="cadastro_animal.php" class="btn btn-grupo" role="button">Cadastrar Pessoa</a>
                 </div>
                 <hr>
                 <div class="busca">
-                    <input id="filtra-animal" class="campo-busca form-control" type="text" placeholder="Buscar animal">
+                    <input id="filtra-pessoa" class="campo-busca form-control" type="text" placeholder="Buscar pessoa">
                     <button id="buscar" type="button" class="btn btn-busca">Pesquisar</button>
                 </div>
-                <table id="busca-animal" class="table">
+                <table id="buscar-pessoa" class="table">
                     <thead>
                         <tr class="topo-colunas">
-                          <th scope="col">Imagem</th>
-                          <th scope="col">Nome do animal</th>
-                          <th scope="col">Sexo</th>
-                          <th scope="col">Tipo</th>
-                          <th scope="col">Raça</th>
-                          <th scope="col">Cor</th>
-                          <th scope="col">Peso aproximado</th>
-                          <th scope="col">Observação</th>
-                          <th scope="col">Data entrada</th>
+                          <th scope="col">Nome</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Endereço</th>
+                          <th scope="col">Telefone</th>
+                          <th scope="col">Atuação</th>
                           <th scope="col">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
                     <?php
-                      $sql = "SELECT * 
-                          FROM animal 
-                          ORDER BY id_animal ASC";
+                      $sql = "SELECT
+                                id_pessoa,
+                                nome_completo,
+                                email,
+                                endereco,
+                                telefone,
+                                nivelUsuario
+                            FROM 
+                                pessoas
+                            WHERE 
+                                nivelUsuario = 'Voluntario' 
+                                OR nivelUsuario = 'NaoVoluntario' 
+                                OR nivelUsuario = 'Gerente'
+                            ORDER BY id_pessoa ASC";
                       $busca = mysqli_query($conn, $sql);
 
                       while ($array = mysqli_fetch_array($busca)){
-                        $id_animal = $array['id_animal'];
-                        $imagem = $array['imagem'];
-                        $nome_animal = $array['nome_animal'];
-                        $sexo_animal = $array['sexo_animal'];
-                        $tipo_animal = $array['tipo_animal'];
+                        $id_pessoa = $array['id_pessoa'];
+                        $nome_completo = $array['nome_completo'];
+                        $email = $array['email'];
+                        $endereco = $array['endereco'];
+                        $telefone = $array['telefone'];
+                        $nivelUsuario = $array['nivelUsuario'];
 
-                        $raca = "";
-                        if($tipo_animal == "Gato")
-                          $raca = $array['raca_gato'];
-                        else
-                          $raca = $array['raca_cao'];
-
-                        $cor_animal = $array['cor_animal'];
-                        $peso_aproximado = $array['peso_aproximado'];
-                        $observacao = $array['observacao'];
-                        $data_entrada = $array['data_entrada'];
+                        if($nivelUsuario == "NaoVoluntario")
+                            $nivelUsuario = "Não Voluntário"
                       ?>
                         <tr style="font-size: 14px">
-                          <td><?php echo $imagem; ?></td>
-                          <td><?php echo $nome_animal; ?></td>
-                          <td><?php echo $sexo_animal; ?></td>
-                          <td><?php echo $tipo_animal; ?></td>
-                          <td><?php echo $raca; ?></td>
-                          <td><?php echo $cor_animal; ?></td>
-                          <td><?php echo $peso_aproximado; ?></td>
-                          <td><?php echo $observacao; ?></td>
-                          <td><?php echo formataData($data_entrada); ?></td>                
+                          <td><?php echo $nome_completo; ?></td>
+                          <td><?php echo $email; ?></td>
+                          <td><?php echo $endereco; ?></td>
+                          <td><?php echo $telefone; ?></td>
+                          <td><?php echo $nivelUsuario; ?></td>               
                           <td>
                             <?php
                               if(($matricula == 2) || $matricula == 12){
                             ?>
                             <div class="row">
                               <div class="col-md-6 col-xs-6">
-                                <a class="btn btn-warning btn-sm" href="editar_animal.php?id_animal=<?php echo $id_animal; ?>" 
+                                <a class="btn btn-warning btn-sm" href="editar_pessoa.php?id_pessoa=<?php echo $id_pessoa; ?>" 
                                   role="button"><i class="fas fa-eye"></i>Editar
                                 </a>  
                               </div>
                               <div class="col-md-6 col-xs-6">
-                                <a class="btn btn-danger btn-sm" href="confirmar_exclusao_animal.php?id_gato=<?php echo $id_gato; ?>" 
+                                <a class="btn btn-danger btn-sm" href="confirmar_exclusao_pessoa.php?id_pessoa=<?php echo $id_pessoa; ?>" 
                                   role="button"><i class="fas fa-eye"></i>Excluir
                                 </a>
                               </div>
@@ -191,9 +179,9 @@ function formataData($date){
             function pesquisaTabela() {
                 // Declare variables
                 var input, filter, table, tr, td, i;
-                input = document.getElementById("filtra-animal");
+                input = document.getElementById("filtra-pessoa");
                 filter = input.value.toUpperCase();
-                table = document.getElementById("busca-animal");
+                table = document.getElementById("buscar-pessoa");
                 tr = table.getElementsByTagName("tr");
                 // Loop through all table rows, and hide those who don't match the search query
                 for (i = 0; i < tr.length; i++) {

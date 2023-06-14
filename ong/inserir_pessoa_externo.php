@@ -43,9 +43,9 @@ mysqli_close($conn);
 <div class="container" style="width: 700px; margin-top: 40px">
   <center>
     <?php if($nivelUsuario == 'Voluntario' || $nivelUsuario == 'NaoVoluntario'){ ?>
-      <h4>Usuário adicionado e pendente de ativação.</h4>
+      <h4>Voluntário/Não Voluntário adicionado e pendente de ativação.</h4>
     <?php } else {?>
-      <h4>Usuário adicionado e ativo com sucesso.</h4>
+      <h4>Adotante adicionado e ativo com sucesso.</h4>
     <?php } ?>
   </center>
   <div style="padding-top: 20px"></div>
