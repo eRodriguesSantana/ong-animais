@@ -14,7 +14,7 @@ if(!isset($_SESSION['matricula']) || empty($_SESSION['matricula']))
 $matricula = $_POST['matricula'];
 $senha = $_POST['senha'];
 
-include "conexao.php";
+include "sql/conexao.php";
 
 $sql = "SELECT matriculausuario 
         FROM pessoas 

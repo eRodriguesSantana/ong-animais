@@ -18,13 +18,8 @@ CREATE TABLE `pessoas` (
   `nivelUsuario` varchar(45) COLLATE utf8_general_ci NOT NULL,
   `matriculausuario` varchar(45) COLLATE utf8_general_ci NOT NULL,
   `senha` varchar(45) COLLATE utf8_general_ci NOT NULL,
-  `status` varchar(45) COLLATE utf8_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Índices para tabela `pessoas`
---
-ALTER TABLE `pessoas`
-  ADD PRIMARY KEY (`id_pessoa`);
+  `status` varchar(45) COLLATE utf8_general_ci NOT NULL,
+  primary key (id_pessoa)
+);
 
 INSERT INTO `pessoas` VALUES (1,'Edu','t@t.com','111','ggg','7777','Gerente','12',SHA1('12345'),'Ativo');

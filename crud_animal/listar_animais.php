@@ -11,7 +11,7 @@ if(!isset($_SESSION['matricula']) || empty($_SESSION['matricula']))
 
 $matricula = $_SESSION['matricula'];
 
-include "conexao.php";
+include "../sql/conexao.php";
 
 $sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
@@ -33,7 +33,7 @@ function formataData($date){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen" />
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -55,7 +55,7 @@ function formataData($date){
                     <h4>Animais Pirapozinho</h4>
                 </div>
                 <div class="btn-group-vertical" role="group" aria-label="Basic example">
-                    <a href="menu.php" class="btn-menu btn" role="button">Início</a>
+                    <a href="../menu.php" class="btn-menu btn" role="button">Início</a>
                     <button type="button" class="btn-menu btn">Gerenciar Pessoas</button>
                     <div class="btn-group" role="group">
                         <button type="button" class="btn-menu btn dropdown-toggle" data-toggle="dropdown"

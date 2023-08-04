@@ -128,7 +128,7 @@ $nivel = $arr['nivelUsuario']
                   <div class="card-body card-altura">
                     <h5 class="card-title">Cadastrar animais</h5>
                     <p class="card-text">Opção para cadastrar animais abandonados.</p>
-                    <a href="cadastro_animal.php" class="btn btn-primary">Adicionar Animal :)</a>
+                    <a href="crud_animal/cadastro_animal.php" class="btn btn-primary">Adicionar Animal :)</a>
                   </div>
                 </div>
               </div>

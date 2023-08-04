@@ -25,7 +25,7 @@ CREATE TABLE animal(
 );
 
 INSERT INTO animal (nome_animal, cor_animal, porte_animal, sexo_animal, tipo_animal, raca_gato, raca_cao, peso_aproximado, observacao, data_entrada, imagem)
-VALUES ('Poli', 'Pardo', 'Médio', 'Femêa', 'Cao', 'Não', 'Viralata', 10, 'Amor da minha vida', '14/06/2023 00:56:43', 'Minha linda')
+VALUES ('Poli', 'Pardo', 'Médio', 'Femêa', 'Cao', 'Não', 'Viralata', 10, 'Amor da minha vida', '14/06/2023 00:56:43', 'Minha linda');
 
 INSERT INTO animal (nome_animal, cor_animal, porte_animal, sexo_animal, tipo_animal, raca_gato, raca_cao, peso_aproximado, observacao, data_entrada, imagem)
 VALUES ('Mili', 'Preto', 'Médio', 'Femêa', 'Cao', 'Não', 'Viralata', 10, 'Amor da minha vida', '14/06/2023 00:56:43', 'Minha linda')
