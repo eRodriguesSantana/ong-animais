@@ -11,7 +11,7 @@ if(!isset($_SESSION['matricula']) || empty($_SESSION['matricula']))
 
 $matricula = $_SESSION['matricula'];
 
-include "conexao.php";
+include "../sql/conexao.php";
 
 $sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
@@ -28,7 +28,7 @@ $id_animal = $_GET['id_animal'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen" />
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -44,13 +44,13 @@ $id_animal = $_GET['id_animal'];
 <body>
     <div id="ong" class="container-ong">
         <div class="row">
-            <div id="menu-lateral" class="col-2">
+        <div id="menu-lateral" class="col-2">
                 <div class="titulos-ong">
                     <h4>ONG</h4>
                     <h4>Animais Pirapozinho</h4>
                 </div>
                 <div class="btn-group-vertical" role="group" aria-label="Basic example">
-                    <a href="menu.php" class="btn-menu btn" role="button">Início</a> 
+                    <a href="../menu.php" class="btn-menu btn" role="button">Início</a> 
                     <button type="button" class="btn-menu btn">Gerenciar Pessoas</button>
                     <div class="btn-group" role="group">
                         <button type="button" class="btn-menu btn dropdown-toggle" data-toggle="dropdown"
@@ -75,10 +75,9 @@ $id_animal = $_GET['id_animal'];
                 <div class="sair-rodape">
                     <a class="btn-sair" href="#"><span><i class="bi bi-person-circle"></i></span>Nome do Usuário
                         Logado: <?php echo $nome_completo; ?></a>
-                    <a class="btn-sair" href="sair.php"><span><i class="bi bi-box-arrow-right"></i></span>Sair</a>
+                    <a class="btn-sair" href="../sair.php"><span><i class="bi bi-box-arrow-right"></i></span>Sair</a>
                 </div>
-            </div> <!--Menu lateral FIM
-            -->
+            </div> <!--Menu lateral FIM-->
             <div id="container-cadastro-pet" class="principal col">
                 <h4 class="titulos-topo">Editar dados do animal</h4>
                 <div class="btn-grupo-principal">
@@ -96,7 +95,6 @@ $id_animal = $_GET['id_animal'];
                               FROM animal 
                               WHERE id_animal = $id_animal";
                         $busca = mysqli_query($conn, $sql);
-
                         while ($array = mysqli_fetch_array($busca)){
                             $id_animal = $array['id_animal'];
                             $imagem = $array['imagem'];
@@ -243,80 +241,72 @@ $id_animal = $_GET['id_animal'];
                         </div>
                         <div class="form-group">
                             <label for="tipo_animal">Tipo animal:</label>
-                            <select 
-                                id="tipo_animal"
+                            <input 
+                                type="text" 
+                                class="form-control"
                                 name="tipo_animal" 
-                                onchange='habilitarCampos()'
-                                class="form-control" 
-                                required 
-                                    oninvalid="this.setCustomValidity('Tipo obrigatório')" 
-                                    oninput="setCustomValidity('')">
-                                <option value="">Selecione</option>
-                                <?php
-                                if(trim($tipo_animal) == "Gato"){
-                                ?>
-                                    <option value="<?php echo $tipo_animal; ?>" selected="selected"><?php echo $tipo_animal; ?></option>
-                                    <option value="Cao">Cao</option>
-                                <?php } 
-                                else{                             
-                                ?>
-                                    <option value="Gato">Gato</option>
-                                    <option value="<?php echo $tipo_animal; ?>" selected="selected"><?php echo $tipo_animal; ?></option>
-                                <?php } ?>
-                            </select>
+                                value="<?php echo $tipo_animal; ?>"
+                                placeholder="<?php echo $tipo_animal; ?>"
+                                readonly
+                            >
                         </div>
                         <div class="row">
-                            <div class="col-md-6 col-xs-6">
-                                <div class="form-group">
-                                    <label for="raca_gato">Raça do(a) Gatinho(a):</label>
-                                    <select 
-                                        class="form-control" 
-                                        id="raca_gato"
-                                        name="raca_gato"
-                                        required 
-                                            oninvalid="this.setCustomValidity('Raça obrigatório')" 
-                                            oninput="setCustomValidity('')">
-                                        <option value="">Selecione</option>
-                                        <?php 
-                                            $sql_gato = "SELECT nome_raca_gato FROM raca_gato";
-                                            $result = mysqli_query($conn, $sql_gato);
+                            <?php
+                                if($tipo_animal == "Gato"){
+                            ?>
+                                    <div class="col-md-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="raca_gato">Raça do(a) Gatinho(a):</label>
+                                            <select 
+                                                class="form-control" 
+                                                id="raca_gato"
+                                                name="raca_gato"
+                                                required 
+                                                    oninvalid="this.setCustomValidity('Raça obrigatório')" 
+                                                    oninput="setCustomValidity('')">
+                                                <option value="">Selecione</option>
+                                                <?php
+                                                    $sql_gato = "SELECT nome_raca_gato FROM raca_gato";
+                                                    $result = mysqli_query($conn, $sql_gato);
 
-                                            while($row = mysqli_fetch_array($result)){                                           
-                                                if($row[0] == $raca)                                        
-                                                    echo '<option value="'.$row[0].'" selected="selected">'.$row[0].'</option>';
-                                                else
-                                                    echo '<option value="'.$row[0].'">'.$row[0].'</option>';
-                                            }
+                                                    while($row = mysqli_fetch_array($result)){                                           
+                                                        if($row[0] == $raca)                                        
+                                                            echo '<option value="'.$row[0].'" selected="selected">'.$row[0].'</option>';
+                                                        else
+                                                            echo '<option value="'.$row[0].'">'.$row[0].'</option>';
+                                                    }
 
-                                        ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-xs-6">
-                                <div class="form-group">
-                                    <label for="raca_cao">Raça do(a) Doguinho(a):</label>
-                                    <select 
-                                        class="form-control" 
-                                        id="raca_cao"
-                                        name="raca_cao"
-                                        required 
-                                            oninvalid="this.setCustomValidity('Raça obrigatório')" 
-                                            oninput="setCustomValidity('')">
-                                        <option value="">Selecione</option>
-                                        <?php 
-                                            $sql_cao = "SELECT nome_raca_cao FROM raca_cao";
-                                            $result = mysqli_query($conn, $sql_cao);
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                            <?php } else { ?>
+                                    <div class="col-md-12 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="raca_cao">Raça do(a) Doguinho(a):</label>
+                                            <select 
+                                                class="form-control" 
+                                                id="raca_cao"
+                                                name="raca_cao"
+                                                required 
+                                                    oninvalid="this.setCustomValidity('Raça obrigatório')" 
+                                                    oninput="setCustomValidity('')">
+                                                <option value="">Selecione</option>
+                                                <?php 
+                                                    $sql_cao = "SELECT nome_raca_cao FROM raca_cao";
+                                                    $result = mysqli_query($conn, $sql_cao);
 
-                                            while($row = mysqli_fetch_array($result)){   
-                                                if($row[0] == $raca)                                        
-                                                    echo '<option value="'.$row[0].'" selected="selected">'.$row[0].'</option>';
-                                                else
-                                                    echo '<option value="'.$row[0].'">'.$row[0].'</option>';
-                                            }
-                                        ?>
-                                    </select>
-                                </div>
-                            </div>
+                                                    while($row = mysqli_fetch_array($result)){   
+                                                        if($row[0] == $raca)                                        
+                                                            echo '<option value="'.$row[0].'" selected="selected">'.$row[0].'</option>';
+                                                        else
+                                                            echo '<option value="'.$row[0].'">'.$row[0].'</option>';
+                                                    }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                            <?php } ?>
                         </div>
                        <div class="form-group">
                             <label for="peso_aproximado">Peso Aproximado:</label>
