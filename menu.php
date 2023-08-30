@@ -105,9 +105,9 @@ $nivel = $arr['nivelUsuario']
               <div class="col-sm-6">
                 <div class="card espaco-card">
                   <div class="card-body card-altura">
-                    <h5 class="card-title">Adicionar Usuário / Adotante</h5>
-                    <p class="card-text">Opção para adicionar usuário (pendente de ativação do perfil criado) ou adotante (permissão já incluída e com cadastro sem necessidade de aprovação).</p>
-                    <a href="cadastro_pessoa.php" class="btn btn-primary">Adicionar Usuário / Adotante</a>
+                    <h5 class="card-title">Gerenciar Usuário / Adotante</h5>
+                    <p class="card-text">Listagem e cadastro de voluntários e não voluntários.</p>
+                    <a href="crud_pessoas/listar_pessoas.php" class="btn btn-primary">Adicionar Usuário / Adotante</a>
                   </div>
                 </div>
               </div>
@@ -119,16 +119,25 @@ $nivel = $arr['nivelUsuario']
                   <div class="card-body card-altura">
                     <h5 class="card-title">Ativar Voluntariados</h5>
                     <p class="card-text">Ativar cadastro de voluntário.</p>
-                    <a href="aprovar_pessoa.php" class="btn btn-primary">Ativar Voluntariados</a>
+                    <a href="crud_pessoas/aprovar_pessoa.php" class="btn btn-primary">Ativar Voluntariados</a>
                   </div>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="card espaco-card">
                   <div class="card-body card-altura">
-                    <h5 class="card-title">Cadastrar animais</h5>
+                    <h5 class="card-title">Gerenciar animais</h5>
                     <p class="card-text">Opção para cadastrar animais abandonados.</p>
-                    <a href="crud_animal/cadastro_animal.php" class="btn btn-primary">Adicionar Animal :)</a>
+                    <a href="crud_animal/listar_animais.php" class="btn btn-primary">Adicionar Animal :)</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card espaco-card">
+                  <div class="card-body card-altura">
+                    <h5 class="card-title">Gerenciar adoção</h5>
+                    <p class="card-text">Opção para cadastrar animais abandonados.</p>
+                    <a href="crud_adocao/listar_adocao.php" class="btn btn-primary">Adicionar Animal :)</a>
                   </div>
                 </div>
               </div>

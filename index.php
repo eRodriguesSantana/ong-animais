@@ -44,7 +44,7 @@
     </div>
   <center>
       <div style="margin-top: 10px">
-        <p>Você não possui cadastro? Clique <a href="cadastro_pessoa.php">aqui</a></p>
+        <p>Você não possui cadastro? Clique <a href="crud_pessoas/cadastro_pessoa_externo.php">aqui</a></p>
       </div>
   </center>
     <script type="text/javascript" src="js/bootstrap.js"></script>
