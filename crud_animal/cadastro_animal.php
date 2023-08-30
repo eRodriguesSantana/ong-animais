@@ -183,17 +183,23 @@ date_default_timezone_set('America/Sao_Paulo');
                                             oninput="setCustomValidity('')">
                                         <option value="">Selecione</option>
                                         <?php 
-                                            $sql_gato = "SELECT nome_raca_gato FROM raca_gato";
+                                            $sql_gato = "SELECT id_raca_gato, nome_raca_gato FROM raca_gato";
                                             $result = mysqli_query($conn, $sql_gato);
 
                                             while($row = mysqli_fetch_array($result)){                                           
-                                                echo '<option value="'.$row[0].'">'.$row[0].'</option>';
+                                                echo '<option value="'.$row[0].'">'.$row[1].'</option>';
                                             }   
                                         ?>
                                     </select>
-                                </div>
+                                    <div class="row">
+                                        <div class="col-md-8 col-xs-8">
+                                            <a href="gatos/cadastrar_gato.php" target="_blank" style="display: inline-block; font-size: 13px;">                                            
+                                                Adicionar outra raça de gato
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>                                
                             </div>
-
                             <div class="col-md-6 col-xs-6">
                                 <div class="form-group">
                                     <label for="raca_cao">Raça do(a) Doguinho(a):</label>
@@ -206,56 +212,64 @@ date_default_timezone_set('America/Sao_Paulo');
                                             oninput="setCustomValidity('')">
                                         <option value="">Selecione</option>
                                         <?php 
-                                            $sql_cao = "SELECT nome_raca_cao FROM raca_cao";
+                                            $sql_cao = "SELECT id_raca_cao, nome_raca_cao FROM raca_cao";
                                             $result = mysqli_query($conn, $sql_cao);
 
                                             while($row = mysqli_fetch_array($result)){                                           
-                                                echo '<option value="'.$row[0].'">'.$row[0].'</option>';
+                                                echo '<option value="'.$row[0].'">'.$row[1].'</option>';
                                             }
                                         ?>
                                     </select>
+                                    <div class="row">
+                                        <div class="col-md-8 col-xs-8">
+                                            <a href="cachorros/cadastrar_cao.php" target="_blank" style="display: inline-block; font-size: 13px;">                                            
+                                                Adicionar outra raça de cão
+                                            </a>
+                                        </div>                                        
+                                    </div>
+                                    </div>
                                 </div>
+                            </div>                        
+                            <div class="form-group">
+                                <label for="peso_aproximado">Peso Aproximado:</label>
+                                <input 
+                                    type="number" 
+                                    class="form-control"
+                                    name="peso_aproximado"
+                                    aria-describedby="peso_aproximado"
+                                    required 
+                                        oninvalid="this.setCustomValidity('Peso obrigatório')" 
+                                        oninput="setCustomValidity('')"
+                                    autocomplete="off" 
+                                    placeholder="Peso aproximado"
+                                >
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="peso_aproximado">Peso Aproximado:</label>
-                            <input 
-                                type="number" 
-                                class="form-control"
-                                name="peso_aproximado"
-                                aria-describedby="peso_aproximado"
-                                required 
-                                    oninvalid="this.setCustomValidity('Peso obrigatório')" 
-                                    oninput="setCustomValidity('')"
-                                autocomplete="off" 
-                                placeholder="Peso aproximado"
-                            >
-                        </div>
-                        <div class="form-group">
-                            <label for="observacao">Observação</label>
-                            <textarea name="observacao" rows="4" cols="50" class="form-control"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="imagem">Imagem</label>
-                            <input type="text" name="imagem" class="form-control" 
+                            <div class="form-group">
+                                <label for="observacao">Observação</label>
+                                <textarea name="observacao" rows="4" cols="50" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="imagem">Imagem</label>
+                                <input type="text" name="imagem" class="form-control" 
+                                        autocomplete="off"
+                                        placeholder="Imagem do animal">
+                            </div>
+                            <div class="form-group">
+                                <label for="data_entrada">Data Entrada (informação do sistema)</label>
+                                <input 
+                                    type="text" 
+                                    name="data_entrada" 
+                                    value="<?php echo date('d/m/Y H:i:s', time()); ?>" 
+                                    class="form-control" 
                                     autocomplete="off"
-                                    placeholder="Imagem do animal">
-                        </div>
-                        <div class="form-group">
-                            <label for="data_entrada">Data Entrada (informação do sistema)</label>
-                            <input 
-                                type="text" 
-                                name="data_entrada" 
-                                value="<?php echo date('d/m/Y H:i:s', time()); ?>" 
-                                class="form-control" 
-                                autocomplete="off"
-                                readonly 
-                                placeholder="<?php echo date('d/m/Y H:i:s', time()); ?>"
-                            >
-                        </div>                        
+                                    readonly 
+                                    placeholder="<?php echo date('d/m/Y H:i:s', time()); ?>"
+                                >
+                            </div>
                         <div class="btn-cadastrar">
                             <button type="submit" class="btn btn-grupo">Cadastrar</button>
                         </div>
+                    </div>
                     </form>
                 </div>
             </div>
@@ -283,6 +297,16 @@ date_default_timezone_set('America/Sao_Paulo');
                 $("#raca_cao").prop('disabled', false);
             }
         }
+
+        $('#exampleModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var recipient = button.data('whatever') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+            modal.find('.modal-title').text('New message to ' + recipient)
+            modal.find('.modal-body input').val(recipient)
+        })
     </script>
 </body>
 </html>

@@ -6,7 +6,7 @@ session_start();
 if(!isset($_SESSION['matricula']) || empty($_SESSION['matricula']))
 {
   unset($_SESSION['matricula']);
-  header('Location: index.php');
+  header('Location: ../index.php');
 }
 
 $matricula = $_SESSION['matricula'];
@@ -266,14 +266,14 @@ $id_animal = $_GET['id_animal'];
                                                     oninput="setCustomValidity('')">
                                                 <option value="">Selecione</option>
                                                 <?php
-                                                    $sql_gato = "SELECT nome_raca_gato FROM raca_gato";
+                                                    $sql_gato = "SELECT id_raca_gato, nome_raca_gato FROM raca_gato";
                                                     $result = mysqli_query($conn, $sql_gato);
 
                                                     while($row = mysqli_fetch_array($result)){                                           
                                                         if($row[0] == $raca)                                        
-                                                            echo '<option value="'.$row[0].'" selected="selected">'.$row[0].'</option>';
+                                                            echo '<option value="'.$row[0].'" selected="selected">'.$row[1].'</option>';
                                                         else
-                                                            echo '<option value="'.$row[0].'">'.$row[0].'</option>';
+                                                            echo '<option value="'.$row[0].'">'.$row[1].'</option>';
                                                     }
 
                                                 ?>
@@ -293,14 +293,14 @@ $id_animal = $_GET['id_animal'];
                                                     oninput="setCustomValidity('')">
                                                 <option value="">Selecione</option>
                                                 <?php 
-                                                    $sql_cao = "SELECT nome_raca_cao FROM raca_cao";
+                                                    $sql_cao = "SELECT id_raca_cao, nome_raca_cao FROM raca_cao";
                                                     $result = mysqli_query($conn, $sql_cao);
 
                                                     while($row = mysqli_fetch_array($result)){   
                                                         if($row[0] == $raca)                                        
-                                                            echo '<option value="'.$row[0].'" selected="selected">'.$row[0].'</option>';
+                                                            echo '<option value="'.$row[0].'" selected="selected">'.$row[1].'</option>';
                                                         else
-                                                            echo '<option value="'.$row[0].'">'.$row[0].'</option>';
+                                                            echo '<option value="'.$row[0].'">'.$row[1].'</option>';
                                                     }
                                                 ?>
                                             </select>

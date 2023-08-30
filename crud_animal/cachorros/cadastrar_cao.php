@@ -6,70 +6,29 @@ session_start();
 if(!isset($_SESSION['matricula']) || empty($_SESSION['matricula']))
 {
   unset($_SESSION['matricula']);
-  header('Location: ../index.php');
+  header('Location: ../../index.php');
 }
 
-$matricula = $_SESSION['matricula'];   
+$matricula = $_SESSION['matricula'];
 
-include "../sql/conexao.php";
+include "../../sql/conexao.php";
 
 $sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
 
-$id_animal = $_POST['id_animal'];
-
-if(isset($_POST['imagem']))
-  $imagem = $_POST['imagem'];
-else
-  $imagem = "";
-
-$nome_animal = $_POST['nome_animal'];
-$sexo_animal = $_POST['sexo_animal'];
-$tipo_animal = $_POST['tipo_animal'];
-
-if(isset($_POST['raca_gato']))
-  $raca_gato = $_POST['raca_gato'];
-else
-  $raca_gato = 0;
-
-if(isset($_POST['raca_cao']))
-  $raca_cao = $_POST['raca_cao'];
-else
-  $raca_cao = 0;
-
-$cor_animal = $_POST['cor_animal'];
-$porte_animal = $_POST['porte_animal'];
-$peso_aproximado = $_POST['peso_aproximado'];
-$observacao = $_POST['observacao'];
-$data_entrada = $_POST['data_entrada'];
-
-$sql = "UPDATE animal
-        SET 
-          imagem = '$imagem',
-          nome_animal = '$nome_animal',
-          sexo_animal = '$sexo_animal',
-          tipo_animal = '$tipo_animal',
-          raca_gato = $raca_gato,
-          raca_cao = $raca_cao,
-          cor_animal = '$cor_animal',
-          porte_animal = '$porte_animal',
-          peso_aproximado = '$peso_aproximado',
-          observacao = '$observacao',
-          data_entrada = '$data_entrada'
-        WHERE id_animal = $id_animal";
-
-$atualizar = mysqli_query($conn, $sql);
+date_default_timezone_set('America/Sao_Paulo');
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-b">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen" />
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -83,15 +42,15 @@ $atualizar = mysqli_query($conn, $sql);
 </head>
 
 <body>
-  <div id="ong" class="container-ong">
-    <div class="row">
-      <div id="menu-lateral" class="col-2">
+    <div id="ong" class="container-ong">
+        <div class="row">
+            <div id="menu-lateral" class="col-2" style="height: 100vh">
                 <div class="titulos-ong">
                     <h4>ONG</h4>
                     <h4>Animais Pirapozinho</h4>
                 </div>
                 <div class="btn-group-vertical" role="group" aria-label="Basic example">
-                    <a href="../menu.php" class="btn-menu btn" role="button">Início</a> 
+                    <button type="button" class="btn-menu btn">Início</button>
                     <button type="button" class="btn-menu btn">Gerenciar Pessoas</button>
                     <div class="btn-group" role="group">
                         <button type="button" class="btn-menu btn dropdown-toggle" data-toggle="dropdown"
@@ -116,34 +75,63 @@ $atualizar = mysqli_query($conn, $sql);
                 <div class="sair-rodape">
                     <a class="btn-sair" href="#"><span><i class="bi bi-person-circle"></i></span>Nome do Usuário
                         Logado: <?php echo $nome_completo; ?></a>
-                    <a class="btn-sair" href="../sair.php"><span><i class="bi bi-box-arrow-right"></i></span>Sair</a>
+                    <a class="btn-sair" href="../../sair.php"><span><i class="bi bi-box-arrow-right"></i></span>Sair</a>
                 </div>
-            </div> <!--Menu lateral FIM-->
-      <div id="container-cadastro-pet" class="principal col" style="height: 100vh;">
-      <div class="cadastro-pet">
-        <div class="container" style="width: 700px; margin-top: 40px">
-          <center>
-          <h4 class="titulos-topo">Registro do animal <strong><?php echo $nome_animal; ?></strong> atualizado com sucesso.</h4>
-          </center>
-          <div style="padding-top: 20px"></div>
-            <center>
-              <a href="listar_animais.php" role="button" class="btn btn-success">Voltar</a>
-            </center>
-          </div>                    
-        </div>
-      </div>
-    </div>
-  </div>
+            </div> <!--Menu lateral FIM
+            -->
+            <div id="container-cadastro-pet" class="principal col">
+                <h4 class="titulos-topo">Cadastrar Cachorro</h4>
 
-  <!--JS do Bootstrap-->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-      crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-      crossorigin="anonymous"></script>
+                <hr>
+
+                <div class="cadastro-pet">
+                    <h5 class="titulo-cad">Cadastro Raça Cão</h5>
+                    <form action="inserir_cao_bd.php" method="post">
+                        <div class="form-group">
+                            <label for="nome_raca_cao">Nome raça</label>
+                            <input 
+                                type="text" 
+                                class="form-control"
+                                name="nome_raca_cao" 
+                                aria-describedby="nome_raca_cao"
+                                required 
+                                    oninvalid="this.setCustomValidity('Nome raça obrigatório')" 
+                                    oninput="setCustomValidity('')"
+                                autocomplete="off"
+                                placeholder="Digite a raça do cão"
+                            >
+                        </div>
+                        <div class="form-group">
+                            <label for="nivel_cuidado_cao">Observações de cuidado</label>
+                            <textarea 
+                                name="nivel_cuidado_cao" 
+                                rows="4" cols="50" 
+                                class="form-control"
+                                required 
+                                    oninvalid="this.setCustomValidity('Nome raça obrigatório')" 
+                                    oninput="setCustomValidity('')"
+                                autocomplete="off"
+                                placeholder="Digite a raça do cão"></textarea>
+                        </div>                   
+                        <div class="btn-cadastrar">
+                            <button type="submit" class="btn btn-grupo">Cadastrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--JS do Bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

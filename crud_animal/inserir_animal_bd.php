@@ -6,7 +6,7 @@ if(!$_POST)
 {
   unset($_SERVER['nomeusuario']);
   unset($_SESSION['matriculausuario']);
-  header('Location: index.php');
+  header('Location: ../index.php');
 }
  
 include "../sql/conexao.php";
@@ -31,21 +31,21 @@ $imagem = mysqli_real_escape_string($conn, $_POST['imagem']);
 if(isset($_POST['raca_gato']))
   $raca_gato = $_POST['raca_gato'];
 else
-  $raca_gato = "Não";
+  $raca_gato = 0;
 
 if(isset($_POST['raca_cao']))
   $raca_cao = $_POST['raca_cao'];
 else
-  $raca_cao = "Não";
+  $raca_cao = 0;
 
 $sql = "INSERT INTO animal (nome_animal, cor_animal, porte_animal, sexo_animal, tipo_animal, raca_gato, raca_cao, 
-                            peso_aproximado, observacao, data_entrada, imagem)
-        VALUES ('$nome_animal', '$cor_animal', '$porte_animal', '$sexo_animal', '$tipo_animal', '$raca_gato', 
-                            '$raca_cao', $peso_aproximado, '$observacao', '$data_entrada', '$imagem')";
+        peso_aproximado, observacao, data_entrada, imagem)
+        VALUES ('$nome_animal', '$cor_animal', '$porte_animal', '$sexo_animal', '$tipo_animal', $raca_gato, 
+                            $raca_cao, $peso_aproximado, '$observacao', '$data_entrada', '$imagem');
+        ";
 
 $inserir = mysqli_query($conn, $sql);
-
-mysqli_close($conn);
+//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 ?>
 
 <!DOCTYPE html>
