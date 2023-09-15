@@ -96,7 +96,7 @@ mysqli_close($conn);
       <div class="cadastro-pet">
       <div class="container" style="width: 700px; margin-top: 40px">
         <center>
-          <h4 class="titulos-topo">Gato adicionado com suceso S2 :) :D.</h4>
+          <h4 class="titulos-topo">Gato adicionado com sucesso.</h4>
         </center>
         <div style="padding-top: 20px"></div>
         <center>

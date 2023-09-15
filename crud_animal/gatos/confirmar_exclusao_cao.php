@@ -27,7 +27,7 @@ $id = $_GET['id_cachorro'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen" />
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -44,52 +44,18 @@ $id = $_GET['id_cachorro'];
 <body>
   <div id="ong" class="container-ong">
     <div class="row">
-      <div id="menu-lateral" class="col-2" style="height: 100vh">
-        <div class="titulos-ong">
-          <h4>ONG</h4>
-          <h4>Animais Pirapozinho</h4>
-        </div>
-        <div class="btn-group-vertical" role="group" aria-label="Basic example">
-          <button type="button" class="btn-menu btn">Início</button>
-          <button type="button" class="btn-menu btn">Gerenciar Pessoas</button>
-          <div class="btn-group" role="group">
-            <button type="button" class="btn-menu btn dropdown-toggle" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false"> Gerenciar Pets</button>
-            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-              <a class="dropdown-item" href="#">Entrada Pet</a>
-              <a class="dropdown-item" href="#">Saída Pet</a>
-            </div>
-          </div>
-          <button type="button" class="btn-menu btn">Gerenciar Produtos</button>
-          <button type="button" class="btn-menu btn">Gerenciar Fornecedores</button>
-          <div class="btn-group" role="group">
-            <button type="button" class="btn-menu btn dropdown-toggle" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false"> Financeiro</button>
-            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-              <a class="dropdown-item" href="#">Registrar Despesas</a>
-              <a class="dropdown-item" href="#">Registrar Compras</a>
-              <a class="dropdown-item" href="#">Registrar Doação</a>
-            </div>
-          </div>
-        </div>
-        <div class="sair-rodape">
-          <a class="btn-sair" href="#"><span><i class="bi bi-person-circle"></i></span>Nome do Usuário
-              Logado: <?php echo $nome_completo; ?></a>
-          <a class="btn-sair" href="../sair.php"><span><i class="bi bi-box-arrow-right"></i></span>Sair</a>
-        </div>
-      </div> <!--Menu lateral FIM-->
+      
+    <?php include('../../menu_lateral.php') ?>
+      <!--Menu lateral FIM-->
+
       <div id="container-cadastro-pet" class="principal col">
       <div class="cadastro-pet">
-      <div class="container" style="width: 700px; margin-top: 40px">
-        <center>
+      <div class="btn-cadastrar text-center">
         <h4 class="titulos-topo">Confirma exclusão do cãozinho(a) ?</h4>
-        </center>
-        <center>
           <form action="" method="post">
             <a href="deletar_cao.php?id_cachorro=<?php echo $id; ?>" role="button" class="btn btn-danger">Sim</a>
             <a href='listagem_caes.php' role='button' class='btn btn-success'>Não</a>
           </form>
-        </center>
       </div>
     </div>
   </div>

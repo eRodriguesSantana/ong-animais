@@ -25,7 +25,6 @@ $sql = "SELECT matriculausuario
 $buscar = mysqli_query($conn, $sql);
 
 $total = mysqli_num_rows($buscar);
-
 if($buscar && $total == 1)
 {
   $_SESSION['matricula'] = $matricula;
@@ -34,6 +33,7 @@ if($buscar && $total == 1)
 else{
   unset ($_SESSION['matricula']);
   unset ($_SESSION['senha']);
-  header('Location: erro_login.php');   
+  $_SESSION['message_login'] = true;
+  header('Location: index.php');
 }
 ?>

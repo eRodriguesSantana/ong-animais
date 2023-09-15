@@ -44,51 +44,18 @@ date_default_timezone_set('America/Sao_Paulo');
 <body>
     <div id="ong" class="container-ong">
         <div class="row">
-            <div id="menu-lateral" class="col-2" style="height: 100vh">
-                <div class="titulos-ong">
-                    <h4>ONG</h4>
-                    <h4>Animais Pirapozinho</h4>
-                </div>
-                <div class="btn-group-vertical" role="group" aria-label="Basic example">
-                    <button type="button" class="btn-menu btn">Início</button>
-                    <button type="button" class="btn-menu btn">Gerenciar Pessoas</button>
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn-menu btn dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false"> Gerenciar Pets</button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <a class="dropdown-item" href="#">Entrada Pet</a>
-                            <a class="dropdown-item" href="#">Saída Pet</a>
-                        </div>
-                    </div>
-                    <button type="button" class="btn-menu btn">Gerenciar Produtos</button>
-                    <button type="button" class="btn-menu btn">Gerenciar Fornecedores</button>
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn-menu btn dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false"> Financeiro</button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <a class="dropdown-item" href="#">Registrar Despesas</a>
-                            <a class="dropdown-item" href="#">Registrar Compras</a>
-                            <a class="dropdown-item" href="#">Registrar Doação</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="sair-rodape">
-                    <a class="btn-sair" href="#"><span><i class="bi bi-person-circle"></i></span>Nome do Usuário
-                        Logado: <?php echo $nome_completo; ?></a>
-                    <a class="btn-sair" href="../../sair.php"><span><i class="bi bi-box-arrow-right"></i></span>Sair</a>
-                </div>
-            </div> <!--Menu lateral FIM
-            -->
+        <?php include('../../menu_lateral.php') ?>
+      <!--Menu lateral FIM-->
             <div id="container-cadastro-pet" class="principal col">
-                <h4 class="titulos-topo">Cadastrar Cachorro</h4>
+                <h4 class="titulos-topo">Cadastro de Cachorro</h4>
 
                 <hr>
 
                 <div class="cadastro-pet">
-                    <h5 class="titulo-cad">Cadastro Raça Cão</h5>
+                    <h5 class="titulo-cad">Cadastrar Raça de Cachorro</h5>
                     <form action="inserir_cao_bd.php" method="post">
                         <div class="form-group">
-                            <label for="nome_raca_cao">Nome raça</label>
+                            <label for="nome_raca_cao">Nova Raça</label>
                             <input 
                                 type="text" 
                                 class="form-control"
@@ -102,14 +69,11 @@ date_default_timezone_set('America/Sao_Paulo');
                             >
                         </div>
                         <div class="form-group">
-                            <label for="nivel_cuidado_cao">Observações de cuidado</label>
+                            <label for="nivel_cuidado_cao">Observações</label>
                             <textarea 
                                 name="nivel_cuidado_cao" 
                                 rows="4" cols="50" 
                                 class="form-control"
-                                required 
-                                    oninvalid="this.setCustomValidity('Nome raça obrigatório')" 
-                                    oninput="setCustomValidity('')"
                                 autocomplete="off"
                                 placeholder="Digite a raça do cão"></textarea>
                         </div>                   

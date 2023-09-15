@@ -3,10 +3,9 @@ session_start();
 
 // Se o usuário não estiver logado e tentar acessar a página diretamente pela url
 // o mesmo será redirecionado para a tela de login
-if(!isset($_SESSION['matricula']) || empty($_SESSION['matricula']))
-{
-  unset($_SESSION['matricula']);
-  header('Location: ../index.php');
+if (!isset($_SESSION['matricula']) || empty($_SESSION['matricula'])) {
+    unset($_SESSION['matricula']);
+    header('Location: ../index.php');
 }
 
 $matricula = $_SESSION['matricula'];
@@ -30,55 +29,21 @@ $id_pessoa = $_GET['id_pessoa'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen" />
     <!--Bootstrap-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <title>ONG Sistema de Adoção Pet</title>
 </head>
 
 <body>
     <div id="ong" class="container-ong">
         <div class="row">
-            <div id="menu-lateral" class="col-2">
-                <div class="titulos-ong">
-                    <h4>ONG</h4>
-                    <h4>Animais Pirapozinho</h4>
-                </div>
-                <div class="btn-group-vertical" role="group" aria-label="Basic example">
-                    <a href="../menu.php" class="btn-menu btn" role="button">Início</a> 
-                    <button type="button" class="btn-menu btn">Gerenciar Pessoas</button>
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn-menu btn dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false"> Gerenciar Pets</button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <a class="dropdown-item" href="#">Entrada Pet</a>
-                            <a class="dropdown-item" href="#">Saída Pet</a>
-                        </div>
-                    </div>
-                    <button type="button" class="btn-menu btn">Gerenciar Produtos</button>
-                    <button type="button" class="btn-menu btn">Gerenciar Fornecedores</button>
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn-menu btn dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false"> Financeiro</button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <a class="dropdown-item" href="#">Registrar Despesas</a>
-                            <a class="dropdown-item" href="#">Registrar Compras</a>
-                            <a class="dropdown-item" href="#">Registrar Doação</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="sair-rodape">
-                    <a class="btn-sair" href="#"><span><i class="bi bi-person-circle"></i></span>Nome do Usuário
-                        Logado: <?php echo $nome_completo; ?></a>
-                    <a class="btn-sair" href="../sair.php"><span><i class="bi bi-box-arrow-right"></i></span>Sair</a>
-                </div>
-            </div> <!--Menu lateral FIM
-            -->
+
+            <?php include('../menu_lateral.php') ?>
+            <!--Menu lateral FIM-->
+
             <div id="container-cadastro-pet" class="principal col">
                 <h4 class="titulos-topo">Editar dados da pessoa</h4>
                 <div class="btn-grupo-principal">
@@ -88,16 +53,16 @@ $id_pessoa = $_GET['id_pessoa'];
                 <hr>
 
                 <div class="cadastro-pet">
-                    <h5 class="titulo-cad">Editar dados da pessoas</h5>
+                    <h5 class="titulo-cad">Editar dados de usuário</h5>
                     <form action="atualizar_pessoa.php" method="post">
-                      <input type="number" name="id_pessoa" value="<?php echo $id_pessoa; ?>" style="display: none;">
-                      <?php
+                        <input type="number" name="id_pessoa" value="<?php echo $id_pessoa; ?>" style="display: none;">
+                        <?php
                         $sql = "SELECT *
                               FROM pessoas 
                               WHERE id_pessoa = $id_pessoa";
                         $busca = mysqli_query($conn, $sql);
 
-                        while ($array = mysqli_fetch_array($busca)){
+                        while ($array = mysqli_fetch_array($busca)) {
                             $id_pessoa = $array['id_pessoa'];
                             $nome_completo = $array['nome_completo'];
                             $email = $array['email'];
@@ -107,134 +72,58 @@ $id_pessoa = $_GET['id_pessoa'];
                             $matriculausuario = $array['matriculausuario'];
                             $cpf = $array['cpf'];
                         ?>
-                        <div class="form-group">
-                            <label for="id_pessoa">ID Pessoa</label>
-                            <input 
-                                type="text" 
-                                class="form-control"
-                                name="id_pessoa" 
-                                value="<?php echo $id_pessoa; ?>"
-                                disabled
-                            >
-                        </div>
-                        <div class="form-group">
-                            <label for="nomeusuario">Nome Usuário</label>
-                            <input 
-                            type="text" 
-                            name="nomeusuario" 
-                            class="form-control" 
-                            required="required" 
-                            autocomplete="off"
-                            aria-describedby="nomeusuario"
-                            value="<?php echo $nome_completo; ?>"
-                            required 
-                                oninvalid="this.setCustomValidity('Nome obrigatório')" 
-                                oninput="setCustomValidity('')"
-                            placeholder="Nome completo do usuário">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input 
-                            type="email" 
-                            name="email" 
-                            class="form-control" 
-                            required
-                                oninvalid="this.setCustomValidity('Email obrigatório')" 
-                                oninput="setCustomValidity('')"
-                            autocomplete="off"
-                            aria-describedby="email"
-                            value="<?php echo $email; ?>"
-                            placeholder="Email do usuário">
-                        </div>
+                            <div class="form-group">
+                                <label for="id_pessoa">ID Pessoa</label>
+                                <input type="text" class="form-control" name="id_pessoa" value="<?php echo $id_pessoa; ?>" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="nomeusuario">Nome Usuário</label>
+                                <input type="text" name="nomeusuario" class="form-control" required="required" autocomplete="off" aria-describedby="nomeusuario" value="<?php echo $nome_completo; ?>" required oninvalid="this.setCustomValidity('Nome obrigatório')" oninput="setCustomValidity('')" placeholder="Nome completo do usuário">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" class="form-control" required oninvalid="this.setCustomValidity('Email obrigatório')" oninput="setCustomValidity('')" autocomplete="off" aria-describedby="email" value="<?php echo $email; ?>" placeholder="Email do usuário">
+                            </div>
 
-                        <div class="form-group">
-                            <label for="telefone">Telefone</label>
-                            <input 
-                            onkeypress="maskphone(this, mphone);" 
-                            onblur="maskphone(this, mphone);"
-                            type="text" 
-                            id="telefone"
-                            name="telefone" 
-                            class="form-control" 
-                            required
-                                oninvalid="this.setCustomValidity('Telefone obrigatório')" 
-                                oninput="setCustomValidity('')" 
-                            aria-describedby="telefone"
-                            autocomplete="off"
-                            value="<?php echo $telefone; ?>"
-                            placeholder="Telefone do usuário">
-                        </div>
-                        <div class="form-group">
-                            <label for="cpf">CPF</label>
-                            <input
-                            id="cpf" 
-                            maxlength="11"
-                            type="text" 
-                            name="cpf" 
-                            class="form-control" 
-                            disabled
-                            aria-describedby="cpf"
-                            autocomplete="off"
-                            value="<?php echo $cpf; ?>">
-                        </div>
-                        <div class="form-group">
-                            <label for="endereco">Endereço</label>
-                            <input 
-                            type="text" 
-                            name="endereco" 
-                            class="form-control" 
-                            required
-                                oninvalid="this.setCustomValidity('Endereço obrigatório')" 
-                                oninput="setCustomValidity('')" 
-                            autocomplete="off"
-                            aria-describedby="endereco"
-                            value="<?php echo $endereco; ?>"
-                            placeholder="Endereço do usuário">
-                        </div>
-                        <div class="form-group">
-                            <label for="nivelUsuario">Tipo Usuário:</label>
-                            <select 
-                                id="nivelUsuario"
-                                name="nivelUsuario"
-                                class="form-control" 
-                                required 
-                                    oninvalid="this.setCustomValidity('Tipo obrigatório')" 
-                                    oninput="setCustomValidity('')"
-                                onchange='habilitarCampos()'>                                
-                                <?php
-                                    if(trim($nivelUsuario) == "Voluntario"){
-                                ?>
+                            <div class="form-group">
+                                <label for="telefone">Telefone</label>
+                                <input onkeypress="maskphone(this, mphone);" onblur="maskphone(this, mphone);" type="text" id="telefone" name="telefone" class="form-control" required oninvalid="this.setCustomValidity('Telefone obrigatório')" oninput="setCustomValidity('')" aria-describedby="telefone" autocomplete="off" value="<?php echo $telefone; ?>" placeholder="Telefone do usuário">
+                            </div>
+                            <div class="form-group">
+                                <label for="cpf">CPF</label>
+                                <input id="cpf" maxlength="11" type="text" name="cpf" class="form-control" disabled aria-describedby="cpf" autocomplete="off" value="<?php echo $cpf; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="endereco">Endereço</label>
+                                <input type="text" name="endereco" class="form-control" required oninvalid="this.setCustomValidity('Endereço obrigatório')" oninput="setCustomValidity('')" autocomplete="off" aria-describedby="endereco" value="<?php echo $endereco; ?>" placeholder="Endereço do usuário">
+                            </div>
+                            <div class="form-group">
+                                <label for="nivelUsuario">Tipo Usuário:</label>
+                                <select id="nivelUsuario" name="nivelUsuario" class="form-control" required oninvalid="this.setCustomValidity('Tipo obrigatório')" oninput="setCustomValidity('')" onchange='habilitarCampos()'>
+                                    <?php
+                                    if (trim($nivelUsuario) == "Voluntario") {
+                                    ?>
                                         <option value="">Selecione</option>
                                         <option value="<?php echo $nivelUsuario; ?>" selected="selected"><?php echo $nivelUsuario; ?></option>
                                         <option value="NaoVoluntario">Não Voluntário</option>
-                                <?php } 
-                                    else if(trim($nivelUsuario) == "NaoVoluntario"){                             
-                                ?>
+                                    <?php } else if (trim($nivelUsuario) == "NaoVoluntario") {
+                                    ?>
                                         <option value="">Selecione</option>
                                         <option value="Voluntario">Voluntario</option>
                                         <option value="<?php echo $nivelUsuario; ?>" selected="selected">Não Voluntário</option>
-                                <?php }
-                                    else if(trim($nivelUsuario) == "Gerente"){
-                                ?>
-                                        <option disabled value="<?php echo $nivelUsuario; ?>" selected="selected"><?php echo $nivelUsuario; ?></option>                                                
-                                <?php } ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Matrícula Usuário(Voluntário/Não-Voluntário)</label>
-                            <input
-                            id="matriculausuario"
-                            type="text" 
-                            name="matriculausuario" 
-                            class="form-control" 
-                            required="required" 
-                            autocomplete="off"
-                            value="<?php echo $matriculausuario; ?>"
-                            disabled>
-                        </div>
-                        <div style="text-align: right">
-                            <button type="submit" class="btn btn-sm btn-success">Cadastrar</button>
-                        </div>
+                                    <?php } else if (trim($nivelUsuario) == "Gerente") {
+                                    ?>
+                                        <option disabled value="<?php echo $nivelUsuario; ?>" selected="selected"><?php echo $nivelUsuario; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Matrícula Usuário(Voluntário/Não-Voluntário)</label>
+                                <input id="matriculausuario" type="text" name="matriculausuario" class="form-control" required="required" autocomplete="off" value="<?php echo $matriculausuario; ?>" disabled>
+                            </div>
+                            <div style="text-align: right">
+                                <button type="submit" class="btn btn-sm btn-success">Cadastrar</button>
+                            </div>
                         <?php } ?>
                     </form>
                 </div>
@@ -242,19 +131,13 @@ $id_pessoa = $_GET['id_pessoa'];
         </div>
     </div>
     <!--JS do Bootstrap-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
     <script>
         function habilitarCampos() {
-            if($("#tipo_animal").val() == 'Gato') {
+            if ($("#tipo_animal").val() == 'Gato') {
                 $("#raca_gato").prop('disabled', false);
                 $("#raca_cao").prop('disabled', true);
             } else {
@@ -264,4 +147,5 @@ $id_pessoa = $_GET['id_pessoa'];
         }
     </script>
 </body>
+
 </html>

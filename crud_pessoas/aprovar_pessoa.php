@@ -43,40 +43,9 @@ $nome_completo = $arr['nome_completo'];
 <body>
     <div id="ong" class="container-ong">
         <div class="row">
-            <div id="menu-lateral" class="col-2">
-                <div class="titulos-ong">
-                    <h4>ONG</h4>
-                    <h4>Animais Pirapozinho</h4>
-                </div>
-                <div class="btn-group-vertical" role="group" aria-label="Basic example">
-                    <a href="../menu.php" class="btn-menu btn" role="button">Início</a>
-                    <button type="button" class="btn-menu btn">Gerenciar Pessoas</button>
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn-menu btn dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false"> Gerenciar Pets</button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <a class="dropdown-item" href="#">Entrada Pet</a>
-                            <a class="dropdown-item" href="#">Saída Pet</a>
-                        </div>
-                    </div>
-                    <button type="button" class="btn-menu btn">Gerenciar Produtos</button>
-                    <button type="button" class="btn-menu btn">Gerenciar Fornecedores</button>
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn-menu btn dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false"> Financeiro</button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <a class="dropdown-item" href="#">Registrar Despesas</a>
-                            <a class="dropdown-item" href="#">Registrar Compras</a>
-                            <a class="dropdown-item" href="#">Registrar Doação</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="sair-rodape">
-                    <a class="btn-sair" href="#"><span><i class="bi bi-person-circle"></i></span>Nome do Usuário
-                        Logado: <?php echo $nome_completo; ?></a>
-                        <a class="btn-sair" href="../sair.php"><span><i class="bi bi-box-arrow-right"></i></span>Sair</a>
-                </div>
-            </div> <!--Menu Lateral-->
+            
+        <?php include('../menu_lateral.php') ?>
+      <!--Menu lateral FIM-->
 
             <div id="container-adocao-listagem" class="principal col">
                 <h4 class="titulos-topo">Aprovação de acesso voluntário/não voluntário</h4>

@@ -28,7 +28,7 @@ $id_cachorro = $_GET['id_cachorro'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen" />
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -44,49 +44,16 @@ $id_cachorro = $_GET['id_cachorro'];
 <body>
     <div id="ong" class="container-ong">
         <div class="row">
-            <div id="menu-lateral" class="col-2">
-                <div class="titulos-ong">
-                    <h4>ONG</h4>
-                    <h4>Animais Pirapozinho</h4>
-                </div>
-                <div class="btn-group-vertical" role="group" aria-label="Basic example">
-                    <button type="button" class="btn-menu btn">Início</button>
-                    <button type="button" class="btn-menu btn">Gerenciar Pessoas</button>
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn-menu btn dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false"> Gerenciar Pets</button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <a class="dropdown-item" href="#">Entrada Pet</a>
-                            <a class="dropdown-item" href="#">Saída Pet</a>
-                        </div>
-                    </div>
-                    <button type="button" class="btn-menu btn">Gerenciar Produtos</button>
-                    <button type="button" class="btn-menu btn">Gerenciar Fornecedores</button>
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn-menu btn dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false"> Financeiro</button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <a class="dropdown-item" href="#">Registrar Despesas</a>
-                            <a class="dropdown-item" href="#">Registrar Compras</a>
-                            <a class="dropdown-item" href="#">Registrar Doação</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="sair-rodape">
-                    <a class="btn-sair" href="#"><span><i class="bi bi-person-circle"></i></span>Nome do Usuário
-                        Logado: <?php echo $nome_completo; ?></a>
-                    <a class="btn-sair" href="../sair.php"><span><i class="bi bi-box-arrow-right"></i></span>Sair</a>
-                </div>
-            </div> <!--Menu lateral FIM
-            -->
+            
+        <?php include('../../menu_lateral.php') ?>
+      <!--Menu lateral FIM-->
+
             <div id="container-cadastro-pet" class="principal col">
-                <h4 class="titulos-topo">Editar dados do cão</h4>
+                <h4 class="titulos-topo">Cadastro de Cachorro</h4>
                 <div class="btn-grupo-principal">
                     <a href="sub_menu_cao.php" role="button" class="btn-grupo btn">Voltar</a>
                 </div>
-
                 <hr>
-
                 <div class="cadastro-pet">
                     <h5 class="titulo-cad">Editar dados do cachorro</h5>
                     <form action="atualizar_cao.php" method="post">

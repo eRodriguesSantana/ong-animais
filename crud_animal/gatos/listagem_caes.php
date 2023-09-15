@@ -33,7 +33,7 @@ function formataData($date){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen" />
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -49,40 +49,9 @@ function formataData($date){
 <body>
     <div id="ong" class="container-ong">
         <div class="row">
-            <div id="menu-lateral" class="col-2">
-                <div class="titulos-ong">
-                    <h4>ONG</h4>
-                    <h4>Animais Pirapozinho</h4>
-                </div>
-                <div class="btn-group-vertical" role="group" aria-label="Basic example">
-                    <button type="button" class="btn-menu btn">Início</button>
-                    <button type="button" class="btn-menu btn">Gerenciar Pessoas</button>
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn-menu btn dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false"> Gerenciar Pets</button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <a class="dropdown-item" href="#">Entrada Pet</a>
-                            <a class="dropdown-item" href="#">Saída Pet</a>
-                        </div>
-                    </div>
-                    <button type="button" class="btn-menu btn">Gerenciar Produtos</button>
-                    <button type="button" class="btn-menu btn">Gerenciar Fornecedores</button>
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn-menu btn dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false"> Financeiro</button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <a class="dropdown-item" href="#">Registrar Despesas</a>
-                            <a class="dropdown-item" href="#">Registrar Compras</a>
-                            <a class="dropdown-item" href="#">Registrar Doação</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="sair-rodape">
-                    <a class="btn-sair" href="#"><span><i class="bi bi-person-circle"></i></span>Nome do Usuário
-                        Logado: <?php echo $nome_completo; ?></a>
-                        <a class="btn-sair" href="../sair.php"><span><i class="bi bi-box-arrow-right"></i></span>Sair</a>
-                </div>
-            </div> <!--Menu Lateral-->
+           
+        <?php include('../../menu_lateral.php') ?>
+            <!--Menu lateral FIM-->
 
             <div id="container-adocao-listagem" class="principal col">
                 <h4 class="titulos-topo">Todos os cães na ONG</h4>
@@ -180,9 +149,9 @@ function formataData($date){
                 table = document.getElementById("busca-animal");
                 tr = table.getElementsByTagName("tr");
                 // Loop through all table rows, and hide those who don't match the search query
-                for (i = 0; i < tr.length; i++) {
+                for (i = 1; i < tr.length; i++) {
                     var match = tr[i].innerHTML.toUpperCase().indexOf(filter) > -1;
-                    tr[i].style.display = match ? "block" : "none";
+                    tr[i].style.display = match ? "" : "none";
                 }
             }
         });
