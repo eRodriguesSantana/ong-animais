@@ -2,6 +2,12 @@ body,
 html {
     height: 100%;
     font-family: 'Poppins', sans-serif !important;
+    /* background: #a1a1a110 !important; */
+    font-weight: 300 !important;
+}
+
+.principal{
+    background: #a1a1a110 !important;
 }
 
 /*Placeholder menor*/
@@ -22,6 +28,10 @@ input::-moz-placeholder {
     font-size: 14px;
 }
 
+.btn{
+    font-weight: 300 !important;
+}
+
 /*a:hover, a:focus{
     color: #fff !important;
     text-decoration: none !important;
@@ -30,7 +40,7 @@ input::-moz-placeholder {
 /*inicio login*/
 .fundo-img {
     /* background-color: #1C6E7D; */
-    background-image: url(./imagens/victor-grabarczyk-N04FIfHhv_k-unsplash.jpg);
+    background-image: url(../img/victor-grabarczyk-N04FIfHhv_k-unsplash.jpg) !important;
     background-size: cover;
     background-position: 72%;
 }
@@ -50,6 +60,9 @@ input::-moz-placeholder {
 #login .grupo-btn-login {
     text-align: center;
     margin-bottom: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #3e3e3e;
 }
 
 #login .btn-login {
@@ -68,13 +81,18 @@ input::-moz-placeholder {
     margin-top: 125px;
 }
 
+.message p{
+    text-align: center;
+    color: red;
+}
+
 /*fim login*/
 
 .container-login,
 #ong>.row {
     margin-right: auto;
     margin-left: auto;
-    /*line-height: 0 !important;*/
+    /*line-height: 0 !important;*/height: 100vh;
 }
 
 .btn.focus,
@@ -85,7 +103,8 @@ input::-moz-placeholder {
 }
 
 #menu-lateral {
-    background-color: #1C6E7D;
+    /* background-color: #1C6E7D; */
+    background-color: #005B5F;
     background-repeat: repeat;
     display: block;
     padding: 15px 0px;
@@ -94,14 +113,24 @@ input::-moz-placeholder {
     /*deixa o cackgroud ocupar a tela inteira*/
 }
 
-#menu-lateral .titulos-ong {
+#menu-lateral .titulos-ong{
     text-align: center;
     margin: 40px;
 }
 
+#menu-lateral .titulos-ong a{
+    color: white;
+    font-weight: 300;
+    font-size: 1.3rem;
+}
+
+#menu-lateral .titulos-ong a:hover{
+    text-decoration: none;
+}
+
 .titulos-ong h4 {
     font-size: 1.3rem;
-    font-weight: 500;
+    font-weight: 300;
     color: #fff;
 }
 
@@ -142,7 +171,7 @@ input::-moz-placeholder {
     display: block;
     padding: 15px 0px;
     font-size: 1.4rem;
-    font-weight: 500;
+    font-weight: 300;
 }
 
 .btn-grupo-principal {
@@ -159,6 +188,19 @@ input::-moz-placeholder {
     padding: 0.375rem 2.75rem;
 }
 
+.btn-grupo a{
+    color: #fff !important;
+
+}
+
+.btn-grupo a:hover{
+    color: #fff !important;
+}
+
+.btn-grupo:hover{
+    color: #fff;
+}
+
 .busca {
     display: flex;
 }
@@ -172,7 +214,7 @@ input::-moz-placeholder {
     color: #fff;
 }
 
-#tabela {
+#busca-animal, #busca_pessoas, #buscar-pessoa {
     margin-top: 1rem;
 }
 
@@ -192,7 +234,7 @@ input::-moz-placeholder {
     bottom: 0;
     position: absolute;
     /* width: 100%; */
-    text-align: initial;
+    /* text-align: initial; */
     display: flex;
     /*margin-left: 35px;*/
     display: grid;
@@ -232,23 +274,52 @@ input::-moz-placeholder {
 }
 
 .topo-colunas th{
-    font-weight: 500;
+    font-weight: 300;
 }
 
 /*Container Menu*/
 #container-menu {
     display: block;
     padding: 15px 15px;
-    margin: auto;
-    height: 100vh;
+    /* margin: auto;
+    /* height: 100vh; */
+    /* margin-top: 75px; */
+}
+
+.top-80{
+    margin-top: 80px;
 }
 
 .card-altura{
     height: 14rem;
 }
 
+.btn-card{
+    color: #fff !important;
+    background-color: #00B88E !important;
+    border-color: #00B88E !important;
+    border-right: 2px solid #018466b0 !important;
+    border-bottom: 2px solid #018466b0 !important;
+}
+
+.card-inicio{
+
+    display: grid;
+    background-color: #eae8e8a3;
+    /* border: 0px solid #fff; */
+    border-right: 2px solid #80808040;
+    border-bottom: 2px solid #80808040;
+    border-radius: 12px;
+}
+
+.botao-card-inicio{
+    text-align: right;
+    align-self: end;
+}
+
 .espaco-card{
     margin-top: 10px;
+    border-radius: 15px !important;
 }
 
 /*Cadastro Pet Inicio*/
@@ -299,6 +370,11 @@ input::-moz-placeholder {
     padding: 0.375rem 2.75rem;
 }
 
+.add-raca{
+    font-size: 13px;
+    text-align: end;
+}
+
 /*Cadastro Pet Fim*/
 
 /*Visualizar Pet Inicio*/
@@ -312,7 +388,7 @@ input::-moz-placeholder {
     display: block;
     padding: 15px 0px;
     font-size: 1.3rem;
-    font-weight: 500;
+    font-weight: 300;
 }
 
 .bloco-pet{
@@ -376,7 +452,7 @@ input::-moz-placeholder {
     display: block;
     padding: 15px 0px;
     font-size: 1.3rem;
-    font-weight: 500;
+    font-weight: 300;
 }
 
 .bottom-10{
@@ -408,7 +484,7 @@ input::-moz-placeholder {
     display: block;
     padding: 15px 0px;
     font-size: 1.3rem;
-    font-weight: 500;
+    font-weight: 300;
 }
 
 .bloco-pet{
@@ -474,11 +550,11 @@ input::-moz-placeholder {
 .nome-pet{
     color: blue;
     font-size: large;
-    font-weight: 500;
+    font-weight: 300;
 }
 
 .dados-tabela th{
-    font-weight: 500;
+    font-weight: 300;
     text-align: inherit;
     vertical-align: text-top;
 }
@@ -489,7 +565,7 @@ input::-moz-placeholder {
 }
 
 .texto-label{
-    font-weight: 500;
+    font-weight: 300;
     margin-top: 10px;
 }
 /* Cancelar Adoção Fim*/
@@ -499,7 +575,7 @@ input::-moz-placeholder {
     display: block;
     padding: 15px 15px;
     margin: auto;
-    /*height: 100vh;*/
+    /* height: 100vh; */
 }
 
 .cadastro-pet {

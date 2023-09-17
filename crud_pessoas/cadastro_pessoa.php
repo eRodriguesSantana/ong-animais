@@ -205,7 +205,7 @@
                   placeholder="Senha do usuário">
               </div>
               <div style="text-align: right">
-                <button type="submit" class="btn btn-sm btn-success">Cadastrar</button>
+                <button type="submit" class="btn btn-grupo">Cadastrar</button>
               </div>
             </form>
           </div>

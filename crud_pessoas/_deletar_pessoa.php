@@ -41,22 +41,17 @@ $deletar = mysqli_query($conn, $delete);
 <body>
   <div id="ong" class="container-ong">
     <div class="row">
-      <div id="menu-lateral" class="col-2" style="height: 100vh">
-        <div class="titulos-ong">
-          <h4>ONG</h4>
-          <h4>Animais Pirapozinho</h4>
-        </div>
-      </div> <!--Menu lateral FIM-->
+
+    <?php include('../menu_lateral.php') ?>
+      <!--Menu lateral FIM-->
+
       <div id="container-cadastro-pet" class="principal col">
       <div class="cadastro-pet">
-      <div class="container" style="width: 700px; margin-top: 40px">
-        <center>
-          <h4>Exclusão de usuário realizada com sucesso.</h4>
-        </center>
-        <div style="padding-top: 20px"></div>
-        <center>
+      <div class="btn-cadastrar text-center">
+          <h4>Exclusão realizada com sucesso.</h4>
+        <div style="padding-top: 20px">
           <a href="aprovar_pessoa.php" role="button" class="btn btn-success">Voltar</a>
-        </center>
+          </div>
       </div>
     </div>
   </div>

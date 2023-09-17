@@ -24,7 +24,7 @@ $nivel = $arr['nivelUsuario'];
   <head>
     <meta charset="utf-8">
     <title>Opções</title>
-    <link rel="stylesheet" href="../css/bootstrap.css">   
+    <link rel="stylesheet" href="../../css/bootstrap.css">   
   </head>
 
   <body>
