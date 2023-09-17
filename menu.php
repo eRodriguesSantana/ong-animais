@@ -50,19 +50,19 @@ $nivel = $arr['nivelUsuario']
           <div class="container">
 
             <div class="row top-80">
-              <div class="col-sm-4">
+              <!--<div class="col-sm-4">
                 <div class="card espaco-card">
                   <div class="card-body card-altura card-inicio">
                     <h5 class="card-title">Adicionar Registro de Voluntário</h5>
                     <p class="card-text">Opção para controle de ponto diário na ONG.</p>
-                    <!--<a href="adicionar_ponto.php?mat=<?php echo $matricula; ?>" class="btn btn-primary">Adicionar Registro</a>-->
+                    <a href="adicionar_ponto.php?mat=<?php echo $matricula; ?>" class="btn btn-primary">Adicionar Registro</a>
                     <div class="botao-card-inicio">
                       <a href="adicionar_ponto.php" class="btn btn-card">Adicionar Registro</a>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-sm-4">
+              </div>-->
+              <!--<div class="col-sm-4">
                 <div class="card espaco-card">
                   <div class="card-body card-altura card-inicio">
                     <h5 class="card-title">Listar Registros de Pontos</h5>
@@ -72,7 +72,7 @@ $nivel = $arr['nivelUsuario']
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>-->
               <div class="col-sm-4">
                 <div class="card espaco-card">
                   <div class="card-body card-altura card-inicio">
