@@ -92,6 +92,7 @@ function formataData($date){
                         $nome_animal = $array['nome_animal'];
                         $sexo_animal = $array['sexo_animal'];
                         $tipo_animal = $array['tipo_animal'];
+                        $situacao = $array['situacao'];
 
                         $raca = "";
                         if($tipo_animal == "Gato"){
@@ -115,39 +116,42 @@ function formataData($date){
                         $peso_aproximado = $array['peso_aproximado'];
                         $observacao = $array['observacao'];
                         $data_entrada = $array['data_entrada'];
+
+                        if($situacao == 0){
                       ?>
-                        <tr style="font-size: 14px">
-                          <td><?php echo $imagem; ?></td>
-                          <td><?php echo $nome_animal; ?></td>
-                          <td><?php echo $sexo_animal; ?></td>
-                          <td><?php echo $tipo_animal; ?></td>
-                          <td><?php echo $raca; ?></td>
-                          <td><?php echo $cor_animal; ?></td>
-                          <td><?php echo $peso_aproximado; ?></td>
-                          <td><?php echo $observacao; ?></td>
-                          <td><?php echo formataData($data_entrada); ?></td>                
-                          <td>
-                            <?php
-                              if(($matricula == 2) || $matricula == 12){
-                            ?>
-                            <div class="row">
-                              <div class="col-md-6 col-xs-6">
-                                <a class="btn btn-warning btn-sm" href="editar_animal.php?id_animal=<?php echo $id_animal; ?>" 
-                                  role="button"><i class="fas fa-eye"></i>Editar
-                                </a>  
-                              </div>
-                              <div class="col-md-6 col-xs-6">
-                                <a class="btn btn-danger btn-sm" href="confirmar_exclusao_animal.php?id_animal=<?php echo $id_animal; ?>" 
-                                  role="button"><i class="fas fa-eye"></i>Excluir
-                                </a>
-                              </div>
-                            <?php } 
-                              else
-                                echo "Sem permissão para alterar ou excluir. Solicite ao seu Gerente/Supervisor"
-                            ?>
-                          </td>
+                          <tr style="font-size: 14px">
+                            <td><?php echo $imagem; ?></td>
+                            <td><?php echo $nome_animal; ?></td>
+                            <td><?php echo $sexo_animal; ?></td>
+                            <td><?php echo $tipo_animal; ?></td>
+                            <td><?php echo $raca; ?></td>
+                            <td><?php echo $cor_animal; ?></td>
+                            <td><?php echo $peso_aproximado; ?></td>
+                            <td><?php echo $observacao; ?></td>
+                            <td><?php echo formataData($data_entrada); ?></td>                
+                            <td>
+                              <?php
+                                if(($matricula == 2) || $matricula == 12){
+                              ?>
+                              <div class="row">
+                                <div class="col-md-6 col-xs-6">
+                                  <a class="btn btn-warning btn-sm" href="editar_animal.php?id_animal=<?php echo $id_animal; ?>" 
+                                    role="button"><i class="fas fa-eye"></i>Editar
+                                  </a>  
+                                </div>
+                                <div class="col-md-6 col-xs-6">
+                                  <a class="btn btn-danger btn-sm" href="confirmar_exclusao_animal.php?id_animal=<?php echo $id_animal; ?>" 
+                                    role="button"><i class="fas fa-eye"></i>Excluir
+                                  </a>
+                                </div>
+                              <?php } 
+                                else
+                                  echo "Sem permissão para alterar ou excluir. Solicite ao seu Gerente/Supervisor"
+                              ?>
+                            </td>                      
+                          </tr>
+                        <?php } ?>
                       <?php } ?>
-                        </tr>
                     </tbody>
                 </table>
             </div>
