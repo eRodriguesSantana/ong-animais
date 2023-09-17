@@ -48,4 +48,4 @@ INSERT INTO animal (nome_animal, cor_animal, porte_animal, sexo_animal, tipo_ani
 VALUES ('Poli', 'Pardo', 'Médio', 'Femêa', 'Cao', 0, 2, 10, 'Amor da minha vida', '14/06/2023 00:56:43', 'Minha linda', 1);
 
 INSERT INTO animal (nome_animal, cor_animal, porte_animal, sexo_animal, tipo_animal, raca_gato, raca_cao, peso_aproximado, observacao, data_entrada, imagem, situacao)
-VALUES ('Mili', 'Preto', 'Médio', 'Femêa', 'Gato', 1, 0, 10, 'Amor da minha vida', '14/06/2023 00:56:43', 'Minha linda', 2);
+VALUES ('Mili', 'Preto', 'Médio', 'Femêa', 'Gato', 1, 0, 10, 'Amor da minha vida', '14/06/2023 00:56:43', 'Minha linda', 0);
