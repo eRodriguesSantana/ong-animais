@@ -130,9 +130,6 @@ function formataData($date){
                             <td><?php echo $observacao; ?></td>
                             <td><?php echo formataData($data_entrada); ?></td>                
                             <td>
-                              <?php
-                                if(($matricula == 2) || $matricula == 12){
-                              ?>
                               <div class="row">
                                 <div class="col-md-6 col-xs-6">
                                   <a class="btn btn-warning btn-sm" href="editar_animal.php?id_animal=<?php echo $id_animal; ?>" 
@@ -144,10 +141,6 @@ function formataData($date){
                                     role="button"><i class="fas fa-eye"></i>Adotar
                                   </a>
                                 </div>
-                              <?php } 
-                                else
-                                  echo "Sem permissão para alterar ou excluir. Solicite ao seu Gerente/Supervisor"
-                              ?>
                             </td>                      
                           </tr>
                         <?php } ?>
