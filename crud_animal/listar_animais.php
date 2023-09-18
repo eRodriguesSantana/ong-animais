@@ -57,7 +57,7 @@ function formataData($date){
                 <h4 class="titulos-topo">Todos os animais na ONG</h4>
                 <div class="btn-grupo-principal">
                     <a href="cadastro_animal.php" class="btn btn-grupo" role="button">Cadastrar Animal</a><!--Entrada Pet-->
-                    <a href="#" class="btn btn-grupo" role="button">Nova Adoção</a><!--Saída Pet-->
+                    <a href="../crud_adocao/cadastro_adocao.php" class="btn btn-grupo" role="button">Nova Adoção</a><!--Saída Pet-->
                 </div>
                 <hr>
                 <div class="busca">
@@ -140,8 +140,8 @@ function formataData($date){
                                   </a>  
                                 </div>
                                 <div class="col-md-6 col-xs-6">
-                                  <a class="btn btn-danger btn-sm" href="confirmar_exclusao_animal.php?id_animal=<?php echo $id_animal; ?>" 
-                                    role="button"><i class="fas fa-eye"></i>Excluir
+                                  <a class="btn btn-success btn-sm" href="confirmar_exclusao_animal.php?id_animal=<?php echo $id_animal; ?>" 
+                                    role="button"><i class="fas fa-eye"></i>Adotar
                                   </a>
                                 </div>
                               <?php } 
