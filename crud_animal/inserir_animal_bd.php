@@ -38,9 +38,9 @@ else
     $raca_cao = 0;
 
 $sql = "INSERT INTO animal (nome_animal, cor_animal, porte_animal, sexo_animal, tipo_animal, raca_gato, raca_cao, 
-        peso_aproximado, observacao, data_entrada, imagem)
+        peso_aproximado, observacao, data_entrada, imagem, situacao)
         VALUES ('$nome_animal', '$cor_animal', '$porte_animal', '$sexo_animal', '$tipo_animal', $raca_gato, 
-                            $raca_cao, $peso_aproximado, '$observacao', '$data_entrada', '$imagem');
+                            $raca_cao, $peso_aproximado, '$observacao', '$data_entrada', '$imagem', 0);
         ";
 
 $inserir = mysqli_query($conn, $sql);
