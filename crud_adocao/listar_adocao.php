@@ -53,11 +53,11 @@ function formataData($date)
                 <div class="btn-grupo-principal">
                     <a href="../crud_animal/cadastro_animal.php" class="btn btn-grupo" role="button">Cadastrar Animal</a>
                     <a href="../crud_pessoas/cadastro_pessoa.php" class="btn btn-grupo" role="button">Cadastrar Adotante</a>
-                    <a href="#" class="btn btn-grupo" role="button">Registrar Adoção</a>
+                    <a href="cadastro_adocao.php" class="btn btn-grupo" role="button">Registrar Adoção</a>
                 </div>
                 <hr>
                 <div class="busca">
-                    <input id="filtra-animal" class="campo-busca form-control" type="text" placeholder="Buscar animal">
+                    <input id="filtra-animal" class="campo-busca form-control" type="text" placeholder="Buscar adotante">
                     <button id="buscar" type="button" class="btn btn-busca">Pesquisar</button>
                 </div>
                 <table id="busca-animal" class="table">
@@ -143,7 +143,7 @@ function formataData($date)
                 // Loop through all table rows, and hide those who don't match the search query
                 for (i = 0; i < tr.length; i++) {
                     var match = tr[i].innerHTML.toUpperCase().indexOf(filter) > -1;
-                    tr[i].style.display = match ? "block" : "none";
+                    tr[i].style.display = match ? "" : "none";
                 }
             }
         });
