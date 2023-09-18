@@ -98,52 +98,46 @@ $nivel = $arr['nivelUsuario']
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-4">
-                  <div class="card espaco-card">
-                    <div class="card-body card-altura card-inicio">
-                      <h5 class="card-title">Gerenciar Animais</h5>
-                      <p class="card-text">Opção para cadastrar animais que estão chegando na ONG.</p>
-                      <div class="botao-card-inicio">
-                        <a href="crud_animal/listar_animais.php" class="btn btn-card">Adicionar Animal</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-4">
-                  <div class="card espaco-card">
-                    <div class="card-body card-altura card-inicio">
-                      <h5 class="card-title">Gerenciar Adoção</h5>
-                      <p class="card-text">Opção para gerenciar adoção de animais da ONG.</p>
-                      <div class="botao-card-inicio">
-                        <a href="crud_adocao/listar_adocao.php" class="btn btn-card">Adicionar Adoção</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <?php
-                if (($nivel == 'Voluntario' || $nivel == 'NaoVoluntario')) {
-                ?>
-                  <div class="col-sm-6">
-                    <div class="card espaco-card">
-                      <div class="card-body card-altura card-inicio">
-                        <h5 class="card-title">Adicionar Usuários</h5>
-                        <p class="card-text">Opção para adicionar usuário (pendente de ativação do perfil criado) ou adotante (permissão já incluída e com cadastro sem necessidade de aprovação).</p>
-                        <div class="botao-card-inicio">
-                          <a href="cadastro_pessoa.php" class="btn btn-card">Adicionar Usuário/Adotante</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                <?php } ?>
               <?php } ?>
+              <div class="col-sm-4">
+                <div class="card espaco-card">
+                  <div class="card-body card-altura card-inicio">
+                    <h5 class="card-title">Gerenciar Animais</h5>
+                    <p class="card-text">Opção para cadastrar animais que estão chegando na ONG.</p>
+                    <div class="botao-card-inicio">
+                      <a href="crud_animal/listar_animais.php" class="btn btn-card">Adicionar Animal</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="card espaco-card">
+                  <div class="card-body card-altura card-inicio">
+                    <h5 class="card-title">Gerenciar Adoção</h5>
+                    <p class="card-text">Opção para gerenciar adoção de animais da ONG.</p>
+                    <div class="botao-card-inicio">
+                      <a href="crud_adocao/listar_adocao.php" class="btn btn-card">Adicionar Adoção</a>
+                    </div>
+                  </div>
+                </div>
+              </div>      
+              <div class="col-sm-4">
+                <div class="card espaco-card">
+                  <div class="card-body card-altura card-inicio">
+                    <h5 class="card-title">Adicionar Usuários</h5>
+                    <p class="card-text">Opção para adicionar usuário (pendente de ativação do perfil criado) ou adotante (permissão já incluída e com cadastro sem necessidade de aprovação).</p>
+                    <div class="botao-card-inicio">
+                      <a href="cadastro_pessoa.php" class="btn btn-card">Adicionar Usuário/Adotante</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
   <script type="text/javascript" src="js/bootstrap.js"></script>
 </body>
-
 </html>
