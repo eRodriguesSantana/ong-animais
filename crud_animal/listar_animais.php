@@ -140,7 +140,7 @@ function formataData($date){
                                   </a>  
                                 </div>
                                 <div class="col-md-6 col-xs-6">
-                                  <a class="btn btn-success btn-sm" href="confirmar_exclusao_animal.php?id_animal=<?php echo $id_animal; ?>" 
+                                  <a class="btn btn-success btn-sm" href="../crud_adocao/realizar_adocao_animal.php?id_animal=<?php echo $id_animal; ?>" 
                                     role="button"><i class="fas fa-eye"></i>Adotar
                                   </a>
                                 </div>
