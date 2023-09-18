@@ -100,7 +100,7 @@
                   required 
                     oninvalid="this.setCustomValidity('Nome obrigatório')" 
                     oninput="setCustomValidity('')"
-                  >
+                >
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
