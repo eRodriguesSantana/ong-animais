@@ -23,17 +23,20 @@ $data_adocao = mysqli_real_escape_string($conn, $_POST['data_adocao']);
 $condicoes_saida = mysqli_real_escape_string($conn, $_POST['condicoes_saida']);
 $observacao = mysqli_real_escape_string($conn, $_POST['observacao']);
 
-$sql = "INSERT INTO adocao (id_animal, id_adotante, data_adocao, condicoes_saida, observacao)
-        VALUES ($pet_adotado, $nome_adotante, '$data_adocao', '$condicoes_saida', '$observacao');";
+$sql_adocao = "INSERT INTO adocao (id_animal, id_adotante, data_adocao, condicoes_saida, observacao, situacao)
+        VALUES ($pet_adotado, $nome_adotante, '$data_adocao', '$condicoes_saida', '$observacao', 1);";
 
-$atualiza_situacao_animal = "UPDATE animal
-        SET 
-          situacao = 1
-        WHERE id_animal = $pet_adotado";
+$inserir = mysqli_query($conn, $sql_adocao);
 
-$inserir = mysqli_query($conn, $sql);
-$atualizar = mysqli_query($conn, $atualiza_situacao_animal);
-//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+if($inserir){
+    $atualiza_situacao_animal = "UPDATE animal
+    SET 
+      situacao = 1
+    WHERE id_animal = $pet_adotado";
+
+    $atualizar = mysqli_query($conn, $atualiza_situacao_animal);
+}
+
 ?>
 
 <!DOCTYPE html>

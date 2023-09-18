@@ -74,7 +74,7 @@ function formataData($date)
                     </thead>
                     <tbody>
                         <?php
-                        $sql = "SELECT p.nome_completo, p.endereco, p.telefone, a.nome_animal, a.sexo_animal, a.tipo_animal
+                        $sql = "SELECT ad.situacao, a.id_animal, p.nome_completo, p.endereco, p.telefone, a.nome_animal, a.sexo_animal, a.tipo_animal
                                 FROM pessoas AS p
                                 INNER JOIN adocao AS ad
                                 ON p.id_pessoa = ad.id_adotante
@@ -84,40 +84,45 @@ function formataData($date)
                         $busca = mysqli_query($conn, $sql);
 
                         while ($array = mysqli_fetch_array($busca)) {
+                            $id_animal = $array['id_animal'];
                             $nome_adotante = $array['nome_completo'];
                             $endereco = $array['endereco'];
                             $telefone = $array['telefone'];
                             $nome_animal = $array['nome_animal'];
                             $sexo_animal = $array['sexo_animal'];
                             $tipo_animal = $array['tipo_animal'];
+                            $situacao = $array['situacao'];
+
+                            if($situacao == 1){
                         ?>
-                            <tr style="font-size: 14px">
-                                <td><?php echo $nome_adotante; ?></td>
-                                <td><?php echo $endereco; ?></td>
-                                <td><?php echo $telefone; ?></td>
-                                <td><?php echo $nome_animal; ?></td>
-                                <td><?php echo $sexo_animal; ?></td>
-                                <td><?php echo $tipo_animal; ?></td>
-                                <td>
-                                    <?php
-                                    if (($matricula == 2) || $matricula == 12) {
-                                    ?>
-                                        <div class="row">
-                                            <!--<div class="col-md-6 col-xs-6">
-                                <a class="btn btn-warning btn-sm" href="editar_animal.php?id_animal=<?php echo $id_animal; ?>" 
-                                  role="button"><i class="fas fa-eye"></i>Editar
-                                </a>  
-                              </div>-->
-                                            <div class="col-md-6 col-xs-6">
-                                                <a class="btn btn-danger btn-sm" href="confirmar_exclusao_animal.php?id_animal=<?php echo $id_animal; ?>" role="button"><i class="fas fa-eye"></i>Cancela adoção
-                                                </a>
-                                            </div>
-                                        <?php } else
-                                        echo "Sem permissão para alterar ou excluir. Solicite ao seu Gerente/Supervisor"
+                                <tr style="font-size: 14px">
+                                    <td><?php echo $nome_adotante; ?></td>
+                                    <td><?php echo $endereco; ?></td>
+                                    <td><?php echo $telefone; ?></td>
+                                    <td><?php echo $nome_animal; ?></td>
+                                    <td><?php echo $sexo_animal; ?></td>
+                                    <td><?php echo $tipo_animal; ?></td>
+                                    <td>
+                                        <?php
+                                        if (($matricula == 2) || $matricula == 12) {
                                         ?>
-                                </td>
+                                            <div class="row">
+                                                <!--<div class="col-md-6 col-xs-6">
+                                    <a class="btn btn-warning btn-sm" href="editar_animal.php?id_animal=<?php echo $id_animal; ?>" 
+                                    role="button"><i class="fas fa-eye"></i>Editar
+                                    </a>  
+                                </div>-->
+                                                <div class="col-md-6 col-xs-6">
+                                                    <a class="btn btn-danger btn-sm" href="cancelar_adocao_animal.php?id_animal=<?php echo $id_animal; ?>" role="button"><i class="fas fa-eye"></i>Cancela adoção
+                                                    </a>
+                                                </div>
+                                            <?php } else
+                                            echo "Sem permissão para alterar ou excluir. Solicite ao seu Gerente/Supervisor"
+                                            ?>
+                                    </td>                            
+                                </tr>
                             <?php } ?>
-                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
