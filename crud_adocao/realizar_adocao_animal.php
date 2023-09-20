@@ -19,6 +19,11 @@ $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
 
 $id_animal = $_GET['id_animal'];
+
+$sql_animal = "SELECT nome_animal FROM animal WHERE id_animal = $id_animal";
+$buscar_animal = mysqli_query($conn, $sql_animal);
+$arr_animal = mysqli_fetch_array($buscar_animal);
+$nome_animal = $arr['nome_animal'];
 ?>
 
 <!DOCTYPE html>
@@ -79,7 +84,7 @@ $id_animal = $_GET['id_animal'];
                         </div>
                         <div class="form-group">
                           <label for="pet_adotado">Nome do Animal</label>
-                          <input type="text" name="pet_adotado" value="<?php echo $id_animal; ?>" class="form-control" autocomplete="off" readonly placeholder="<?php echo $id_animal; ?>">
+                          <input type="text" name="pet_adotado" value="<?php echo $nome_animal; ?>" class="form-control" autocomplete="off" readonly placeholder="<?php echo $id_animal; ?>">
                         </div>
                         <div class="form-group">
                             <label for="data_adocao">Data Adoção(informação do sistema)</label>
