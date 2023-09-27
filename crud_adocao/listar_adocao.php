@@ -48,7 +48,7 @@ function formataData($date)
         <div class="row">
         <?php include('../menu_lateral.php') ?>
 
-            <div id="container-adocao-listagem" class="principal col">
+            <div id="container-adocao-listagem" class="principal col" style="height: 100vh;">
                 <h4 class="titulos-topo">Registro de adoções na ONG</h4>
                 <div class="btn-grupo-principal">
                     <a href="../crud_animal/cadastro_animal.php" class="btn btn-grupo" role="button">Cadastrar Animal</a>

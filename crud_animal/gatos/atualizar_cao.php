@@ -65,7 +65,7 @@ $atualizar = mysqli_query($conn, $sql);
       <?php include('../../menu_lateral.php') ?>
       <!--Menu lateral FIM-->
 
-      <div id="container-cadastro-pet" class="principal col">
+      <div id="container-cadastro-pet" class="principal col" style="height: 100vh;">
         <div class="cadastro-pet">
           <div class="btn-cadastrar text-center">
             <h4 class="titulos-topo">Registro do cachorro <?php echo $nome_animal_cachorro; ?> atualizado com sucesso.</h4>

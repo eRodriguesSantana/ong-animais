@@ -156,10 +156,10 @@ date_default_timezone_set('America/Sao_Paulo');
                             <label for="observacao">Observação:</label>
                             <textarea name="observacao" rows="4" cols="50" class="form-control"></textarea>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="imagem">Imagem</label>
                             <input type="text" name="imagem" class="form-control" autocomplete="off" placeholder="Imagem do animal">
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label for="data_entrada">Data Entrada (informação do sistema)</label>
                             <input type="text" name="data_entrada" value="<?php echo date('d/m/Y H:i:s', time()); ?>" class="form-control" autocomplete="off" readonly placeholder="<?php echo date('d/m/Y H:i:s', time()); ?>">

@@ -24,14 +24,10 @@
   <body>
     <div id="ong" class="container-ong">
       <div class="row">
-        <div id="menu-lateral" class="col-2">
-          <div class="titulos-ong">
-            <h4>ONG</h4>
-            <h4>Animais Pirapozinho</h4>
-          </div>
-          <div class="btn-group-vertical" role="group" aria-label="Basic example">
-          </div>
-        </div> <!--Menu lateral FIM-->
+
+      <?php include('../menu_lateral.php') ?>
+      <!--Menu lateral FIM-->
+
         <div id="container-cadastro-pet" class="principal col">
           <h4 class="titulos-topo">Cadastrar Pessoa</h4>
           <hr>

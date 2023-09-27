@@ -24,6 +24,7 @@ function formataData($date){
       
     return $newDate2[0]."-".$newDate[1]."-".$newDate[0]." ".$newDate2[1]."<br>";
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -85,8 +86,9 @@ function formataData($date){
                           FROM animal
                           ORDER BY id_animal ASC";
                       $busca = mysqli_query($conn, $sql);
-
+                      $data = [];
                       while ($array = mysqli_fetch_array($busca)){
+                        $data [] = $array;
                         $id_animal = $array['id_animal'];
                         $imagem = $array['imagem'];
                         $nome_animal = $array['nome_animal'];
@@ -111,12 +113,11 @@ function formataData($date){
                             $result_cao = $busca_cao->fetch_assoc();
                             $raca = $result_cao['nome_raca_cao'];
                         }
-
+                        $data['raca_animal'] = $raca;
                         $cor_animal = $array['cor_animal'];
                         $peso_aproximado = $array['peso_aproximado'];
                         $observacao = $array['observacao'];
                         $data_entrada = $array['data_entrada'];
-
                         if($situacao == 0){
                       ?>
                           <tr style="font-size: 14px">
@@ -131,20 +132,25 @@ function formataData($date){
                             <td><?php echo formataData($data_entrada); ?></td>                
                             <td>
                               <div class="row">
-                                <div class="col-md-6 col-xs-6">
+                                <div class="col-md-4 col-xs-4">
                                   <a class="btn btn-warning btn-sm" href="editar_animal.php?id_animal=<?php echo $id_animal; ?>" 
                                     role="button"><i class="fas fa-eye"></i>Editar
                                   </a>  
                                 </div>
-                                <div class="col-md-6 col-xs-6">
+                                <div class="col-md-4 col-xs-4">
                                   <a class="btn btn-success btn-sm" href="../crud_adocao/realizar_adocao_animal.php?id_animal=<?php echo $id_animal; ?>" 
                                     role="button"><i class="fas fa-eye"></i>Adotar
+                                  </a>
+                                </div>
+                                <div class="col-md-4 col-xs-4">
+                                  <a class="btn btn-primary btn-sm" href="../crud_animal/visualizar_animal.php?id_animal=<?php echo $id_animal; ?>" 
+                                    role="button"><i class="fas fa-eye"></i>Visualizar
                                   </a>
                                 </div>
                             </td>                      
                           </tr>
                         <?php } ?>
-                      <?php } ?>
+                      <?php }?>
                     </tbody>
                 </table>
             </div>

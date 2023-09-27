@@ -322,8 +322,35 @@ input::-moz-placeholder {
     border-radius: 15px !important;
 }
 
+/* Visualizar Pet inicio */
+#container-visualizar-pet{
+    display: block;
+    padding: 15px 15px;
+    margin: auto;
+    /*height: 100vh;*/
+}
+
+.visualizar-pet{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.dados-pet{
+    font-weight: 400;
+}
+
+.titulo-historico{
+    text-align: center;
+}
+
+.titulo-motivo{
+    vertical-align: baseline!important;
+}
+
+/* Visualizar Pet FIM */
+
 /*Cadastro Pet Inicio*/
-#container-cadastro-pet {
+#container-cadastro-pet{
     display: block;
     padding: 15px 15px;
     margin: auto;
