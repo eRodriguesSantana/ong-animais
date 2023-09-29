@@ -43,7 +43,7 @@ date_default_timezone_set('America/Sao_Paulo');
 
             <?php include('../menu_lateral.php') ?>
 
-            <div id="container-cadastro-pet" class="principal col">
+            <div id="container-cadastro-pet" class="principal col" style="height: 100vh;">
                 <h4 class="titulos-topo">Cadastro de Gato</h4>
 
                 <hr>

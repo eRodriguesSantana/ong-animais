@@ -68,7 +68,7 @@ $atualizacao = mysqli_query($conn, $updte);
       <?php include('menu_lateral.php') ?>
       <!--Menu lateral FIM-->
 
-      <div id="container-cadastro-pet" class="principal col">
+      <div id="container-cadastro-pet" class="principal col" style="height: 100vh;">
         <div class="cadastro-pet">
           <div class="btn-cadastrar text-center">
             <h4>Aprovação de <?php echo $posicao; ?> realizada com sucesso.</h4>

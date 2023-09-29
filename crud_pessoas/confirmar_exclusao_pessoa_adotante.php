@@ -48,7 +48,7 @@ $id_pessoa = $_GET['id_pessoa'];
       <?php include('menu_lateral.php') ?>
       <!--Menu lateral FIM-->
 
-      <div id="container-cadastro-pet" class="principal col">
+      <div id="container-cadastro-pet" class="principal col" style="height: 100vh;">
       <div class="cadastro-pet">
       <div class="btn-cadastrar text-center">
         <h4 class="titulos-topo">Confirmar exclusão do adotante?</h4>

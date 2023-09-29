@@ -125,9 +125,9 @@ $nivel = $arr['nivelUsuario']
                 <div class="card espaco-card">
                   <div class="card-body card-altura card-inicio">
                     <h5 class="card-title">Adicionar Usuários</h5>
-                    <p class="card-text">Opção para adicionar usuário (pendente de ativação do perfil criado) ou adotante (permissão já incluída e com cadastro sem necessidade de aprovação).</p>
+                    <p class="card-text">Opção para adicionar usuário (pendente de ativação do perfil criado) ou adotante.</p>
                     <div class="botao-card-inicio">
-                      <a href="cadastro_pessoa.php" class="btn btn-card">Adicionar Usuário/Adotante</a>
+                      <a href="crud_pessoas/cadastro_pessoa.php" class="btn btn-card">Adicionar Usuário/Adotante</a>
                     </div>
                   </div>
                 </div>

@@ -46,7 +46,7 @@ $nome_completo = $arr['nome_completo'];
         <?php include('menu_lateral.php') ?>
         <!--Menu lateral FIM-->
 
-            <div id="container-adocao-listagem" class="principal col">
+            <div id="container-adocao-listagem" class="principal col" style="height: 100vh;">
                 <h4 class="titulos-topo">Voluntários / Não Voluntários</h4>
                 <div class="btn-grupo-principal">
                     <a href="cadastro_pessoa.php" class="btn btn-grupo" role="button">Cadastrar Pessoa</a>

@@ -48,7 +48,7 @@ $id_cachorro = $_GET['id_cachorro'];
         <?php include('../menu_lateral.php') ?>
         <!--Menu lateral FIM-->
 
-            <div id="container-cadastro-pet" class="principal col">
+            <div id="container-cadastro-pet" class="principal col" style="height: 100vh;">
                 <h4 class="titulos-topo">Cadastro de Cachorro</h4>
                 <div class="btn-grupo-principal">
                     <a href="sub_menu_cao.php" role="button" class="btn-grupo btn">Voltar</a>

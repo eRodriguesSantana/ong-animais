@@ -68,9 +68,11 @@ mysqli_close($conn);
 <body>
   <div id="ong" class="container-ong">
     <div class="row">
-      <?php include('menu_lateral.php') ?>
-      <!--Menu lateral FIM-->
-      <div id="container-cadastro-pet" class="principal col">
+
+    <?php include('../menu_lateral.php') ?>
+            <!--Menu lateral FIM-->
+
+      <div id="container-cadastro-pet" class="principal col" style="height: 100vh;">
         <div class="cadastro-pet">
           <div class="btn-cadastrar text-center">
             <?php if ($nivelUsuario == 'Voluntario' || $nivelUsuario == 'NaoVoluntario') { ?>

@@ -44,7 +44,7 @@ $id_pessoa = $_GET['id_pessoa'];
             <?php include('menu_lateral.php') ?>
             <!--Menu lateral FIM-->
 
-            <div id="container-cadastro-pet" class="principal col">
+            <div id="container-cadastro-pet" class="principal col" style="height: 100vh;">
                 <h4 class="titulos-topo">Editar dados da pessoa</h4>
                 <div class="btn-grupo-principal">
                     <a href="listar_pessoas.php" role="button" class="btn-grupo btn">Voltar</a>

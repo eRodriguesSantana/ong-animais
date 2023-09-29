@@ -45,7 +45,7 @@ $deletar = mysqli_query($conn, $delete);
     <?php include('menu_lateral.php') ?>
       <!--Menu lateral FIM-->
 
-      <div id="container-cadastro-pet" class="principal col">
+      <div id="container-cadastro-pet" class="principal col" style="height: 100vh;">
       <div class="cadastro-pet">
       <div class="btn-cadastrar text-center">
           <h4>Exclusão realizada com sucesso.</h4>
