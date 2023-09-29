@@ -6,12 +6,12 @@ session_start();
 if(!isset($_SESSION['matricula']) || empty($_SESSION['matricula']))
 {
   unset($_SESSION['matricula']);
-  header('Location: ../index.php');
+  header('Location: ../../index.php');
 }
 
 $matricula = $_SESSION['matricula'];
 
-include "../conexao.php";
+include "../../conexao.php";
 
 $sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
@@ -45,8 +45,8 @@ $id_cachorro = $_GET['id_cachorro'];
     <div id="ong" class="container-ong">
         <div class="row">
             
-        <?php include('../../menu_lateral.php') ?>
-      <!--Menu lateral FIM-->
+        <?php include('../menu_lateral.php') ?>
+        <!--Menu lateral FIM-->
 
             <div id="container-cadastro-pet" class="principal col">
                 <h4 class="titulos-topo">Cadastro de Cachorro</h4>

@@ -43,8 +43,8 @@ $nome_completo = $arr['nome_completo'];
     <div id="ong" class="container-ong">
         <div class="row">
             
-        <?php include('../menu_lateral.php') ?>
-      <!--Menu lateral FIM-->
+        <?php include('menu_lateral.php') ?>
+        <!--Menu lateral FIM-->
 
             <div id="container-adocao-listagem" class="principal col">
                 <h4 class="titulos-topo">Voluntários / Não Voluntários</h4>

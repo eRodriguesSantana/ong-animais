@@ -1,12 +1,12 @@
 <?php
 session_start();
 
-// Impede o acesso direto via url a esse script
-// if (!$_POST) {
-//   unset($_SERVER['nomeusuario']);
-//   unset($_SESSION['matriculausuario']);
-//   header('Location: ../../index.php');
-// }
+ // Impede o acesso direto via url a esse script
+ if (!$_POST) {
+   unset($_SERVER['nomeusuario']);
+   unset($_SESSION['matriculausuario']);
+   header('Location: ../../index.php');
+ }
 
 include "../../sql/conexao.php";
 
@@ -51,7 +51,7 @@ mysqli_close($conn);
   <div id="ong" class="container-ong">
     <div class="row">
 
-      <?php include('../../menu_lateral.php') ?>
+      <?php include('../menu_lateral.php') ?>
       <!--Menu lateral FIM-->
 
       <div id="container-cadastro-pet" class="principal col">

@@ -6,12 +6,12 @@ session_start();
 if(!isset($_SESSION['matricula']) || empty($_SESSION['matricula']))
 {
   unset($_SESSION['matricula']);
-  header('Location: ../index.php');
+  header('Location: ../../index.php');
 }
 
 $matricula = $_SESSION['matricula'];
 
-include "../conexao.php";
+include "../../conexao.php";
 
 $sql = "SELECT nivelUsuario FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
@@ -33,7 +33,7 @@ $nivel = $arr['nivelUsuario'];
           <div class="navbar-nav">
             <a class="nav-item nav-link active" href="#" role="button" class="btn btn-danger" style="margin-left: 25px">
               Matrícula: <?php echo $matricula; ?></a>
-            <a class="nav-item nav-link active" href="../sair.php" role="button" class="btn btn-danger" style="margin-left: 25px">Sair</a>
+            <a class="nav-item nav-link active" href="../../sair.php" role="button" class="btn btn-danger" style="margin-left: 25px">Sair</a>
           </div>
       </nav>
       <div class="row">       
@@ -56,6 +56,6 @@ $nivel = $arr['nivelUsuario'];
           </div>
         </div>
       </div>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.js"></script>
   </body>
 </html>

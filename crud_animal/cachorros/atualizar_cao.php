@@ -5,12 +5,12 @@ session_start();
 // o mesmo será redirecionado para a tela de login
 if (!isset($_SESSION['matricula']) || empty($_SESSION['matricula'])) {
   unset($_SESSION['matricula']);
-  header('Location: ../index.php');
+  header('Location: ../../index.php');
 }
 
 $matricula = $_SESSION['matricula'];
 
-include "../conexao.php";
+include "../../conexao.php";
 
 $sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
@@ -54,7 +54,7 @@ $atualizar = mysqli_query($conn, $sql);
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/bootstrap.css">
+  <link rel="stylesheet" href="../../css/bootstrap.css">
   <title>ONG Sistema de Adoção Pet</title>
 </head>
 
@@ -62,7 +62,7 @@ $atualizar = mysqli_query($conn, $sql);
   <div id="ong" class="container-ong">
     <div class="row">
 
-      <?php include('../../menu_lateral.php') ?>
+      <?php include('../menu_lateral.php') ?>
       <!--Menu lateral FIM-->
       
       <div id="container-cadastro-pet" class="principal col">

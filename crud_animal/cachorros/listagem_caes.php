@@ -5,12 +5,12 @@ session_start();
 // o mesmo será redirecionado para a tela de login
 if (!isset($_SESSION['matricula']) || empty($_SESSION['matricula'])) {
     unset($_SESSION['matricula']);
-    header('Location: ../index.php');
+    header('Location: ../../index.php');
 }
 
 $matricula = $_SESSION['matricula'];
 
-include "../conexao.php";
+include "../../conexao.php";
 
 $sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
@@ -47,7 +47,7 @@ function formataData($date)
     <div id="ong" class="container-ong">
         <div class="row">
 
-            <?php include('../../menu_lateral.php') ?>
+            <?php include('../menu_lateral.php') ?>
             <!--Menu lateral FIM-->
 
             <div id="container-adocao-listagem" class="principal col">

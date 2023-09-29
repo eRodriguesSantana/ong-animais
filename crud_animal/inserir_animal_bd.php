@@ -42,7 +42,7 @@ $sql = "INSERT INTO animal (nome_animal, cor_animal, porte_animal, sexo_animal, 
         VALUES ('$nome_animal', '$cor_animal', '$porte_animal', '$sexo_animal', '$tipo_animal', $raca_gato, 
                             $raca_cao, $peso_aproximado, '$observacao', '$data_entrada', '$imagem', 0);
         ";
-
+var_dump($sql);
 $inserir = mysqli_query($conn, $sql);
 //echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 ?>
