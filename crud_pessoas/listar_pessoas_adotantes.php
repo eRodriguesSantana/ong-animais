@@ -98,11 +98,15 @@ $nome_completo = $arr['nome_completo'];
                                     if (($matricula == 2) || $matricula == 12) {
                                     ?>
                                         <div class="row">
-                                            <div class="col-md-6 col-xs-6">
+                                            <div class="col-md-4 col-xs-4">
+                                                <a class="btn btn-primary btn-sm" href="visualizar_adotante.php?id_pessoa=<?php echo $id_pessoa; ?>" role="button"><i class="fas fa-eye"></i>Visualizar
+                                                </a>
+                                            </div>
+                                            <div class="col-md-4 col-xs-4">
                                                 <a class="btn btn-warning btn-sm" href="editar_pessoa_adotante.php?id_pessoa=<?php echo $id_pessoa; ?>" role="button"><i class="fas fa-eye"></i>Editar
                                                 </a>
                                             </div>
-                                            <div class="col-md-6 col-xs-6">
+                                            <div class="col-md-4 col-xs-4">
                                                 <a class="btn btn-danger btn-sm" href="confirmar_exclusao_pessoa_adotante.php?id_pessoa=<?php echo $id_pessoa; ?>" role="button"><i class="fas fa-eye"></i>Excluir
                                                 </a>
                                             </div>

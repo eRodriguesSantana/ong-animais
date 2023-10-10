@@ -68,7 +68,7 @@ function formataData($date){
                 <table id="busca-animal" class="table">
                     <thead>
                         <tr class="topo-colunas">
-                          <th scope="col">Imagem</th>
+                          <!-- <th scope="col">Imagem</th> -->
                           <th scope="col">Nome do animal</th>
                           <th scope="col">Sexo</th>
                           <th scope="col">Tipo</th>
@@ -121,7 +121,7 @@ function formataData($date){
                         if($situacao == 0){
                       ?>
                           <tr style="font-size: 14px">
-                            <td><?php echo $imagem; ?></td>
+                            <!-- <td><?php echo $imagem; ?></td> -->
                             <td><?php echo $nome_animal; ?></td>
                             <td><?php echo $sexo_animal; ?></td>
                             <td><?php echo $tipo_animal; ?></td>
