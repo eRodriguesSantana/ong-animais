@@ -17,7 +17,8 @@ $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
 
-$id_animal = $_GET['id_animal'];
+$id_animal = $_POST['id_animal'];
+$observacao = $_POST['observacao'];
 
 $atualiza_situacao_animal = "UPDATE animal
         SET 
@@ -31,7 +32,13 @@ $atualiza_situacao_adocao = "UPDATE adocao
           situacao = 0
         WHERE id_animal = $id_animal";
 
+$dateTime = new DateTime();
+$data_entrada = $dateTime->format('d/m/Y H:i:s');
 $atualizar_adocao = mysqli_query($conn, $atualiza_situacao_adocao);
+$sqlHistoricoAnimal = "INSERT INTO historico_animal (data_entrada,data_saida,motivo_cancelamento,adotante_id,animal_id)
+        VALUES ('$data_entrada', null, '$observacao', null, $id_animal);";
+$inserirHistoricoAnimal = mysqli_query($conn, $sqlHistoricoAnimal);
+// echo "Error: " . $sqlHistoricoAnimal . "<br>" . mysqli_error($conn);
 ?>
 
 <!DOCTYPE html>

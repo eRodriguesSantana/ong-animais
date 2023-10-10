@@ -16,7 +16,7 @@ $sql = "SELECT nivelUsuario, nome_completo FROM pessoas WHERE matriculausuario =
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
-$nivel = $arr['nivelUsuario']
+$nivel = $arr['nivelUsuario'];
 ?>
 
 <div id="menu-lateral" class="col-12 col-md-2">
@@ -25,11 +25,11 @@ $nivel = $arr['nivelUsuario']
         <a href="">Animais Pirapozinho</a>
     </div>
     <div class="btn-group-vertical" role="group" aria-label="Basic example">
-        <a href="../menu.php" class="btn-menu btn">Início</a>
-        <a href="crud_animal/listar_animais.php" class="btn-menu btn">Gerenciar Animais</a>
-        <a href="crud_adocao/listar_adocao.php" class="btn-menu btn">Gerenciar Adoção</a>
-        <a href="crud_pessoas/listar_pessoas.php" class="btn-menu btn">Gerenciar Pessoas</a>
-        <a href="crud_pessoas/aprovar_pessoa.php" class="btn-menu btn">Ativar Voluntários</a>
+        <a href="/projetos/ong-animais/menu.php" class="btn-menu btn">Início</a>
+        <a href="/projetos/ong-animais/crud_animal/listar_animais.php" class="btn-menu btn">Gerenciar Animais</a>
+        <a href="/projetos/ong-animais/crud_adocao/listar_adocao.php" class="btn-menu btn">Gerenciar Adoção</a>
+        <a href="/projetos/ong-animais/crud_pessoas/listar_pessoas.php" class="btn-menu btn">Gerenciar Pessoas</a>
+        <a href="/projetos/ong-animais/crud_pessoas/aprovar_pessoa.php" class="btn-menu btn">Ativar Voluntários</a>
         
     </div>
     <div class="sair-rodape">

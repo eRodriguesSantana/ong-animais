@@ -16,9 +16,15 @@ $sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula an
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
-
+$id_adotante = $_POST['nome_adotante'];
+$id_animal = $_POST['id_animal'];
+if(isset($_POST['id_animal'])){
+    $id_animal = $_POST['id_animal'];
+}else{
+    $id_animal = $_POST['pet_adotado'];
+}
 $nome_adotante = mysqli_real_escape_string($conn, $_POST['nome_adotante']);
-$pet_adotado = mysqli_real_escape_string($conn, $_POST['pet_adotado']);
+$pet_adotado = mysqli_real_escape_string($conn, $id_animal);
 $data_adocao = mysqli_real_escape_string($conn, $_POST['data_adocao']);
 $condicoes_saida = mysqli_real_escape_string($conn, $_POST['condicoes_saida']);
 $observacao = mysqli_real_escape_string($conn, $_POST['observacao']);
@@ -27,7 +33,7 @@ $sql_adocao = "INSERT INTO adocao (id_animal, id_adotante, data_adocao, condicoe
         VALUES ($pet_adotado, $nome_adotante, '$data_adocao', '$condicoes_saida', '$observacao', 1);";
 
 $inserir = mysqli_query($conn, $sql_adocao);
-
+// echo "Error: " . $sql_adocao . "<br>" . mysqli_error($conn);
 if($inserir){
     $atualiza_situacao_animal = "UPDATE animal
     SET 
@@ -37,6 +43,10 @@ if($inserir){
     $atualizar = mysqli_query($conn, $atualiza_situacao_animal);
 }
 
+$sqlHistoricoAnimal = "INSERT INTO historico_animal (data_entrada,data_saida,motivo_cancelamento,adotante_id,animal_id)
+        VALUES ('', '$data_adocao', '$condicoes_saida', $id_adotante, $pet_adotado);";
+$inserirHistoricoAnimal = mysqli_query($conn, $sqlHistoricoAnimal);
+// echo "Error: " . $sqlHistoricoAnimal . "<br>" . mysqli_error($conn);
 ?>
 
 <!DOCTYPE html>

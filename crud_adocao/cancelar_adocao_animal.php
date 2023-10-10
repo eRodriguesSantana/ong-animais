@@ -47,13 +47,14 @@ $id_animal = $_GET['id_animal'];
       <div id="container-cadastro-pet" class="principal col" style="height: 100vh;">
         <div class="cadastro-pet">
           <div class="btn-cadastrar text-center">
+            <form action="cancelar_adocao.php" method="post">
+              <input type="hidden" value="<?=$id_animal?>" name="id_animal">
             <h4 class="titulos-topo">Confirmar cancelamento de adoção?</h4>
             <div class="form-group">
               <label for="observacao">Motivo do cancelamento da adoção: *</label>
               <textarea name="observacao" rows="4" cols="50" class="form-control" required></textarea>
             </div>
-            <form action="" method="post">
-              <a href="cancelar_adocao.php?id_animal=<?php echo $id_animal; ?>" role="button" class="btn btn-danger">Sim</a>
+              <button type="submit" role="button" class="btn btn-danger">Sim</button>
               <a href='listar_adocao.php' role='button' class='btn btn-success'>Não</a>
             </form>
           </div>

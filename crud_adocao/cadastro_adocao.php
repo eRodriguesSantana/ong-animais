@@ -85,6 +85,7 @@ date_default_timezone_set('America/Sao_Paulo');
                                 $result = mysqli_query($conn, $sql_pet);
 
                                 while ($row = mysqli_fetch_array($result)) {
+                                    $id_animal = $row[1];
                                     echo '<option value="' . $row[0] . '">' . $row[1] . '</option>';
                                 }
                                 ?>
