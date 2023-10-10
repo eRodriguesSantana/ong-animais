@@ -41,7 +41,7 @@ $sql = "INSERT INTO animal (nome_animal, cor_animal, porte_animal, sexo_animal, 
         peso_aproximado, observacao, data_entrada, imagem, situacao)
         VALUES ('$nome_animal', '$cor_animal', '$porte_animal', '$sexo_animal', '$tipo_animal', $raca_gato, $raca_cao, $peso_aproximado, '$observacao', '$data_entrada', '$imagem', 0);
         ";
-var_dump($sql);
+//var_dump($sql);
 $inserir = mysqli_query($conn, $sql);
 $idAnimal = mysqli_insert_id($conn);
 $sqlHistoricoAnimal = "INSERT INTO historico_animal (data_entrada,data_saida,motivo_cancelamento,adotante_id,animal_id)
