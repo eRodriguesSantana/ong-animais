@@ -132,6 +132,17 @@ $nivel = $arr['nivelUsuario']
                   </div>
                 </div>
               </div>
+              <div class="col-sm-4">
+                <div class="card espaco-card">
+                  <div class="card-body card-altura card-inicio">
+                    <h5 class="card-title">Gerenciar Doação</h5>
+                    <p class="card-text">Opção para gerenciar doações.</p>
+                    <div class="botao-card-inicio">
+                      <a href="crud_doacao/cadastro_doacao.php" class="btn btn-card">Gerenciar Doação</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
