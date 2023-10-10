@@ -30,7 +30,7 @@ $nivel = $arr['nivelUsuario']
         <a href="../crud_adocao/listar_adocao.php" class="btn-menu btn">Gerenciar Adoção</a>
         <a href="listar_pessoas.php" class="btn-menu btn">Gerenciar Pessoas</a>
         <a href="aprovar_pessoa.php" class="btn-menu btn">Ativar Voluntários</a>
-        
+        <a href="/../ong-animais-pirapo/crud_doacao/cadastro_doacao.php" class="btn-menu btn">Gerenciar Doação</a>
     </div>
     <div class="sair-rodape">
         <a class="btn-sair" href="#"><span><i class="bi bi-person-circle"></i></span>Nome do Usuário
