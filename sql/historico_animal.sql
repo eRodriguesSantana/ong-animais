@@ -10,8 +10,8 @@
 
 CREATE TABLE historico_animal (
     id_historico_animal int AUTO_INCREMENT NOT NULL,
-    data_entrada VARCHAR,
-    data_saida VARCHAR,
+    data_entrada VARCHAR(100),
+    data_saida VARCHAR(100),
     motivo_cancelamento VARCHAR(255) NOT NULL,
     adotante_id int,
     animal_id int NOT NULL,
