@@ -104,17 +104,18 @@ if(isset($_GET['id_pessoa'])){
                             <tr>
                                 <!-- <th scope="col">Data de Entrada</th> -->
                                 <th scope="col">Data da adoção</th>
+                                <th scope="col">Data da cancelamento</th>
                                 <th scope="col" class="titulo-motivo">Animal</th>
-                                <!-- <th scope="col" class="titulo-motivo">Motivo do cancelamento da adoção</th> -->
+                                <th scope="col" class="titulo-motivo">Motivo</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach($historico as $value){ ?>
                                 <tr>
-                                    <!-- <td><?= $value['data_entrada'] ?></td> -->
                                     <td><?= $value['data_saida'] ?></td>
+                                    <td><?= $value['data_entrada'] ?></td>
                                     <td><?= $nomesAnimais[$value['animal_id']] ?></td>
-                                    <!-- <td><?= $value['motivo_cancelamento'] ?></td> -->
+                                    <td><?= $value['motivo_cancelamento'] ?></td>
                                 </tr>
                             <?php } ?>
                         </tbody>

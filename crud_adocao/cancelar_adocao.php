@@ -32,11 +32,17 @@ $atualiza_situacao_adocao = "UPDATE adocao
           situacao = 0
         WHERE id_animal = $id_animal";
 
-$dateTime = new DateTime();
-$data_entrada = $dateTime->format('d/m/Y H:i:s');
+
+$visualizar_adotante = "SELECT id_adotante FROM adocao
+    WHERE id_animal = $id_animal";
+$visualizar = mysqli_query($conn, $visualizar_adotante);
+$visualizar_adotante_id = mysqli_fetch_assoc($visualizar);
+$adotante_id = $visualizar_adotante_id['id_adotante'];
+
+$data_entrada = date('d/m/Y H:i:s', time());
 $atualizar_adocao = mysqli_query($conn, $atualiza_situacao_adocao);
 $sqlHistoricoAnimal = "INSERT INTO historico_animal (data_entrada,data_saida,motivo_cancelamento,adotante_id,animal_id)
-        VALUES ('$data_entrada', null, '$observacao', null, $id_animal);";
+        VALUES ('$data_entrada', null, '$observacao', $adotante_id, $id_animal);";
 $inserirHistoricoAnimal = mysqli_query($conn, $sqlHistoricoAnimal);
 // echo "Error: " . $sqlHistoricoAnimal . "<br>" . mysqli_error($conn);
 ?>
