@@ -123,7 +123,7 @@ if(isset($_GET['id_animal'])){
                                 <th scope="col">Data de Entrada</th>
                                 <th scope="col">Data de Saída</th>
                                 <th scope="col" class="titulo-motivo">Adotante</th>
-                                <th scope="col" class="titulo-motivo">Motivo do cancelamento da adoção:</th>
+                                <th scope="col" class="titulo-motivo">Observação:</th>
                             </tr>
                         </thead>
                         <tbody>

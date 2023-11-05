@@ -74,7 +74,7 @@ function formataData($date)
                     </thead>
                     <tbody>
                         <?php
-                        $sql = "SELECT ad.situacao, a.id_animal, p.nome_completo, p.endereco, p.telefone, a.nome_animal, a.sexo_animal, a.tipo_animal
+                        $sql = "SELECT p.id_pessoa, ad.situacao, a.id_animal, p.nome_completo, p.endereco, p.telefone, a.nome_animal, a.sexo_animal, a.tipo_animal
                                 FROM pessoas AS p
                                 INNER JOIN adocao AS ad
                                 ON p.id_pessoa = ad.id_adotante
@@ -92,14 +92,15 @@ function formataData($date)
                             $sexo_animal = $array['sexo_animal'];
                             $tipo_animal = $array['tipo_animal'];
                             $situacao = $array['situacao'];
+                            $id_pessoa = $array['id_pessoa'];
 
                             if($situacao == 1){
                         ?>
                                 <tr style="font-size: 14px">
-                                    <td><?php echo $nome_adotante; ?></td>
+                                    <td><a href="../crud_pessoas/visualizar_adotante.php?id_pessoa=<?php echo $id_pessoa; ?>"><?php echo $nome_adotante; ?></a></td>
                                     <td><?php echo $endereco; ?></td>
                                     <td><?php echo $telefone; ?></td>
-                                    <td><?php echo $nome_animal; ?></td>
+                                    <td><a href="../crud_animal/visualizar_animal.php?id_animal=<?php echo $id_animal; ?>"><?php echo $nome_animal; ?></a></td>
                                     <td><?php echo $sexo_animal; ?></td>
                                     <td><?php echo $tipo_animal; ?></td>
                                     <td>
