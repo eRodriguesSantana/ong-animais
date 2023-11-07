@@ -58,7 +58,7 @@ date_default_timezone_set('America/Sao_Paulo');
                     <form action="inserir_doacao_bd.php" method="post">
                         <div class="form-group">
                             <label for="doador">Doador(a):</label>
-                            <select class="form-control" id="doador" name="doador" required oninvalid="this.setCustomValidity('Nome obrigatório')" oninput="setCustomValidity('')">
+                            <select class="form-control" id="doador" name="doador">
                                 <option value="">Selecione</option>
                                     <?php
                                         $sql_pessoas = "SELECT * FROM pessoas";

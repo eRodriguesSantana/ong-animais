@@ -17,7 +17,7 @@ $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
 
-$doador = mysqli_real_escape_string($conn, $_POST['doador']);
+//$doador = mysqli_real_escape_string($conn, $_POST['doador']);
 $telefone = mysqli_real_escape_string($conn, $_POST['telefone']);
 $cpf = mysqli_real_escape_string($conn, $_POST['cpf']);
 $tipo_doacao = mysqli_real_escape_string($conn, $_POST['tipo_doacao']);
@@ -26,8 +26,6 @@ $produto = mysqli_real_escape_string($conn, $_POST['produto']);
 $quantidade = mysqli_real_escape_string($conn, $_POST['quantidade']);
 $observacao = mysqli_real_escape_string($conn, $_POST['observacao']);
 $data_doacao = mysqli_real_escape_string($conn, $_POST['data_doacao']);
-
-$qtd = 0;
 
 if (isset($_POST['dinheiro']))
     $valor = $dinheiro;
@@ -41,6 +39,11 @@ if (isset($_POST['produto']) && isset($_POST['quantidade'])){
     $prod = '';
     $qtd = 0;
 }
+
+if ($_POST['doador'] == '')
+    $doador = "Anonimo";
+else
+    $doador = $_POST['doador'];
 
 $sql = "INSERT INTO doacao (doador, telefone, cpf, tipo_doacao, dinheiro, produto, quantidade, observacao, data_doacao)
         VALUES ('$doador', '$telefone', '$cpf', '$tipo_doacao', $valor, '$prod', $qtd, '$observacao', '$data_doacao');
