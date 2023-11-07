@@ -86,9 +86,7 @@ function formataData($date){
                           FROM animal
                           ORDER BY id_animal ASC";
                       $busca = mysqli_query($conn, $sql);
-                      $data = [];
                       while ($array = mysqli_fetch_array($busca)){
-                        $data [] = $array;
                         $id_animal = $array['id_animal'];
                         $imagem = $array['imagem'];
                         $nome_animal = $array['nome_animal'];
@@ -113,7 +111,6 @@ function formataData($date){
                             $result_cao = $busca_cao->fetch_assoc();
                             $raca = $result_cao['nome_raca_cao'];
                         }
-                        $data['raca_animal'] = $raca;
                         $cor_animal = $array['cor_animal'];
                         $peso_aproximado = $array['peso_aproximado'];
                         $observacao = $array['observacao'];
