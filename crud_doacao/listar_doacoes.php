@@ -74,7 +74,6 @@ function formataData($date){
                           <th scope="col">Tipo doação</th>
                           <th scope="col">Observação</th>
                           <th scope="col">Data doação</th>
-                          <th scope="col">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -91,44 +90,14 @@ function formataData($date){
                         $tipo_doacao = $array['tipo_doacao'];
                         $observacao = $array['observacao'];
                         $data_doacao = $array['data_doacao'];
-
-                        /*$raca = "";
-                        if($tipo_doacao == "dinheiro"){
-                            $sql_gato = "SELECT distinct raca_gato.nome_raca_gato 
-                                FROM raca_gato
-                                WHERE raca_gato.id_raca_gato = " . $array['raca_gato'] .";";
-                            $busca_gato = mysqli_query($conn, $sql_gato);
-                            $result_gato = $busca_gato->fetch_assoc();
-                            $raca = $result_gato['nome_raca_gato'];
-                        }
-                        else{
-                            $sql_cao = "SELECT distinct raca_cao.nome_raca_cao 
-                                FROM raca_cao
-                                WHERE raca_cao.id_raca_cao = " . $array['raca_cao'] .";";
-                            $busca_cao = mysqli_query($conn, $sql_cao);
-                            $result_cao = $busca_cao->fetch_assoc();
-                            $raca = $result_cao['nome_raca_cao'];
-                        }*/
-
-                        //if($situacao == 0){
                       ?>
                           <tr style="font-size: 14px">
-                            <!-- <td><?php echo $imagem; ?></td> -->
                             <td><?php echo $doador; ?></td>
                             <td><?php echo $telefone; ?></td>
                             <td><?php echo $tipo_doacao; ?></td>
                             <td><?php echo $observacao; ?></td>                            
-                            <td><?php echo formataData($data_doacao); ?></td>                
-                            <td>
-                              <div class="row">
-                                <div class="col-md-6 col-xs-6">
-                                  <a class="btn btn-primary btn-sm" href="../crud_animal/visualizar_animal.php?id_animal=<?php echo $id_animal; ?>" 
-                                    role="button"><i class="fas fa-eye"></i>Visualizar
-                                  </a>
-                                </div>
-                            </td>                      
+                            <td><?php echo formataData($data_doacao); ?></td>           
                           </tr>
-                        <?php //} ?>
                       <?php }?>
                     </tbody>
                 </table>
