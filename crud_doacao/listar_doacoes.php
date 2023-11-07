@@ -68,7 +68,6 @@ function formataData($date){
                 <table id="busca-doador" class="table">
                     <thead>
                         <tr class="topo-colunas">
-                          <!-- <th scope="col">Imagem</th> -->
                           <th scope="col">Doador</th>
                           <th scope="col">Telefone</th>
                           <th scope="col">Tipo doação</th>
