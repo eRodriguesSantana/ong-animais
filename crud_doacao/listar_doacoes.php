@@ -44,6 +44,7 @@ function formataData($date){
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <title>ONG Sistema de Adoção Pet</title>
 </head>
 
@@ -71,8 +72,8 @@ function formataData($date){
                           <th scope="col">Doador</th>
                           <th scope="col">Telefone</th>
                           <th scope="col">Tipo doação</th>
-                          <th scope="col">Observação</th>
                           <th scope="col">Data doação</th>
+                          <th scope="col">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -82,26 +83,80 @@ function formataData($date){
                           ORDER BY id_doacao ASC";
                       $busca = mysqli_query($conn, $sql);
 
+                      $count = 0;
+
                       while ($array = mysqli_fetch_array($busca)){
                         $id_doacao = $array['id_doacao'];
                         $doador = $array['doador'];
+                        $cpf = $array['cpf'];
                         $telefone = $array['telefone'];
                         $tipo_doacao = $array['tipo_doacao'];
-                        $observacao = $array['observacao'];
+
+                        if($array['observacao'] != '')
+                            $observacao = $array['observacao'];
+                        else
+                            $observacao = "Sem observação.";
+
                         $data_doacao = $array['data_doacao'];
+
+                        $dinheiro = $array['dinheiro'];
+                        $produto = $array['produto'];
+                        $quantidade = $array['quantidade'];
                       ?>
-                          <tr style="font-size: 14px">
+                        <tr style="font-size: 14px">
                             <td><?php echo $doador; ?></td>
                             <td><?php echo $telefone; ?></td>
                             <td><?php echo $tipo_doacao; ?></td>
-                            <td><?php echo $observacao; ?></td>                            
-                            <td><?php echo formataData($data_doacao); ?></td>           
-                          </tr>
+                            <td><?php echo formataData($data_doacao); ?></td>
+                            <td>      
+                                <button data-toggle="modal" data-target="#view-modal<?php echo $count ?>" data-id="<?php echo $array['id_doacao']; ?>" id="getUser" class="btn btn-sm btn-info">
+                                    <i class="glyphicon glyphicon-eye-open"></i> 
+                                    Detalhes
+                                </button>
+						    </td>
+                            <div id="view-modal<?php echo $count ?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                <div class="modal-dialog"> 
+                                    <div class="modal-content">                  
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">
+                                                <i class="glyphicon glyphicon-thumbs-up"></i> Detalhes Doação
+                                            </h4>  
+                                        </div> 
+                                        <div class="modal-body">                       
+                                            <div id="modal-loader" style="display: none; text-align: center;">
+                                                <img src="ajax-loader.gif">
+                                            </div>                            
+                                            <!-- content will be load here -->
+                                            <?php
+                                                if($tipo_doacao == 'dinheiro'){
+                                            ?>
+                                                    <div id="wwwdynamic-content">
+                                                        CPF: <?php echo $cpf.'<br>'; ?>
+                                                        Valor R$: <?php echo $dinheiro.'<br>'; ?>
+                                                        Observação: <?php echo $observacao.'<br>'; ?>
+                                                    </div>
+                                            <?php } else { ?>
+                                                    <div id="wwwdynamic-content">
+                                                        CPF: <?php echo $cpf.'<br>'; ?>
+                                                        Produto: <?php echo $produto.'<br>'; ?>
+                                                        Quantidade: <?php echo $quantidade.'<br>'; ?>
+                                                        Observação: <?php echo $observacao.'<br>'; ?>
+                                                    </div>                                                
+                                            <?php } ?>
+                                        </div> 
+                                        <div class="modal-footer"> 
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>  
+                                        </div>                        
+                                    </div> 
+                                </div>
+                            </div><!-- /.modal -->
+                        </tr>
+                        <?php $count++ ?>
                       <?php }?>
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div>    
     </div>
 
     <!--JS do Bootstrap-->
@@ -114,6 +169,9 @@ function formataData($date){
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script>
         window.addEventListener("DOMContentLoaded", (event) => {
@@ -134,7 +192,5 @@ function formataData($date){
             }
         });
     </script>
-
 </body>
-
 </html>
