@@ -69,6 +69,9 @@ date_default_timezone_set('America/Sao_Paulo');
                                         }
                                     ?>
                             </select>
+                            <div style="color: blue">
+                                Deixe em branco caso seja doação anônima
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 col-xs-6">
