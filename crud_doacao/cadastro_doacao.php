@@ -58,16 +58,17 @@ date_default_timezone_set('America/Sao_Paulo');
                     <form action="inserir_doacao_bd.php" method="post">
                         <div class="form-group">
                             <label for="doador">Doador(a):</label>
-                            <input 
-                                type="text" 
-                                class="form-control" 
-                                name="doador" 
-                                aria-describedby="doador" 
-                                required 
-                                    oninvalid="this.setCustomValidity('Nome obrigatório')" 
-                                    oninput="setCustomValidity('')" 
-                                autocomplete="off" 
-                                placeholder="Digite o nome do doador(a)">
+                            <select class="form-control" id="doador" name="doador" required oninvalid="this.setCustomValidity('Nome obrigatório')" oninput="setCustomValidity('')">
+                                <option value="">Selecione</option>
+                                    <?php
+                                        $sql_pessoas = "SELECT * FROM pessoas";
+                                        $result = mysqli_query($conn, $sql_pessoas);
+
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<option value="' . $row[1] . '">' . $row[1] . '</option>';
+                                        }
+                                    ?>
+                            </select>
                         </div>
                         <div class="row">
                             <div class="col-md-6 col-xs-6">
