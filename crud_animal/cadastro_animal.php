@@ -65,10 +65,15 @@ date_default_timezone_set('America/Sao_Paulo');
                                 <div class="form-group">
                                     <label for="cor_animal">Cor animal:</label>
                                     <select id="cor_animal" name="cor_animal" class="form-control" required oninvalid="this.setCustomValidity('Cor obrigatório')" oninput="setCustomValidity('')">
-                                        <option value="">Selecione</option>
-                                        <option value="Pardo">Pardo</option>
-                                        <option value="Preto">Preto</option>
-                                        <option value="Branco">Branco</option>
+                                    <option value="">Selecione</option>
+                                    <?php
+                                        $sql_cor = "SELECT id_cor, nome_cor FROM cor_animal";
+                                        $result = mysqli_query($conn, $sql_cor);
+
+                                        while ($row = mysqli_fetch_array($result)) {
+                                            echo '<option value="' . $row[0] . '">' . $row[1] . '</option>';
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
@@ -118,7 +123,7 @@ date_default_timezone_set('America/Sao_Paulo');
                                     </select>
 
                                     <div class="add-raca">
-                                        <a href="gatos/cadastrar_gato.php" target="_blank">
+                                        <a href="listar_racas.php" target="_blank">
                                             Adicionar outra raça de gato
                                         </a>
                                     </div>
@@ -140,7 +145,7 @@ date_default_timezone_set('America/Sao_Paulo');
                                     </select>
 
                                     <div class="add-raca">
-                                        <a href="cachorros/cadastrar_cao.php" target="_blank">
+                                        <a href="listar_racas.php" target="_blank">
                                             Adicionar outra raça de cachorro
                                         </a>
                                     </div>

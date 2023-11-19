@@ -94,23 +94,17 @@ $id_animal = $_GET['id_animal'];
                                         <label for="cor_animal">Cor animal:</label>
                                         <select id="cor_animal" name="cor_animal" class="form-control" required oninvalid="this.setCustomValidity('Cor obrigatório')" oninput="setCustomValidity('')">
                                             <option value="">Selecione</option>
-                                            <?php
-                                            if (trim($cor_animal) == "Preto") {
-                                            ?>
-                                                <option value="<?php echo $cor_animal; ?>" selected="selected"><?php echo $cor_animal; ?></option>
-                                                <option value="Pardo">Pardo</option>
-                                                <option value="Branco">Branco</option>
-                                            <?php } else if (trim($cor_animal) == "Pardo") {
-                                            ?>
-                                                <option value="Preto">Preto</option>
-                                                <option value="<?php echo $cor_animal; ?>" selected="selected"><?php echo $cor_animal; ?></option>
-                                                <option value="Branco">Branco</option>
-                                            <?php } else if (trim($cor_animal) == "Branco") {
-                                            ?>
-                                                <option value="Preto">Preto</option>
-                                                <option value="Pardo">Pardo</option>
-                                                <option value="<?php echo $cor_animal; ?>" selected="selected"><?php echo $cor_animal; ?></option>
-                                            <?php } ?>
+                                                <?php
+                                                $sql_cor = "SELECT id_cor, nome_cor FROM cor_animal";
+                                                $result = mysqli_query($conn, $sql_cor);
+
+                                                while ($row = mysqli_fetch_array($result)) {
+                                                    if ($row[0] == $cor_animal)
+                                                        echo '<option value="' . $row[0] . '" selected="selected">' . $row[1] . '</option>';
+                                                    else
+                                                        echo '<option value="' . $row[0] . '">' . $row[1] . '</option>';
+                                                }
+                                                ?>
                                         </select>
                                     </div>
                                 </div>

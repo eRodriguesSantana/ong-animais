@@ -11,7 +11,7 @@
 CREATE TABLE animal(
     id_animal int AUTO_INCREMENT NOT NULL,
     nome_animal VARCHAR(50) NOT NULL,
-    cor_animal VARCHAR(50) NOT NULL,
+    cor_animal int NOT NULL,
     porte_animal VARCHAR(50) NOT NULL,
     sexo_animal VARCHAR(50) NOT NULL,
     tipo_animal VARCHAR(50) NOT NULL,
@@ -26,6 +26,9 @@ CREATE TABLE animal(
 
 ALTER TABLE `ong`.`animal` 
 CHANGE COLUMN `situacao` `situacao` INT NOT NULL ;
+
+ALTER TABLE `ong`.`animal` 
+CHANGE COLUMN `cor_animal` `cor_animal` INT NOT NULL ;
 
 ALTER TABLE `ong`.`animal` 
 ADD CONSTRAINT `f_raca_cao_id`
@@ -43,9 +46,14 @@ ADD CONSTRAINT `f_adocao_id`
   REFERENCES `ong`.`adocao` (`id_adocao`)
   ON DELETE CASCADE
   ON UPDATE CASCADE;
+ADD CONSTRAINT `f_cor_animal_id`
+  FOREIGN KEY (`cor_animal`)
+  REFERENCES `ong`.`cor_animal` (`id_cor`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
 
 INSERT INTO animal (nome_animal, cor_animal, porte_animal, sexo_animal, tipo_animal, raca_gato, raca_cao, peso_aproximado, observacao, data_entrada, imagem, situacao)
-VALUES ('Poli', 'Pardo', 'Médio', 'Femêa', 'Cao', 0, 2, 10, 'Amor da minha vida', '14/06/2023 00:56:43', 'Minha linda', 1);
+VALUES ('Poli', 1, 'Médio', 'Femêa', 'Cao', 0, 2, 10, 'Amor da minha vida', '14/06/2023 00:56:43', 'Minha linda', 1);
 
 INSERT INTO animal (nome_animal, cor_animal, porte_animal, sexo_animal, tipo_animal, raca_gato, raca_cao, peso_aproximado, observacao, data_entrada, imagem, situacao)
-VALUES ('Mili', 'Preto', 'Médio', 'Femêa', 'Gato', 1, 0, 10, 'Amor da minha vida', '14/06/2023 00:56:43', 'Minha linda', 0);
+VALUES ('Mili', 2, 'Médio', 'Femêa', 'Gato', 1, 0, 10, 'Amor da minha vida', '14/06/2023 00:56:43', 'Minha linda', 0);
