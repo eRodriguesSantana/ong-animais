@@ -43,7 +43,6 @@ if (isset($_POST['parcelado'])){
 $sql = "INSERT INTO lancar_despesa_pagamento (recebedor, endereco, estado, telefone, cpfcnpj, valor_pagar, forma_pagamento, dinheiro, parcelado, observacao_pagamento, data_pagamento)
         VALUES ('$recebedor', '$endereco', '$estado', '$telefone', '$cpfcnpj', '$valor_pagar', '$forma_pagamento', $valor, '$parcelado', '$observacao_pagamento', '$data_pagamento');
         ";
-var_dump($sql);
 $inserir = mysqli_query($conn, $sql);
 //echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 ?>
