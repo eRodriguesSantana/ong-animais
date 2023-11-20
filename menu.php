@@ -138,7 +138,7 @@ $nivel = $arr['nivelUsuario']
                     <h5 class="card-title">Gerenciar Doação</h5>
                     <p class="card-text">Opção para gerenciar doações.</p>
                     <div class="botao-card-inicio">
-                      <a href="crud_doacao/cadastro_doacao.php" class="btn btn-card">Gerenciar Doação</a>
+                      <a href="crud_doacao/listar_doacoes.php" class="btn btn-card">Gerenciar Doação</a>
                     </div>
                   </div>
                 </div>

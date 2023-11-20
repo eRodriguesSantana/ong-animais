@@ -22,4 +22,4 @@ CREATE TABLE `doacao` (
   primary key (id_doacao)
 );
 
-INSERT INTO `doacao` VALUES ('Edu','(33) 33333-3333','333.333.333-33','dinheiro','3.00','','0','','10/10/2023 18:18:11');
+INSERT INTO `doacao` VALUES (1, 'Edu','(33) 33333-3333','333.333.333-33','dinheiro','3.00','','0','','10/10/2023 18:18:11');
