@@ -88,7 +88,7 @@ date_default_timezone_set('America/Sao_Paulo');
                                             oninvalid="this.setCustomValidity('Endereco obrigatório')" 
                                             oninput="setCustomValidity('')" 
                                         autocomplete="off" 
-                                        placeholder="Digite o endereco">
+                                        placeholder="Rua/Av, N°, Bairro, Município">
                                 </div>
                             </div>
                             <div class="col-md-2 col-xs-2">
@@ -228,8 +228,8 @@ date_default_timezone_set('America/Sao_Paulo');
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="observacao">Observação sobre este pagamento:</label>
-                            <textarea name="observacao" rows="4" cols="50" class="form-control"></textarea>
+                            <label for="observacao_pagamento">Observação sobre este pagamento:</label>
+                            <textarea name="observacao_pagamento" rows="4" cols="50" class="form-control"></textarea>
                         </div>
                         <!-- <div class="form-group">
                             <label for="imagem">Imagem</label>

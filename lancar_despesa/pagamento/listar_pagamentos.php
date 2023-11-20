@@ -11,7 +11,7 @@ if(!isset($_SESSION['matricula']) || empty($_SESSION['matricula']))
 
 $matricula = $_SESSION['matricula'];
 
-include "../sql/conexao.php";
+include "../../sql/conexao.php";
 
 $sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
@@ -34,7 +34,7 @@ function formataData($date){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen" />
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -52,62 +52,62 @@ function formataData($date){
     <div id="ong" class="container-ong">
         <div class="row">
 
-        <?php include('../menu_lateral.php') ?>
+        <?php include('../../menu_lateral.php') ?>
             <!--Menu lateral FIM-->
 
             <div id="container-adocao-listagem" class="principal col">
-                <h4 class="titulos-topo">Doações recebidas</h4>
+                <h4 style="font-size: 20px; font-weight: 300">Pagamentos</h4>
                 <div class="btn-grupo-principal">
-                    <a href="../crud_pessoas/cadastro_pessoa.php" class="btn btn-grupo" role="button">Cadastrar Pessoa</a>
-                    <a href="cadastro_doacao.php" class="btn btn-grupo" role="button">Nova Doação</a>
+                    <a href="cadastro_pagamento.php" class="btn btn-grupo" role="button">Cadastrar Pagamento</a>
                 </div>
                 <hr>
                 <div class="busca">
-                    <input id="filtra-doador" class="campo-busca form-control" type="text" placeholder="Buscar doador">
+                    <input id="filtra-pagamento" class="campo-busca form-control" type="text" placeholder="Buscar pagamento">
                     <button id="buscar" type="button" class="btn btn-busca">Pesquisar</button>
                 </div>
-                <table id="busca-doador" class="table">
+                <table id="busca-pagamento" class="table">
                     <thead>
                         <tr class="topo-colunas">
-                          <th scope="col">Doador</th>
+                          <th scope="col">Recebedor</th>
                           <th scope="col">Telefone</th>
-                          <th scope="col">Tipo doação</th>
-                          <th scope="col">Data doação</th>
+                          <th scope="col">Forma pagamento</th>
+                          <th scope="col">Data pagamento</th>
                           <th scope="col">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
                     <?php
                       $sql = "SELECT * 
-                          FROM doacao
-                          ORDER BY id_doacao ASC";
+                          FROM lancar_despesa_pagamento
+                          ORDER BY id_pagamento ASC";
                       $busca = mysqli_query($conn, $sql);
 
                       $count = 0;
 
                       while ($array = mysqli_fetch_array($busca)){
-                        $id_doacao = $array['id_doacao'];
-                        $doador = $array['doador'];
-                        $cpf = $array['cpf'];
+                        $id_pagamento = $array['id_doacao'];
+                        $recebedor = $array['recebedor'];
+                        $cpfcnpj = $array['cpfcnpj'];
                         $telefone = $array['telefone'];
-                        $tipo_doacao = $array['tipo_doacao'];
+                        $forma_pagamento = $array['forma_pagamento'];
+                        $endereco = $array['endereco'];
+                        $estado = $array['estado'];
 
-                        if($array['observacao'] != '')
-                            $observacao = $array['observacao'];
+                        if($array['observacao_pagamento'] != '')
+                            $observacao_pagamento = $array['observacao_pagamento'];
                         else
-                            $observacao = "Sem observação.";
+                            $observacao_pagamento = "Sem observação.";
 
-                        $data_doacao = $array['data_doacao'];
+                        $data_pagamento = $array['data_pagamento'];
 
                         $dinheiro = $array['dinheiro'];
-                        $produto = $array['produto'];
-                        $quantidade = $array['quantidade'];
+                        $parcelado = $array['parcelado'];
                       ?>
                         <tr style="font-size: 14px">
-                            <td><?php echo $doador; ?></td>
+                            <td><?php echo $recebedor; ?></td>
                             <td><?php echo $telefone; ?></td>
-                            <td><?php echo $tipo_doacao; ?></td>
-                            <td><?php echo formataData($data_doacao); ?></td>
+                            <td><?php echo $forma_pagamento; ?></td>
+                            <td><?php echo formataData($data_pagamento); ?></td>
                             <td>      
                                 <button data-toggle="modal" data-target="#view-modal<?php echo $count ?>" data-id="<?php echo $array['id_doacao']; ?>" id="getUser" class="btn btn-sm btn-info">
                                     <i class="glyphicon glyphicon-eye-open"></i> 
@@ -128,19 +128,22 @@ function formataData($date){
                                             </div>                            
                                             <!-- content will be load here -->
                                             <?php
-                                                if($tipo_doacao == 'dinheiro'){
+                                                if($forma_pagamento == 'dinheiro'){
                                             ?>
                                                     <div id="wwwdynamic-content">
-                                                        CPF: <?php echo $cpf.'<br>'; ?>
+                                                        CPF/CNPJ: <?php echo $cpfcnpj.'<br>'; ?>
                                                         Valor R$: <?php echo $dinheiro.'<br>'; ?>
                                                         Observação: <?php echo $observacao.'<br>'; ?>
+                                                        Endereço: <?php echo $endereco.'<br>'; ?>
+                                                        Estado: <?php echo $estado.'<br>'; ?>
                                                     </div>
                                             <?php } else { ?>
                                                     <div id="wwwdynamic-content">
-                                                        CPF: <?php echo $cpf.'<br>'; ?>
-                                                        Produto: <?php echo $produto.'<br>'; ?>
-                                                        Quantidade: <?php echo $quantidade.'<br>'; ?>
+                                                        CPF/CNPJ: <?php echo $cpfcnpj.'<br>'; ?>
+                                                        Quantidade parcelas: <?php echo $parcelado.'<br>'; ?>
                                                         Observação: <?php echo $observacao.'<br>'; ?>
+                                                        Endereço: <?php echo $endereco.'<br>'; ?>
+                                                        Estado: <?php echo $estado.'<br>'; ?>
                                                     </div>                                                
                                             <?php } ?>
                                         </div> 
@@ -180,9 +183,9 @@ function formataData($date){
             function pesquisaTabela() {
                 // Declare variables
                 var input, filter, table, tr, td, i;
-                input = document.getElementById("filtra-doador");
+                input = document.getElementById("filtra-pagamento");
                 filter = input.value.toUpperCase();
-                table = document.getElementById("busca-doador");
+                table = document.getElementById("busca-pagamento");
                 tr = table.getElementsByTagName("tr");
                 // Loop through all table rows, and hide those who don't match the search query
                 for (i = 1; i < tr.length; i++) {

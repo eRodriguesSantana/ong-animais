@@ -5,10 +5,10 @@ session_start();
 if (!$_POST) {
     unset($_SERVER['nomeusuario']);
     unset($_SESSION['matriculausuario']);
-    header('Location: ../index.php');
+    header('Location: ../../index.php');
 }
 
-include "../sql/conexao.php";
+include "../../sql/conexao.php";
 
 $matricula = $_SESSION['matricula'];
 
@@ -17,38 +17,33 @@ $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
 
-//$doador = mysqli_real_escape_string($conn, $_POST['doador']);
+$recebedor = mysqli_real_escape_string($conn, $_POST['recebedor']);
+$endereco = mysqli_real_escape_string($conn, $_POST['endereco']);
+$estado = mysqli_real_escape_string($conn, $_POST['estado']);
 $telefone = mysqli_real_escape_string($conn, $_POST['telefone']);
-$cpf = mysqli_real_escape_string($conn, $_POST['cpf']);
-$tipo_doacao = mysqli_real_escape_string($conn, $_POST['tipo_doacao']);
+$cpfcnpj = mysqli_real_escape_string($conn, $_POST['cpfcnpj']);
+$valor_pagar = mysqli_real_escape_string($conn, $_POST['valor_pagar']);
+$forma_pagamento = mysqli_real_escape_string($conn, $_POST['forma_pagamento']);
 $dinheiro = trim(mysqli_real_escape_string($conn, $_POST['dinheiro']));
-$produto = mysqli_real_escape_string($conn, $_POST['produto']);
-$quantidade = mysqli_real_escape_string($conn, $_POST['quantidade']);
-$observacao = mysqli_real_escape_string($conn, $_POST['observacao']);
-$data_doacao = mysqli_real_escape_string($conn, $_POST['data_doacao']);
+$parcelado = mysqli_real_escape_string($conn, $_POST['parcelado']);
+$observacao_pagamento = mysqli_real_escape_string($conn, $_POST['observacao_pagamento']);
+$data_pagamento = mysqli_real_escape_string($conn, $_POST['data_pagamento']);
 
 if (isset($_POST['dinheiro']))
     $valor = $dinheiro;
 else
     $valor = 0;
 
-if (isset($_POST['produto']) && isset($_POST['quantidade'])){
-    $prod = $_POST['produto'];
-    $qtd = $_POST['quantidade'];
+if (isset($_POST['parcelado'])){
+    $parcelado = $_POST['parcelado'];
 } else {
-    $prod = '';
-    $qtd = 0;
+    $parcelado = 0;
 }
 
-if ($_POST['doador'] == '')
-    $doador = "Anonimo";
-else
-    $doador = $_POST['doador'];
-
-$sql = "INSERT INTO doacao (doador, telefone, cpf, tipo_doacao, dinheiro, produto, quantidade, observacao, data_doacao)
-        VALUES ('$doador', '$telefone', '$cpf', '$tipo_doacao', $valor, '$prod', $qtd, '$observacao', '$data_doacao');
+$sql = "INSERT INTO lancar_despesa_pagamento (recebedor, endereco, estado, telefone, cpfcnpj, valor_pagar, forma_pagamento, dinheiro, parcelado, observacao_pagamento, data_pagamento)
+        VALUES ('$recebedor', '$endereco', '$estado', '$telefone', '$cpfcnpj', '$valor_pagar', '$forma_pagamento', $valor, '$parcelado', '$observacao_pagamento', '$data_pagamento');
         ";
-
+var_dump($sql);
 $inserir = mysqli_query($conn, $sql);
 //echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 ?>
@@ -60,7 +55,7 @@ $inserir = mysqli_query($conn, $sql);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen" />
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
@@ -74,16 +69,16 @@ $inserir = mysqli_query($conn, $sql);
     <div id="ong" class="container-ong">
         <div class="row">
 
-            <?php include('../menu_lateral.php') ?>
+            <?php include('../../menu_lateral.php') ?>
             <!--Menu lateral FIM-->
 
             <div id="container-menu" class="principal col" style="height: 100vh;">
                 <div class="cadastro-pet">
                     <div class="btn-cadastrar text-center">
-                        <h4 class="titulos-topo">Doação registrada com sucesso.</h4>
+                        <h4 class="titulos-topo">Pagamento registrado com sucesso.</h4>
                         <div style="padding-top: 20px">
 
-                            <a href="../menu.php" role="button" class="btn btn-success">Voltar</a>
+                            <a href="../../menu.php" role="button" class="btn btn-success">Voltar</a>
                         </div>
                     </div>
                 </div>
