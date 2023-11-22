@@ -85,7 +85,7 @@ function formataData($date){
                       $count = 0;
 
                       while ($array = mysqli_fetch_array($busca)){
-                        $id_pagamento = $array['id_doacao'];
+                        $id_pagamento = $array['id_pagamento'];
                         $recebedor = $array['recebedor'];
                         $cpfcnpj = $array['cpfcnpj'];
                         $telefone = $array['telefone'];
@@ -109,7 +109,7 @@ function formataData($date){
                             <td><?php echo $forma_pagamento; ?></td>
                             <td><?php echo formataData($data_pagamento); ?></td>
                             <td>      
-                                <button data-toggle="modal" data-target="#view-modal<?php echo $count ?>" data-id="<?php echo $array['id_doacao']; ?>" id="getUser" class="btn btn-sm btn-info">
+                                <button data-toggle="modal" data-target="#view-modal<?php echo $count ?>" data-id="<?php echo $array['id_pagamento']; ?>" id="getUser" class="btn btn-sm btn-info">
                                     <i class="glyphicon glyphicon-eye-open"></i> 
                                     Detalhes
                                 </button>
@@ -119,7 +119,7 @@ function formataData($date){
                                     <div class="modal-content">                  
                                         <div class="modal-header">
                                             <h4 class="modal-title">
-                                                <i class="glyphicon glyphicon-thumbs-up"></i> Detalhes Doação
+                                                <i class="glyphicon glyphicon-thumbs-up"></i> Detalhes Pagamento
                                             </h4>  
                                         </div> 
                                         <div class="modal-body">                       
@@ -133,7 +133,7 @@ function formataData($date){
                                                     <div id="wwwdynamic-content">
                                                         CPF/CNPJ: <?php echo $cpfcnpj.'<br>'; ?>
                                                         Valor R$: <?php echo $dinheiro.'<br>'; ?>
-                                                        Observação: <?php echo $observacao.'<br>'; ?>
+                                                        Observação: <?php echo $observacao_pagamento.'<br>'; ?>
                                                         Endereço: <?php echo $endereco.'<br>'; ?>
                                                         Estado: <?php echo $estado.'<br>'; ?>
                                                     </div>
@@ -141,7 +141,7 @@ function formataData($date){
                                                     <div id="wwwdynamic-content">
                                                         CPF/CNPJ: <?php echo $cpfcnpj.'<br>'; ?>
                                                         Quantidade parcelas: <?php echo $parcelado.'<br>'; ?>
-                                                        Observação: <?php echo $observacao.'<br>'; ?>
+                                                        Observação: <?php echo $observacao_pagamento.'<br>'; ?>
                                                         Endereço: <?php echo $endereco.'<br>'; ?>
                                                         Estado: <?php echo $estado.'<br>'; ?>
                                                     </div>                                                
