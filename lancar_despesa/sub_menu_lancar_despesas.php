@@ -66,7 +66,7 @@ $nivel = $arr['nivelUsuario'];
                 <h5 class="card-title">Gerenciar Compras</h5>
                 <p class="card-text">Cadastro e listagem de compras.</p>
                 <div class="botao-card-inicio">
-                  <a href="crud_pessoas/listar_pessoas.php" class="btn btn-card">Adicionar Compras</a>
+                  <a href="compra/cadastro_compra.php" class="btn btn-card">Adicionar Compras</a>
                 </div>
               </div>
             </div>
