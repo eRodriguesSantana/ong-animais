@@ -19,7 +19,7 @@ $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
 
 function formataData($date){
-    $newDate = explode("/", $date);
+    $newDate = explode("-", $date);
     $newDate2 = explode(" ", $newDate[2]);
       
     return $newDate2[0]."-".$newDate[1]."-".$newDate[0]." ".$newDate2[1]."<br>";

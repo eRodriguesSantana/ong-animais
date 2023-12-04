@@ -12,6 +12,13 @@ include "../../sql/conexao.php";
 
 $matricula = $_SESSION['matricula'];
 
+function formataData($date){
+    $newDate = explode("/", $date);
+    $newDate2 = explode(" ", $newDate[2]);
+        
+    return $newDate2[0]."-".$newDate[1]."-".$newDate[0]." ".$newDate2[1];
+}
+
 $sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
@@ -27,7 +34,7 @@ $forma_pagamento = mysqli_real_escape_string($conn, $_POST['forma_pagamento']);
 $dinheiro = trim(mysqli_real_escape_string($conn, $_POST['dinheiro']));
 $parcelado = mysqli_real_escape_string($conn, $_POST['parcelado']);
 $observacao_pagamento = mysqli_real_escape_string($conn, $_POST['observacao_pagamento']);
-$data_pagamento = mysqli_real_escape_string($conn, $_POST['data_pagamento']);
+$data_pagamento = formataData(mysqli_real_escape_string($conn, $_POST['data_pagamento']));
 
 if (isset($_POST['dinheiro']))
     $valor = $dinheiro;
@@ -44,6 +51,7 @@ $sql = "INSERT INTO lancar_despesa_pagamento (recebedor, endereco, estado, telef
         VALUES ('$recebedor', '$endereco', '$estado', '$telefone', '$cpfcnpj', '$valor_pagar', '$forma_pagamento', $valor, '$parcelado', '$observacao_pagamento', '$data_pagamento');
         ";
 $inserir = mysqli_query($conn, $sql);
+
 //echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 ?>
 

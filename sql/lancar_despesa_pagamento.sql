@@ -34,5 +34,9 @@ CREATE TABLE `lancar_despesa_pagamento` (
   primary key (id_pagamento)
 );
 
+ALTER TABLE `ong`.`lancar_despesa_pagamento` 
+CHANGE COLUMN `data_pagamento` `data_pagamento` DATETIME NOT NULL ;
+
+
 INSERT INTO `lancar_despesa_pagamento` VALUES (1, 'Edu Racoes','Rua das Racoes, 303, Jd Da Racao','SP','(11) 11111-1111',
-'111.111.111-11','100.00', 'dinheiro','100.00',0, "", '10/10/2023 18:18:11');
+'111.111.111-11','100.00', 'dinheiro','100.00',0, "", '2023-09-15 18:18:11');
