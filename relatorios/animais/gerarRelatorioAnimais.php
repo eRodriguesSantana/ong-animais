@@ -71,4 +71,4 @@ $dompdf->setPaper('A4', 'landscape');
 $dompdf->render();
 
 // Enviando o PDF para o browser
-$dompdf->stream();
+$dompdf->stream('relatorio-animais.pdf');
