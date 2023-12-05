@@ -27,53 +27,37 @@ function formataData($date){
 
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-b">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../../css/style.css" media="screen" />
-    <!--Bootstrap-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <title>ONG Sistema de Adoção Pet</title>
+    <title>Geração Relatório Contas a Pagar</title>
+    <style>
+        table
+        {
+            width: 300px;
+            font: 17px Calibri;
+        }
+        table, th, td 
+        {
+            border: solid 1px #DDD;
+            border-collapse: collapse;
+            padding: 2px 3px;
+            text-align: center;
+        }
+    </style>
 </head>
-
 <body>
-    <div id="ong" class="container-ong">
-        <div class="row">
-
-        <?php include('../../menu_lateral.php') ?>
-            <!--Menu lateral FIM-->
-
-            <div id="container-adocao-listagem" class="principal col">
-                <h4 style="font-size: 20px; font-weight: 300">Pagamentos</h4>
-                <div class="btn-grupo-principal">
-                    <a href="cadastro_pagamento.php" class="btn btn-grupo" role="button">Cadastrar Pagamento</a>
-                    <a href="listar_pagamentos_pdf.php" class="btn btn-grupo" role="button" target="_blanl">Gerar Relatório</a>
-                </div>
-                <hr>
-                <div class="busca">
-                    <input id="filtra-pagamento" class="campo-busca form-control" type="text" placeholder="Buscar pagamento">
-                    <button id="buscar" type="button" class="btn btn-busca">Pesquisar</button>
-                </div>
-                <table id="busca-pagamento" class="table">
+    <div id="tabela">
+    <table>
                     <thead>
                         <tr class="topo-colunas">
                           <th scope="col">Recebedor</th>
+                          <th scope="col">CPF/CNPJ</th>
                           <th scope="col">Telefone</th>
                           <th scope="col">Forma pagamento</th>
+                          <th scope="col">Dinheiro</th>
+                          <th scope="col">Parcelas</th>
                           <th scope="col">Data pagamento</th>
-                          <th scope="col">Ação</th>
+                          
                         </tr>
                     </thead>
                     <tbody>
@@ -106,15 +90,13 @@ function formataData($date){
                       ?>
                         <tr style="font-size: 14px">
                             <td><?php echo $recebedor; ?></td>
+                            <td><?php echo $cpfcnpj; ?></td>
                             <td><?php echo $telefone; ?></td>
                             <td><?php echo $forma_pagamento; ?></td>
+                            <td><?php echo $dinheiro; ?></td>
+                            <td><?php echo $parcelado; ?></td>
                             <td><?php echo formataData($data_pagamento); ?></td>
-                            <td>      
-                                <button data-toggle="modal" data-target="#view-modal<?php echo $count ?>" data-id="<?php echo $array['id_pagamento']; ?>" id="getUser" class="btn btn-sm btn-info">
-                                    <i class="glyphicon glyphicon-eye-open"></i> 
-                                    Detalhes
-                                </button>
-						    </td>
+                            
                             <div id="view-modal<?php echo $count ?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                                 <div class="modal-dialog"> 
                                     <div class="modal-content">                  
@@ -159,42 +141,31 @@ function formataData($date){
                       <?php }?>
                     </tbody>
                 </table>
-            </div>
-        </div>    
     </div>
-
-    <!--JS do Bootstrap-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <script>
-        window.addEventListener("DOMContentLoaded", (event) => {
-            document.getElementById('buscar').addEventListener('click', pesquisaTabela);
-
-            function pesquisaTabela() {
-                // Declare variables
-                var input, filter, table, tr, td, i;
-                input = document.getElementById("filtra-pagamento");
-                filter = input.value.toUpperCase();
-                table = document.getElementById("busca-pagamento");
-                tr = table.getElementsByTagName("tr");
-                // Loop through all table rows, and hide those who don't match the search query
-                for (i = 1; i < tr.length; i++) {
-                    var match = tr[i].innerHTML.toUpperCase().indexOf(filter) > -1;
-                    tr[i].style.display = match ? "" : "none";
-                }
-            }
-        });
-    </script>
+    <p>
+        <input type="button" value="Criar PDF" id="btnImprimir" onclick="CriaPDF()" />
+    </p>
 </body>
+
+<script>
+    function CriaPDF() {
+        var minhaTabela = document.getElementById('tabela').innerHTML;
+        var style = "<style>";
+        style = style + "table {width: 100%;font: 20px Calibri;}";
+        style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
+        style = style + "padding: 2px 3px;text-align: center;}";
+        style = style + "</style>";
+        // CRIA UM OBJETO WINDOW
+        var win = window.open('', '', 'height=700,width=700');
+        win.document.write('<html><head>');
+        win.document.write('<title>Geração Relatório Contas a Pagar</title>');   // <title> CABEÇALHO DO PDF.
+        win.document.write(style);                                     // INCLUI UM ESTILO NA TAB HEAD
+        win.document.write('</head>');
+        win.document.write('<body>');
+        win.document.write(minhaTabela);                          // O CONTEUDO DA TABELA DENTRO DA TAG BODY
+        win.document.write('</body></html>');
+        win.document.close(); 	                                         // FECHA A JANELA
+        win.print();                                                            // IMPRIME O CONTEUDO
+    }
+</script>
 </html>
