@@ -25,7 +25,7 @@ $tipo_animal = trim(mysqli_real_escape_string($conn, $_POST['tipo_animal']));
 $peso_aproximado = mysqli_real_escape_string($conn, $_POST['peso_aproximado']);
 $observacao = mysqli_real_escape_string($conn, $_POST['observacao']);
 $data_entrada = mysqli_real_escape_string($conn, $_POST['data_entrada']);
-$imagem = mysqli_real_escape_string($conn, $_POST['imagem']);
+$imagem = " ";//mysqli_real_escape_string($conn, $_POST['imagem']);
 
 if (isset($_POST['raca_gato']))
     $raca_gato = $_POST['raca_gato'];
