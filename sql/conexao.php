@@ -2,7 +2,7 @@
 $servername = "localhost";
 $database = "ong";
 $username = "root";
-$password = "root";
+$password = "treino";
 date_default_timezone_set('America/Sao_Paulo');
 
 try {
