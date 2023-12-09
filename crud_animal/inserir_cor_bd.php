@@ -5,7 +5,7 @@ session_start();
 if (!$_POST) {
   unset($_SERVER['nomeusuario']);
   unset($_SESSION['matriculausuario']);
-  header('Location: ../../index.php');
+  header('Location: ../index.php');
 }
 
 include "../sql/conexao.php";
@@ -49,7 +49,7 @@ mysqli_close($conn);
 <body>
   <div id="ong" class="container-ong">
     <div class="row">
-    <?php include('../menu_lateral.php') ?>
+    <?php include('menu_lateral.php') ?>
       <div id="container-cadastro-pet" class="principal col">
         <div class="cadastro-pet">
           <div class="container" style="width: 700px; margin-top: 40px">

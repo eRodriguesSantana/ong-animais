@@ -11,7 +11,7 @@ if(!isset($_SESSION['matricula']) || empty($_SESSION['matricula']))
 
 $matricula = $_SESSION['matricula'];
 
-include "../../conexao.php";
+include "../../sql/conexao.php";
 
 $sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
@@ -51,7 +51,7 @@ $id_cachorro = $_GET['id_cachorro'];
             <div id="container-cadastro-pet" class="principal col" style="height: 100vh;">
                 <h4 class="titulos-topo">Cadastro de Cachorro</h4>
                 <div class="btn-grupo-principal">
-                    <a href="sub_menu_cao.php" role="button" class="btn-grupo btn">Voltar</a>
+                    <a href="listagem_caes.php" role="button" class="btn-grupo btn">Voltar</a>
                 </div>
                 <hr>
                 <div class="cadastro-pet">

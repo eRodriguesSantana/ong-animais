@@ -11,14 +11,14 @@ if(!isset($_SESSION['matricula']) || empty($_SESSION['matricula']))
 
 $matricula = $_SESSION['matricula'];
 
-include "../../conexao.php";
+include "../../sql/conexao.php";
 
 $sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
 
-$id = $_GET['id_cachorro'];
+$id = $_GET['id_gato'];
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +53,7 @@ $id = $_GET['id_cachorro'];
       <div class="btn-cadastrar text-center">
         <h4 class="titulos-topo">Confirma exclusão do cãozinho(a) ?</h4>
           <form action="" method="post">
-            <a href="deletar_cao.php?id_cachorro=<?php echo $id; ?>" role="button" class="btn btn-danger">Sim</a>
+            <a href="deletar_gato.php?id_gato=<?php echo $id; ?>" role="button" class="btn btn-danger">Sim</a>
             <a href='listagem_gatos.php' role='button' class='btn btn-success'>Não</a>
           </form>
       </div>

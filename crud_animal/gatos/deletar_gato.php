@@ -5,21 +5,21 @@ session_start();
 // o mesmo será redirecionado para a tela de login
 if (!isset($_SESSION['matricula']) || empty($_SESSION['matricula'])) {
   unset($_SESSION['matricula']);
-  header('Location: ../index.php');
+  header('Location: ../../index.php');
 }
 
 $matricula = $_SESSION['matricula'];
 
-include "../conexao.php";
+include "../../sql/conexao.php";
 
 $sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
 
-$id = $_GET['id_cachorro'];
+$id = $_GET['id_gato'];
 
-$sql = "DELETE FROM cachorros WHERE id_cachorro = $id";
+$sql = "DELETE FROM gatos WHERE id_gato = $id";
 
 $deletar = mysqli_query($conn, $sql);
 ?>
@@ -46,7 +46,7 @@ $deletar = mysqli_query($conn, $sql);
   <div id="ong" class="container-ong">
     <div class="row">
 
-      <?php include('../../menu_lateral.php') ?>
+      <?php include('../menu_lateral.php') ?>
       <!--Menu lateral FIM-->
 
       <div id="container-cadastro-pet" class="principal col" style="height: 100vh;">
@@ -54,7 +54,7 @@ $deletar = mysqli_query($conn, $sql);
           <div class="btn-cadastrar text-center">
             <h4 class="titulos-topo">Registro deletado com sucesso.</h4>
             <div style="padding-top: 20px">
-              <a href="listagem_caes.php" role="button" class="btn btn-success">Voltar</a>
+              <a href="listagem_gatos.php" role="button" class="btn btn-success">Voltar</a>
             </div>
           </div>
         </div>

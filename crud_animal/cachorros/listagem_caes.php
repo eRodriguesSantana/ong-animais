@@ -10,7 +10,7 @@ if (!isset($_SESSION['matricula']) || empty($_SESSION['matricula'])) {
 
 $matricula = $_SESSION['matricula'];
 
-include "../../conexao.php";
+include "../../sql/conexao.php";
 
 $sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
@@ -54,7 +54,7 @@ function formataData($date)
                 <h4 class="titulos-topo">Todos os cães na ONG</h4>
                 <div class="btn-grupo-principal">
                     <a href="cadastrar_cao.php" class="btn btn-grupo" role="button">Cadastrar Cachorro</a><!--Entrada Pet-->
-                    <a href="#" class="btn btn-grupo" role="button">Nova Adoção</a><!--Saída Pet-->
+                    <a href="../../crud_adocao/listar_adocao.php" class="btn btn-grupo" role="button">Nova Adoção</a><!--Saída Pet-->
                 </div>
                 <hr>
                 <div class="busca">

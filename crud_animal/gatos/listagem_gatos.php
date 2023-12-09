@@ -6,12 +6,12 @@ session_start();
 if(!isset($_SESSION['matricula']) || empty($_SESSION['matricula']))
 {
   unset($_SESSION['matricula']);
-  header('Location: ../index.php');
+  header('Location: ../../index.php');
 }
 
 $matricula = $_SESSION['matricula'];
 
-include "../conexao.php";
+include "../../sql/conexao.php";
 
 $sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
@@ -50,14 +50,14 @@ function formataData($date){
     <div id="ong" class="container-ong">
         <div class="row">
            
-        <?php include('../../menu_lateral.php') ?>
+        <?php include('../menu_lateral.php') ?>
             <!--Menu lateral FIM-->
 
             <div id="container-adocao-listagem" class="principal col">
                 <h4 class="titulos-topo">Todos os cães na ONG</h4>
                 <div class="btn-grupo-principal">
-                    <a href="cadastrar_cao.php" class="btn btn-grupo" role="button">Cadastrar Cachorro</a><!--Entrada Pet-->
-                    <a href="#" class="btn btn-grupo" role="button">Nova Adoção</a><!--Saída Pet-->
+                    <a href="cadastrar_gato.php" class="btn btn-grupo" role="button">Cadastrar Cachorro</a><!--Entrada Pet-->
+                    <a href="../../crud_adocao/listar_adocao.php" class="btn btn-grupo" role="button">Nova Adoção</a><!--Saída Pet-->
                 </div>
                 <hr>
                 <div class="busca">
@@ -80,37 +80,37 @@ function formataData($date){
                     <tbody>
                     <?php
                         $sql = "SELECT * 
-                            FROM cachorros 
-                            ORDER BY id_cachorro ASC";
+                            FROM gatos 
+                            ORDER BY id_gato ASC";
                         $busca = mysqli_query($conn, $sql);
 
                         while ($array = mysqli_fetch_array($busca)){
-                            $id_cachorro = $array['id_cachorro'];
-                            $nome_animal_cachorro = $array['nome_animal_cachorro'];
-                            $sexo_animal_cachorro = $array['sexo_animal_cachorro'];
-                            $raca_cachorro = $array['raca_cachorro'];
-                            $peso_aproximado_cachorro = $array['peso_aproximado_cachorro'];
-                            $observacao_cachorro = $array['observacao_cachorro'];
-                            $data_entrada_cachorro = $array['data_entrada_cachorro'];
-                            $image_cachorro = $array['image_cachorro'];
+                            $id_gato = $array['id_gato'];
+                            $nome_animal_gato = $array['nome_animal_gato'];
+                            $sexo_animal_gato = $array['sexo_animal_gato'];
+                            $raca_gato = $array['raca_gato'];
+                            $peso_aproximado_gato = $array['peso_aproximado_gato'];
+                            $observacao_gato = $array['observacao_gato'];
+                            $data_entrada_gato = $array['data_entrada_gato'];
+                            $image_gato = $array['image_gato'];
                     ?>
               <tr style="font-size: 14px">
-                <td><?php echo $nome_animal_cachorro; ?></td>
-                <td><?php echo $sexo_animal_cachorro; ?></td>
-                <td><?php echo $raca_cachorro; ?></td>
-                <td><?php echo $peso_aproximado_cachorro; ?></td>
-                <td><?php echo $observacao_cachorro; ?></td>
-                <td><?php echo formataData($data_entrada_cachorro); ?></td>
-                <td><?php echo $image_cachorro; ?></td>                
+                <td><?php echo $nome_animal_gato; ?></td>
+                <td><?php echo $sexo_animal_gato; ?></td>
+                <td><?php echo $raca_gato; ?></td>
+                <td><?php echo $peso_aproximado_gato; ?></td>
+                <td><?php echo $observacao_gato; ?></td>
+                <td><?php echo formataData($data_entrada_gato); ?></td>
+                <td><?php echo $image_gato; ?></td>                
                 <td>
                   <?php
                     if(($matricula == 2) || $matricula == 12){
                   ?>
-                  <a class="btn btn-warning btn-sm" href="editar_cao.php?id_cachorro=<?php echo $id_cachorro; ?>" 
+                  <a class="btn btn-warning btn-sm" href="editar_cao.php?id_gato=<?php echo $id_gato; ?>" 
                     role="button"><i class="fas fa-eye"></i>Editar
                   </a>  
                   
-                  <a class="btn btn-danger btn-sm" href="confirmar_exclusao_cao.php?id_cachorro=<?php echo $id_cachorro; ?>" 
+                  <a class="btn btn-danger btn-sm" href="confirmar_exclusao_cao.php?id_gato=<?php echo $id_gato; ?>" 
                     role="button"><i class="fas fa-eye"></i>Excluir
                   </a>
                   <?php } 

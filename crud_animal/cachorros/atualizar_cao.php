@@ -10,7 +10,7 @@ if (!isset($_SESSION['matricula']) || empty($_SESSION['matricula'])) {
 
 $matricula = $_SESSION['matricula'];
 
-include "../../conexao.php";
+include "../../sql/conexao.php";
 
 $sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);

@@ -29,8 +29,9 @@ $nivel = $arr['nivelUsuario']
         <a href="listar_animais.php" class="btn-menu btn">Gerenciar Animais</a>
         <a href="../crud_adocao/listar_adocao.php" class="btn-menu btn">Gerenciar Adoção</a>
         <a href="../crud_pessoas/listar_pessoas.php" class="btn-menu btn">Gerenciar Pessoas</a>
-        <a href="..crud_pessoas/aprovar_pessoa.php" class="btn-menu btn">Ativar Voluntários</a>
-        
+        <a href="../crud_pessoas/aprovar_pessoa.php" class="btn-menu btn">Ativar Voluntários</a>
+        <a href="../crud_doacao/cadastro_doacao.php" class="btn-menu btn">Gerenciar Doação</a>
+        <a href="../lancar_despesa/sub_menu_lancar_despesas.php" class="btn-menu btn">Lançar Despesas</a>
     </div>
     <div class="sair-rodape">
         <a class="btn-sair" href="#"><span><i class="bi bi-person-circle"></i></span>Nome do Usuário

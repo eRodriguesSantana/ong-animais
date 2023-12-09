@@ -10,32 +10,32 @@ if (!isset($_SESSION['matricula']) || empty($_SESSION['matricula'])) {
 
 $matricula = $_SESSION['matricula'];
 
-include "../../conexao.php";
+include "../../sql/conexao.php";
 
 $sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
 
-$id_cachorro = $_POST['id_cachorro'];
-$nome_animal_cachorro = $_POST['nome_animal_cachorro'];
-$sexo_animal_cachorro = $_POST['sexo_animal_cachorro'];
-$raca_cachorro = $_POST['raca_cachorro'];
-$peso_aproximado_cachorro = $_POST['peso_aproximado_cachorro'];
-$observacao_cachorro = $_POST['observacao_cachorro'];
-$data_entrada_cachorro = $_POST['data_entrada_cachorro'];
-$image_cachorro = $_POST['image_cachorro'];
+$id_gato = $_POST['id_gato'];
+$nome_animal_gato = $_POST['nome_animal_gato'];
+$sexo_animal_gato = $_POST['sexo_animal_gato'];
+$raca_gato = $_POST['raca_gato'];
+$peso_aproximado_gato = $_POST['peso_aproximado_gato'];
+$observacao_gato = $_POST['observacao_gato'];
+$data_entrada_gato = $_POST['data_entrada_gato'];
+$image_gato = $_POST['image_gato'];
 
-$sql = "UPDATE cachorros
+$sql = "UPDATE gatos
         SET 
-          nome_animal_cachorro = '$nome_animal_cachorro',
-          sexo_animal_cachorro = '$sexo_animal_cachorro',
-          raca_cachorro = '$raca_cachorro',
-          peso_aproximado_cachorro = '$peso_aproximado_cachorro',
-          observacao_cachorro = '$observacao_cachorro',
-          data_entrada_cachorro = '$data_entrada_cachorro',
-          image_cachorro = '$image_cachorro'
-        WHERE id_cachorro = $id_cachorro";
+          nome_animal_gato = '$nome_animal_gato',
+          sexo_animal_gato = '$sexo_animal_gato',
+          raca_gato = '$raca_gato',
+          peso_aproximado_gato = '$peso_aproximado_gato',
+          observacao_gato = '$observacao_gato',
+          data_entrada_gato = '$data_entrada_gato',
+          image_gato = '$image_gato'
+        WHERE id_gato = $id_gato";
 
 $atualizar = mysqli_query($conn, $sql);
 ?>

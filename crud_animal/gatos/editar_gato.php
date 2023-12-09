@@ -5,19 +5,19 @@ session_start();
 // o mesmo será redirecionado para a tela de login
 if (!isset($_SESSION['matricula']) || empty($_SESSION['matricula'])) {
     unset($_SESSION['matricula']);
-    header('Location: ../index.php');
+    header('Location: ../../index.php');
 }
 
 $matricula = $_SESSION['matricula'];
 
-include "../conexao.php";
+include "../../sql/conexao.php";
 
 $sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
 
-$id_cachorro = $_GET['id_cachorro'];
+$id_gato = $_GET['id_gato'];
 ?>
 
 <!DOCTYPE html>
@@ -41,58 +41,58 @@ $id_cachorro = $_GET['id_cachorro'];
     <div id="ong" class="container-ong">
         <div class="row">
 
-            <?php include('../../menu_lateral.php') ?>
+            <?php include('../menu_lateral.php') ?>
             <!--Menu lateral FIM-->
 
             <div id="container-cadastro-pet" class="principal col" style="height: 100vh;">
-                <h4 class="titulos-topo">Editar dados do cão</h4>
+                <h4 class="titulos-topo">Editar dados do gato</h4>
                 <div class="btn-grupo-principal">
-                    <a href="sub_menu_cao.php" role="button" class="btn-grupo btn">Voltar</a>
+                    <a href="listagem_gatos.php" role="button" class="btn-grupo btn">Voltar</a>
                 </div>
 
                 <hr>
 
                 <div class="cadastro-pet">
-                    <h5 class="titulo-cad">Editar dados do cachorro</h5>
-                    <form action="atualizar_cao.php" method="post">
-                        <input type="number" name="id_cachorro" value="<?php echo $id_cachorro; ?>" style="display: none;">
+                    <h5 class="titulo-cad">Editar dados do gato</h5>
+                    <form action="atualizar_gato.php" method="post">
+                        <input type="number" name="id_gato" value="<?php echo $id_gato; ?>" style="display: none;">
                         <?php
                         $sql = "SELECT * 
-                              FROM cachorros 
-                              WHERE id_cachorro = $id_cachorro";
+                              FROM gatos 
+                              WHERE id_gato = $id_gato";
                         $busca = mysqli_query($conn, $sql);
 
                         while ($array = mysqli_fetch_array($busca)) {
-                            $id_cachorro = $array['id_cachorro'];
-                            $nome_animal_cachorro = $array['nome_animal_cachorro'];
-                            $sexo_animal_cachorro = $array['sexo_animal_cachorro'];
-                            $raca_cachorro = $array['raca_cachorro'];
-                            $peso_aproximado_cachorro = $array['peso_aproximado_cachorro'];
-                            $observacao_cachorro = $array['observacao_cachorro'];
-                            $data_entrada_cachorro = $array['data_entrada_cachorro'];
-                            $image_cachorro = $array['image_cachorro'];
+                            $id_gato = $array['id_gato'];
+                            $nome_animal_gato = $array['nome_animal_gato'];
+                            $sexo_animal_gato = $array['sexo_animal_gato'];
+                            $raca_gato = $array['raca_gato'];
+                            $peso_aproximado_gato = $array['peso_aproximado_gato'];
+                            $observacao_gato = $array['observacao_gato'];
+                            $data_entrada_gato = $array['data_entrada_gato'];
+                            $image_gato = $array['image_gato'];
                         ?>
                             <div class="form-group">
-                                <label for="id_cachorro">ID Cachorro</label>
-                                <input type="text" class="form-control" name="id_cachorro" value="<?php echo $id_cachorro; ?>" disabled>
+                                <label for="id_gato">ID gato</label>
+                                <input type="text" class="form-control" name="id_gato" value="<?php echo $id_gato; ?>" disabled>
                             </div>
                             <div class="form-group">
-                                <label for="nome_animal_cachorro">Nome da fera *-*</label>
-                                <input type="text" class="form-control" name="nome_animal_cachorro" value="<?php echo $nome_animal_cachorro; ?>" aria-describedby="nome_animal_cachorro" required oninvalid="this.setCustomValidity('Nome obrigatório')" oninput="setCustomValidity('')" autocomplete="off" placeholder="Digite o nome do amiguinho(a) :D">
+                                <label for="nome_animal_gato">Nome da fera *-*</label>
+                                <input type="text" class="form-control" name="nome_animal_gato" value="<?php echo $nome_animal_gato; ?>" aria-describedby="nome_animal_gato" required oninvalid="this.setCustomValidity('Nome obrigatório')" oninput="setCustomValidity('')" autocomplete="off" placeholder="Digite o nome do amiguinho(a) :D">
                             </div>
                             <div class="form-group">
-                                <label for="sexo_animal_cachorro">Sexo:</label>
-                                <select name="sexo_animal_cachorro" class="form-control" required oninvalid="this.setCustomValidity('Sexo obrigatório')" oninput="setCustomValidity('')">
+                                <label for="sexo_animal_gato">Sexo:</label>
+                                <select name="sexo_animal_gato" class="form-control" required oninvalid="this.setCustomValidity('Sexo obrigatório')" oninput="setCustomValidity('')">
                                     <option value="">Selecione</option>
                                     <?php
-                                    if ($sexo_animal_cachorro == "Femêa") {
+                                    if ($sexo_animal_gato == "Femêa") {
                                     ?>
-                                        <option value="<?php echo $sexo_animal_cachorro; ?>" selected="selected">Femêa</option>
+                                        <option value="<?php echo $sexo_animal_gato; ?>" selected="selected">Femêa</option>
                                         <option value="Macho">Macho</option>
                                     <?php } else
                                     ?>
                                     <option value="Femêa">Femêa</option>
-                                    <option value="<?php echo $sexo_animal_cachorro; ?>" selected="selected">Macho</option>
+                                    <option value="<?php echo $sexo_animal_gato; ?>" selected="selected">Macho</option>
                                 </select>
                             </div>
                             <div class="form-group">
