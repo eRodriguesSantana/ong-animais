@@ -5,12 +5,12 @@ session_start();
 // o mesmo será redirecionado para a tela de login
 if (!isset($_SESSION['matricula']) || empty($_SESSION['matricula'])) {
   unset($_SESSION['matricula']);
-  header('Location: index.php');
+  header('Location: ../index.php');
 }
 
 $matricula = $_SESSION['matricula'];
 
-include "sql/conexao.php";
+include "../sql/conexao.php";
 
 $sql = "SELECT nivelUsuario, nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
@@ -36,6 +36,6 @@ $nivel = $arr['nivelUsuario'];
     <div class="sair-rodape">
         <a class="btn-sair" href="#"><span><i class="bi bi-person-circle"></i></span>Nome do Usuário
             Logado: <?php echo $nome_completo; ?></a>
-        <a class="btn-sair" href="./sair.php"><span><i class="bi bi-box-arrow-right"></i></span>Sair</a>
+        <a class="btn-sair" href="../sair.php"><span><i class="bi bi-box-arrow-right"></i></span>Sair</a>
     </div>
 </div>
