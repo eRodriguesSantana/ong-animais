@@ -74,7 +74,7 @@ $inserir = mysqli_query($conn, $sql);
     <div id="ong" class="container-ong">
         <div class="row">
 
-            <?php include('../menu_lateral.php') ?>
+            <?php include('menu_lateral.php') ?>
             <!--Menu lateral FIM-->
 
             <div id="container-menu" class="principal col" style="height: 100vh;">
