@@ -17,12 +17,70 @@ $sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula an
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
+$dataAnimais = [];
+$contador = 0;
+$sql = "SELECT * 
+          FROM animal
+          ORDER BY id_animal ASC";
+      $busca = mysqli_query($conn, $sql);
+      while ($array = mysqli_fetch_array($busca)){
+        $id_animal = $array['id_animal'];
+        $imagem = $array['imagem'];
+        $nome_animal = $array['nome_animal'];
+        $sexo_animal = $array['sexo_animal'];
+        $tipo_animal = $array['tipo_animal'];
+        $situacao = $array['situacao'];
+        $id_cor = $array['cor_animal'];
+
+        $sql_cor = "SELECT distinct cor_animal.nome_cor 
+                FROM cor_animal
+                WHERE cor_animal.id_cor = " . $array['cor_animal'] .";";
+            $busca_cor = mysqli_query($conn, $sql_cor);
+            $result_cor = $busca_cor->fetch_assoc();
+            $cor = $result_cor['nome_cor'];
+        $raca = "";
+        if($tipo_animal == "Gato"){
+            $sql_gato = "SELECT distinct raca_gato.nome_raca_gato 
+                FROM raca_gato
+                WHERE raca_gato.id_raca_gato = " . $array['raca_gato'] .";";
+            $busca_gato = mysqli_query($conn, $sql_gato);
+            $result_gato = $busca_gato->fetch_assoc();
+            $raca = $result_gato['nome_raca_gato'];
+        }
+        else{
+            $sql_cao = "SELECT distinct raca_cao.nome_raca_cao 
+                FROM raca_cao
+                WHERE raca_cao.id_raca_cao = " . $array['raca_cao'] .";";
+            $busca_cao = mysqli_query($conn, $sql_cao);
+            $result_cao = $busca_cao->fetch_assoc();
+            $raca = $result_cao['nome_raca_cao'];
+        }
+        $cor_animal = $cor;
+        $peso_aproximado = $array['peso_aproximado'];
+        $observacao = $array['observacao'];
+        $data_entrada = $array['data_entrada'];
+        if($situacao == 0){
+          $dataAnimais[$contador] = [
+            "id_animal" => $id_animal,
+            "nome_animal" => $nome_animal,
+            "sexo_animal" => $sexo_animal,
+            "raca" => $raca,
+            "tipo_animal" => $tipo_animal,
+            "cor_animal" => $cor_animal,
+            "peso_aproximado" => $peso_aproximado,
+            "observacao" => $observacao,
+            "data_entrada" => formataData($data_entrada)
+          ];
+          $contador+=1;
+        }
+      }
+$_SESSION['dataAnimais'] = $dataAnimais;
 
 function formataData($date){
-  $newDate = explode("/", $date);
-  $newDate2 = explode(" ", $newDate[2]);
-    
-  return $newDate2[0]."-".$newDate[1]."-".$newDate[0]." ".$newDate2[1]."<br>";
+    $newDate = explode("/", $date);
+    $newDate2 = explode(" ", $newDate[2]);
+      
+    return $newDate2[0]."-".$newDate[1]."-".$newDate[0]." ".$newDate2[1]."<br>";
 }
 
 ?>
@@ -96,14 +154,14 @@ function formataData($date){
                         $sexo_animal = $array['sexo_animal'];
                         $tipo_animal = $array['tipo_animal'];
                         $situacao = $array['situacao'];
-                        $cor = $array['cor_animal'];
+                        $id_cor = $array['cor_animal'];
 
-                        /*$sql_cor = "SELECT distinct cor_animal.nome_cor 
+                        $sql_cor = "SELECT distinct cor_animal.nome_cor 
                                 FROM cor_animal
                                 WHERE cor_animal.id_cor = " . $array['cor_animal'] .";";
                             $busca_cor = mysqli_query($conn, $sql_cor);
                             $result_cor = $busca_cor->fetch_assoc();
-                            $cor = $result_cor['nome_cor'];*/
+                            $cor = $result_cor['nome_cor'];
                         $raca = "";
                         if($tipo_animal == "Gato"){
                             $sql_gato = "SELECT distinct raca_gato.nome_raca_gato 
@@ -121,7 +179,7 @@ function formataData($date){
                             $result_cao = $busca_cao->fetch_assoc();
                             $raca = $result_cao['nome_raca_cao'];
                         }
-                        //$cor_animal = $cor;
+                        $cor_animal = $cor;
                         $peso_aproximado = $array['peso_aproximado'];
                         $observacao = $array['observacao'];
                         $data_entrada = $array['data_entrada'];
@@ -133,7 +191,7 @@ function formataData($date){
                             <td><?php echo $sexo_animal; ?></td>
                             <td><?php echo $tipo_animal; ?></td>
                             <td><?php echo $raca; ?></td>
-                            <td><?php echo $cor; ?></td>
+                            <td><?php echo $cor_animal; ?></td>
                             <td><?php echo $peso_aproximado; ?></td>
                             <td><?php echo $observacao; ?></td>
                             <td><?php echo formataData($data_entrada); ?></td>                
