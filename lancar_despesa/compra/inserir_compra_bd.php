@@ -69,7 +69,7 @@ $inserir = mysqli_query($conn, $sql);
     <div id="ong" class="container-ong">
         <div class="row">
 
-            <?php include('../../menu_lateral.php') ?>
+            <?php include('../menu_lateral.php') ?>
             <!--Menu lateral FIM-->
 
             <div id="container-menu" class="principal col" style="height: 100vh;">
@@ -78,7 +78,7 @@ $inserir = mysqli_query($conn, $sql);
                         <h4 class="titulos-topo">Compra registrada com sucesso.</h4>
                         <div style="padding-top: 20px">
 
-                            <a href="../../menu.php" role="button" class="btn btn-success">Voltar</a>
+                            <a href="../sub_menu_lancar_despesas.php" role="button" class="btn btn-success">Voltar</a>
                         </div>
                     </div>
                 </div>

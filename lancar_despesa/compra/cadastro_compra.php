@@ -5,7 +5,7 @@ session_start();
 // o mesmo será redirecionado para a tela de login
 if (!isset($_SESSION['matricula']) || empty($_SESSION['matricula'])) {
     unset($_SESSION['matricula']);
-    header('Location:http://localhost/ong-animais-pirapo/index.php');
+    header('Location:../../index.php');
 }
 
 $matricula = $_SESSION['matricula'];
@@ -41,13 +41,13 @@ date_default_timezone_set('America/Sao_Paulo');
     <div id="ong" class="container-ong">
         <div class="row">
 
-            <?php include('../../menu_lateral.php') ?>
+            <?php include('../menu_lateral.php') ?>
             <!--Menu lateral FIM-->
 
             <div id="container-cadastro-pet" class="principal col">
                 <h4 class="titulos-topo">Cadastro de Compras</h4>
                 <div class="btn-grupo-principal">
-                    <a href="../../menu.php" role="button" class="btn-grupo btn">Voltar</a>
+                    <a href="../sub_menu_lancar_despesas.php" role="button" class="btn-grupo btn">Voltar</a>
                     <a href="listar_compras.php" role="button" class="btn-grupo btn">Listar Compras</a>
                 </div>
 
