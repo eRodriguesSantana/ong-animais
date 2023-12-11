@@ -5,7 +5,7 @@ require_once '../../domPDF/vendor/autoload.php';
 
 if (!isset($_SESSION['matricula']) || empty($_SESSION['matricula'])) {
     unset($_SESSION['matricula']);
-    header('Location: ../../index.php');
+    header('Location: ../index.php');
 }
 
 $matricula = $_SESSION['matricula'];
