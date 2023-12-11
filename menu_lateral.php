@@ -5,12 +5,12 @@ session_start();
 // o mesmo será redirecionado para a tela de login
 if (!isset($_SESSION['matricula']) || empty($_SESSION['matricula'])) {
   unset($_SESSION['matricula']);
-  header('Location: index.php');
+  header('Location: ../index.php');
 }
 
 $matricula = $_SESSION['matricula'];
 
-include "sql/conexao.php";
+include "../sql/conexao.php";
 
 $sql = "SELECT nivelUsuario, nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
@@ -25,13 +25,13 @@ $nivel = $arr['nivelUsuario'];
         <a href="">Animais Pirapozinho</a>
     </div>
     <div class="btn-group-vertical" role="group" aria-label="Basic example">
-        <a href="ong-animais-pirapo/menu.php" class="btn-menu btn">Início</a>
-        <a href="ong-animais-pirapo/crud_animal/listar_animais.php" class="btn-menu btn">Gerenciar Animais</a>
-        <a href="ong-animais-pirapo/crud_adocao/listar_adocao.php" class="btn-menu btn">Gerenciar Adoção</a>
-        <a href="ong-animais-pirapo/crud_pessoas/listar_pessoas.php" class="btn-menu btn">Gerenciar Pessoas</a>
-        <a href="ong-animais-pirapo/crud_pessoas/aprovar_pessoa.php" class="btn-menu btn">Ativar Voluntários</a>
-        <a href="ong-animais-pirapo/crud_doacao/cadastro_doacao.php" class="btn-menu btn">Gerenciar Doação</a>
-        <a href="lancar_despesa/sub_menu_lancar_despesas.php" class="btn-menu btn">Lançar Despesas</a>
+        <a href="menu.php" class="btn-menu btn">Início</a>
+        <a href="./crud_animal/listar_animais.php" class="btn-menu btn">Gerenciar Animais</a>
+        <a href="./crud_adocao/listar_adocao.php" class="btn-menu btn">Gerenciar Adoção</a>
+        <a href="./crud_pessoas/listar_pessoas.php" class="btn-menu btn">Gerenciar Pessoas</a>
+        <a href="./crud_pessoas/aprovar_pessoa.php" class="btn-menu btn">Ativar Voluntários</a>
+        <a href="./crud_doacao/cadastro_doacao.php" class="btn-menu btn">Gerenciar Doação</a>
+        <a href="./lancar_despesa/sub_menu_lancar_despesas.php" class="btn-menu btn">Gerenciar Despesas</a>
     </div>
     <div class="sair-rodape">
         <a class="btn-sair" href="#"><span><i class="bi bi-person-circle"></i></span>Nome do Usuário
