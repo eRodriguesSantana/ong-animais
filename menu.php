@@ -10,7 +10,7 @@ if (!isset($_SESSION['matricula']) || empty($_SESSION['matricula'])) {
 
 $matricula = $_SESSION['matricula'];
 
-include "conexao.php";
+include "sql/conexao.php";
 
 $sql = "SELECT nivelUsuario, nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
@@ -42,7 +42,7 @@ $nivel = $arr['nivelUsuario']
   <div id="ong" class="container-ong">
     <div class="row">
 
-      <?php include('./menu_lateral.php') ?>
+      <?php include('menu_lateral.php') ?>
       <!--Menu lateral FIM-->
 
       <div id="container-menu" class="principal col">
