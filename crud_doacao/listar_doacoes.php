@@ -108,11 +108,20 @@ function formataData($date){
                             <td><?php echo $telefone; ?></td>
                             <td><?php echo $tipo_doacao; ?></td>
                             <td><?php echo formataData($data_doacao); ?></td>
-                            <td>      
-                                <button data-toggle="modal" data-target="#view-modal<?php echo $count ?>" data-id="<?php echo $array['id_doacao']; ?>" id="getUser" class="btn btn-sm btn-info">
-                                    <i class="glyphicon glyphicon-eye-open"></i> 
-                                    Detalhes
-                                </button>
+                            <td>   
+                                <div class="row">
+                                    <div class="col-md-6 col-sg-6">
+                                        <button data-toggle="modal" data-target="#view-modal<?php echo $count ?>" data-id="<?php echo $array['id_doacao']; ?>" id="getUser" class="btn btn-sm btn-info">
+                                            <i class="glyphicon glyphicon-eye-open"></i> 
+                                            Detalhes
+                                        </button>  
+                                    </div>
+                                    <div class="col-md-6 col-sg-6">
+                                        <a class="btn btn-danger btn-sm" href="confirmar_exclusao_doacao.php?id_doacao=<?php echo $id_doacao; ?>" 
+                                            role="button"><i class="fas fa-eye"></i>Excluir
+                                        </a>
+                                    </div>
+                                </div>
 						    </td>
                             <div id="view-modal<?php echo $count ?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                                 <div class="modal-dialog"> 
