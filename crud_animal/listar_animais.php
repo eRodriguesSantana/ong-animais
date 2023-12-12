@@ -34,7 +34,7 @@ $sql = "SELECT *
 
         $sql_cor = "SELECT distinct cor_animal.nome_cor 
                 FROM cor_animal
-                WHERE cor_animal.id_cor = " . $array['cor_animal'] .";";
+                WHERE id_cor = " . $array['cor_animal'] .";";
             $busca_cor = mysqli_query($conn, $sql_cor);
             $result_cor = $busca_cor->fetch_assoc();
             $cor = $result_cor['nome_cor'];
