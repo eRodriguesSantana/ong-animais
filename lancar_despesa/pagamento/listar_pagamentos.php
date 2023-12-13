@@ -93,6 +93,7 @@ function formataData($date){
                         $forma_pagamento = $array['forma_pagamento'];
                         $endereco = $array['endereco'];
                         $estado = $array['estado'];
+                        $valor_pagar = $array['valor_pagar'];
 
                         if($array['observacao_pagamento'] != '')
                             $observacao_pagamento = $array['observacao_pagamento'];
@@ -141,6 +142,7 @@ function formataData($date){
                                             <?php } else { ?>
                                                     <div id="wwwdynamic-content">
                                                         CPF/CNPJ: <?php echo $cpfcnpj.'<br>'; ?>
+                                                        Valor R$: <?php echo $valor_pagar.'<br>'; ?>
                                                         Quantidade parcelas: <?php echo $parcelado.'<br>'; ?>
                                                         Observação: <?php echo $observacao_pagamento.'<br>'; ?>
                                                         Endereço: <?php echo $endereco.'<br>'; ?>
