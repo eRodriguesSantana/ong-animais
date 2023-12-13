@@ -24,7 +24,7 @@ $html = '
 <html>
 <head></head>
 <body>
-
+<h1 style="text-align: center">Relatório de Animais</h1>
 <table id="busca-animal" class="table" style="width: 100%; border-collapse: collapse; margin-top: 20px;">
     <thead>
         <tr class="topo-colunas" style="background-color: #4CAF50; color: white;">
