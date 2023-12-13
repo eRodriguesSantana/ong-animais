@@ -59,7 +59,7 @@ function formataData($date){
                 <h4 style="font-size: 20px; font-weight: 300">Pagamentos</h4>
                 <div class="btn-grupo-principal">
                     <a href="cadastro_pagamento.php" class="btn btn-grupo" role="button">Cadastrar Pagamento</a>
-                    <a href="listar_pagamentos_pdf.php" class="btn btn-grupo" role="button" target="_blanl">Gerar Relatório</a>
+                    <a href="../../relatorios/lancar_despesa_pagamento/gerarRelatorioPagamento.php" class="btn btn-grupo" role="button">Gerar Relatório</a>
                 </div>
                 <hr>
                 <div class="busca">
