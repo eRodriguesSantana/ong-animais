@@ -30,6 +30,7 @@ $html = '
             <th scope="col" style="border: 1px solid #ddd; padding: 8px; text-align: left;">Recebedor</th>
             <th scope="col" style="border: 1px solid #ddd; padding: 8px; text-align: left;">CPF/CNPJ</th>
             <th scope="col" style="border: 1px solid #ddd; padding: 8px; text-align: left;">Telefone</th>
+            <th scope="col" style="border: 1px solid #ddd; padding: 8px; text-align: left;">Valor a pagar</th>
             <th scope="col" style="border: 1px solid #ddd; padding: 8px; text-align: left;">Forma pagamento</th>
             <th scope="col" style="border: 1px solid #ddd; padding: 8px; text-align: left;">Dinheiro</th>
             <th scope="col" style="border: 1px solid #ddd; padding: 8px; text-align: left;">Parcelas</th>
@@ -60,6 +61,7 @@ while ($array = mysqli_fetch_array($busca)){
         <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">' . $array['recebedor'] . '</td>
         <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">' . $array['cpfcnpj'] . '</td>
         <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">' . $array['telefone'] . '</td>
+        <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">' . $array['valor_pagar'] . '</td>
         <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">' . $array['forma_pagamento'] . '</td>
         <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">' . $array['dinheiro'] . '</td>
         <td style="border: 1px solid #ddd; padding: 8px; text-align: left;">' . $array['parcelado'] . '</td>
