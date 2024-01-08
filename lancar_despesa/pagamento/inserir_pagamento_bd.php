@@ -35,7 +35,7 @@ $forma_pagamento = mysqli_real_escape_string($conn, $_POST['forma_pagamento']);
 if (isset($_POST['dinheiro']))
     $dinheiro = trim(mysqli_real_escape_string($conn, $_POST['dinheiro']));
 else
-    $dinheiro = 0;
+    $dinheiro = 0.0;
 
 if (isset($_POST['parcelado'])){
     $parcelado = mysqli_real_escape_string($conn, $_POST['parcelado']);
@@ -47,8 +47,9 @@ $observacao_pagamento = mysqli_real_escape_string($conn, $_POST['observacao_paga
 $data_pagamento = formataData(mysqli_real_escape_string($conn, $_POST['data_pagamento']));
 
 $sql = "INSERT INTO lancar_despesa_pagamento (recebedor, endereco, estado, telefone, cpfcnpj, valor_pagar, forma_pagamento, dinheiro, parcelado, observacao_pagamento, data_pagamento)
-        VALUES ('$recebedor', '$endereco', '$estado', '$telefone', '$cpfcnpj', '$valor_pagar', '$forma_pagamento', $dinheiro, '$parcelado', '$observacao_pagamento', '$data_pagamento');
+        VALUES ('$recebedor', '$endereco', '$estado', '$telefone', '$cpfcnpj', '$valor_pagar', '$forma_pagamento', $dinheiro, $parcelado, '$observacao_pagamento', '$data_pagamento');
         ";
+
 $inserir = mysqli_query($conn, $sql);
 
 //echo "Error: " . $sql . "<br>" . mysqli_error($conn);
