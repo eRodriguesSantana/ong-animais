@@ -7,3 +7,11 @@ domPDF/vendor/phenx/php-svg-lib/src/Svg/Document.php
 domPDF/vendor/phenx/php-svg-lib/src/Svg/Style.php
 domPDF/vendor/phenx/php-svg-lib/src/Svg/Tag/Image.php
 domPDF/vendor/phenx/php-svg-lib/src/Svg/Tag/UseTag.php
+domPDF/composer.lock
+domPDF/vendor/composer/ClassLoader.php
+domPDF/vendor/composer/installed.json
+domPDF/vendor/composer/installed.php
+domPDF/vendor/phenx/php-svg-lib/src/Svg/Document.php
+domPDF/vendor/phenx/php-svg-lib/src/Svg/Style.php
+domPDF/vendor/phenx/php-svg-lib/src/Svg/Tag/Image.php
+domPDF/vendor/phenx/php-svg-lib/src/Svg/Tag/UseTag.php
