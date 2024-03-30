@@ -2,13 +2,15 @@
 
 ## Características
 <ul>
-  <li>Sistema com três níveis de acessos: Gerente, Veterinário(a) e Voluntário(a)</li>
-  <li>Gerente, Veterinário(a) e Voluntário(a) possuem acessos de gerenciamento no sistema</li>
-  <li>Os três níveis conseguem:
+  <li>Sistema com dois níveis de acessos: Voluntário(a) e Não Voluntário(a)</li>
+  <li>Voluntário(a) e Não Voluntário(a) possuem acessos de gerenciamento no sistema</li>
+  <li>Os dois níveis conseguem:
     <ol>
       <li>Dar entrada de um animal na ONG</li>
       <li>Registrar adoção de animal</li>
-      <li>Volta do horário do almoço</li>
+      <li>Registrar doações</li>
+      <li>Registrar adotantes</li>
+      <li>Registrar novos voluntários</li>
     </ol>
   </li>
 </ul>
@@ -19,6 +21,7 @@
     <ol>
       <li>Linguagem de Programação: PHP 7</li>
       <li>Banco de dados: MySQL</li>
+      <li>Servidor local: XAMPP</li>
     </ol>
   </li>
   <li>Frontend:
