@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="pt-BR"> 
   <head>
@@ -18,28 +14,39 @@ session_start();
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
+        <link rel="stylesheet" href="../css/style.css">
     <title>ONG Sistema de Adoção Pet</title>
   </head>
 
   <body>
     <div id="ong" class="container-ong">
       <div class="row">
-        
-      <?php include('menu_lateral.php') ?>
-      <!--Menu lateral FIM-->
+
+        <div id="menu-lateral" class="col-12 col-md-2">
+          <div class="titulos-ong">
+              <a href="">ONG</a></br>
+              <a href="">Animais Pirapozinho</a>
+          </div>
+          <div class="btn-group-vertical" role="group" aria-label="Basic example">
+            <a href="http://sospirapo.br/menu.php" class="btn-menu btn">Início</a>
+            <a href="http://sospirapo.br/crud_animal/listar_animais.php" class="btn-menu btn">Gerenciar Animais</a>
+            <a href="http://sospirapo.br/crud_adocao/listar_adocao.php" class="btn-menu btn">Gerenciar Adoção</a>
+            <a href="http://sospirapo.br/crud_pessoas/listar_pessoas.php" class="btn-menu btn">Gerenciar Pessoas</a>
+            <a href="http://sospirapo.br/crud_pessoas/aprovar_pessoa.php" class="btn-menu btn">Ativar Voluntários</a>
+            <a href="http://sospirapo.br/crud_doacao/cadastro_doacao.php" class="btn-menu btn">Gerenciar Doação</a>
+            <a href="http://sospirapo.br/lancar_despesa/sub_menu_lancar_despesas.php" class="btn-menu btn">Gerenciar Despesas</a>
+          </div>
+          <div class="sair-rodape">
+              <a class="btn-sair" href="../index.php"><span><i class="bi bi-box-arrow-right"></i></span>Voltar</a>
+          </div>
+        </div>
 
         <div id="container-cadastro-pet" class="principal col">
           <h4 class="titulos-topo">Cadastrar Pessoa</h4>
-          <div class="btn-grupo-principal">
-            <a href="http://sospirapo.br/menu.php" role="button" class="btn-grupo btn">Voltar</a>
-            <a href="http://sospirapo.br/crud_pessoas/listar_pessoas.php" role="button" class="btn-grupo btn">Listar Pessoas</a>
-          </div>
-
           <hr>
-
           <div class="cadastro-pet">
             <h5 class="titulo-cad">Cadastro de Pessoas</h5>
-            <form action="inserir_pessoa.php" method="post">
+            <form action="inserir_pessoa_externo.php" method="post">
               <div class="form-group">
                 <label for="nomeusuario">Nome Usuário</label>
                 <input 
@@ -52,7 +59,7 @@ session_start();
                   required 
                     oninvalid="this.setCustomValidity('Nome obrigatório')" 
                     oninput="setCustomValidity('')"
-                >
+                  >
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
@@ -124,7 +131,6 @@ session_start();
                   <option value="">Selecione</option>
                   <option value="Voluntario">Voluntario</option>
                   <option value="NaoVoluntario">Não Voluntário</option>
-                  <option value="Adotante">Adotante</option>
                 </select>
               </div>
               <div class="form-group">
@@ -156,7 +162,7 @@ session_start();
                     oninput="setCustomValidity('')"
                   placeholder="Senha do usuário">
               </div>
-              <div style="text-align: right">
+              <div class="btn-cadastrar">
                 <button type="submit" class="btn btn-grupo">Cadastrar</button>
               </div>
             </form>

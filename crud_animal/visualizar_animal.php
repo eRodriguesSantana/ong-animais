@@ -12,7 +12,7 @@ $matricula = $_SESSION['matricula'];
 
 include "../sql/conexao.php";
 
-$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
@@ -30,8 +30,9 @@ if(isset($_GET['id_animal'])){
     while ($dataHistoricoAnimal = mysqli_fetch_array($buscaHistoricoAnimal)) {
         $historico[] = $dataHistoricoAnimal;
     }
-
-    $adotanteID = $dataHistoricoAnimal['adotante_id'];
+    
+    if(isset($historico['adotante_id']))
+        $adotanteID = $historico['adotante_id'];
     $sqlPessoa = "SELECT * FROM pessoas";
     $buscaPessoa = mysqli_query($conn,  $sqlPessoa);
     $pessoas = [];
@@ -87,7 +88,7 @@ if(isset($_GET['id_animal'])){
             <div id="container-visualizar-pet" class="principal col">
                 <h4 class="titulos-topo">Visualizar dados do animal</h4>
                 <div class="btn-grupo-principal">
-                    <a href="listar_animais.php" role="button" class="btn-grupo btn">Voltar</a>
+                    <a href="http://sospirapo.br/crud_animal/listar_animais.php" role="button" class="btn-grupo btn">Voltar</a>
                 </div>
 
                 <hr>
@@ -131,7 +132,9 @@ if(isset($_GET['id_animal'])){
                                 <tr>
                                     <td><?= $value['data_entrada'] ?></td>
                                     <td><?= $value['data_saida'] ?></td>
-                                    <td><?= $pessoas[$value['adotante_id']] ?></td>
+                                    <td><?php
+                                        if(isset($pessoas[$value['adotante_id']])) 
+                                            echo $pessoas[$value['adotante_id']]; ?></td>
                                     <td><?= $value['motivo_cancelamento'] ?></td>
                                 </tr>
                             <?php } ?>

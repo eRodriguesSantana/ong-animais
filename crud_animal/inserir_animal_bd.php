@@ -12,7 +12,7 @@ include "../sql/conexao.php";
 
 $matricula = $_SESSION['matricula'];
 
-$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
@@ -81,7 +81,7 @@ $inserirHistoricoAnimal = mysqli_query($conn, $sqlHistoricoAnimal);
                         <h4 class="titulos-topo">Animal adicionado com sucesso.</h4>
                         <div style="padding-top: 20px">
 
-                            <a href="listar_animais.php" role="button" class="btn btn-success">Voltar</a>
+                            <a href="http://sospirapo.br/crud_animal/listar_animais.php" role="button" class="btn btn-success">Voltar</a>
                         </div>
                     </div>
                 </div>

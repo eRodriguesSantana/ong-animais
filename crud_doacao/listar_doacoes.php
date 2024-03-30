@@ -13,7 +13,7 @@ $matricula = $_SESSION['matricula'];
 
 include "../sql/conexao.php";
 
-$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
@@ -58,8 +58,8 @@ function formataData($date){
             <div id="container-adocao-listagem" class="principal col">
                 <h4 class="titulos-topo">Doações recebidas</h4>
                 <div class="btn-grupo-principal">
-                    <a href="../crud_pessoas/cadastro_pessoa.php" class="btn btn-grupo" role="button">Cadastrar Pessoa</a>
-                    <a href="cadastro_doacao.php" class="btn btn-grupo" role="button">Nova Doação</a>
+                    <a href="http://sospirapo.br/crud_pessoas/cadastro_pessoa.php" class="btn btn-grupo" role="button">Cadastrar Pessoa</a>
+                    <a href="http://sospirapo.br/crud_doacao/cadastro_doacao.php" class="btn btn-grupo" role="button">Nova Doação</a>
                 </div>
                 <hr>
                 <div class="busca">
@@ -116,11 +116,11 @@ function formataData($date){
                                             Detalhes
                                         </button>  
                                     </div>
-                                    <div class="col-md-6 col-sg-6">
+                                    <!--<div class="col-md-6 col-sg-6">
                                         <a class="btn btn-danger btn-sm" href="confirmar_exclusao_doacao.php?id_doacao=<?php echo $id_doacao; ?>" 
                                             role="button"><i class="fas fa-eye"></i>Excluir
                                         </a>
-                                    </div>
+                                    </div>-->
                                 </div>
 						    </td>
                             <div id="view-modal<?php echo $count ?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">

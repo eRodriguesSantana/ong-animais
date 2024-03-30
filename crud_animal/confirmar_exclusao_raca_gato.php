@@ -13,7 +13,7 @@ $matricula = $_SESSION['matricula'];
 
 include "../sql/conexao.php";
 
-$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
@@ -54,7 +54,7 @@ $id_raca_gato = $_GET['id_raca_gato'];
         <h4 class="titulos-topo">Confirmar exclusão?</h4>
           <form action="" method="post">
             <a href="deletar_raca_gato.php?id_raca_gato=<?php echo $id_raca_gato; ?>" role="button" class="btn btn-danger">Sim</a>
-            <a href='listar_racas.php' role='button' class='btn btn-success'>Não</a>
+            <a href='http://sospirapo.br/crud_animal/listar_racas.php' role='button' class='btn btn-success'>Não</a>
           </form>
       </div>
     </div>

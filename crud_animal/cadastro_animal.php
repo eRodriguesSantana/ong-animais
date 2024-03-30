@@ -12,7 +12,7 @@ $matricula = $_SESSION['matricula'];
 
 include "../sql/conexao.php";
 
-$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
@@ -47,8 +47,11 @@ date_default_timezone_set('America/Sao_Paulo');
             <div id="container-cadastro-pet" class="principal col">
                 <h4 class="titulos-topo">Cadastro de Animal</h4>
                 <div class="btn-grupo-principal">
-                    <a href="../menu.php" role="button" class="btn-grupo btn">Voltar</a>
-                    <a href="listar_animais.php" role="button" class="btn-grupo btn">Listar Animais</a>
+                    <a href="http://sospirapo.br/crud_animal/listar_animais.php" role="button" class="btn-grupo btn">Listar Animais</a>
+                    <a href="http://sospirapo.br/crud_animal/listar_cores.php" class="btn btn-grupo" role="button">Gerenciar Cores</a>
+                    <a href="http://sospirapo.br/crud_animal/listar_racas.php" class="btn btn-grupo" role="button">Gerenciar Raças</a>
+                    <a href="http://sospirapo.br/crud_animal/cadastro_animal.php" class="btn btn-grupo" role="button">Cadastrar Animal</a><!--Entrada Pet-->
+                    <a href="http://sospirapo.br/crud_adocao/cadastro_adocao.php" class="btn btn-grupo" role="button">Nova Adoção</a><!--Saída Pet-->
                 </div>
 
                 <hr>
@@ -123,7 +126,7 @@ date_default_timezone_set('America/Sao_Paulo');
                                     </select>
 
                                     <div class="add-raca">
-                                        <a href="listar_racas.php" target="_blank">
+                                        <a href="http://sospirapo.br/crud_animal/listar_racas.php" target="_blank">
                                             Adicionar outra raça de gato
                                         </a>
                                     </div>
@@ -145,7 +148,7 @@ date_default_timezone_set('America/Sao_Paulo');
                                     </select>
 
                                     <div class="add-raca">
-                                        <a href="listar_racas.php" target="_blank">
+                                        <a href="http://sospirapo.br/crud_animal/listar_racas.php" target="_blank">
                                             Adicionar outra raça de cachorro
                                         </a>
                                     </div>

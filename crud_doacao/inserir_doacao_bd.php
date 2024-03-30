@@ -12,7 +12,7 @@ include "../sql/conexao.php";
 
 $matricula = $_SESSION['matricula'];
 
-$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
@@ -21,14 +21,14 @@ $nome_completo = $arr['nome_completo'];
 $telefone = mysqli_real_escape_string($conn, $_POST['telefone']);
 $cpf = mysqli_real_escape_string($conn, $_POST['cpf']);
 $tipo_doacao = mysqli_real_escape_string($conn, $_POST['tipo_doacao']);
-$dinheiro = trim(mysqli_real_escape_string($conn, $_POST['dinheiro']));
-$produto = mysqli_real_escape_string($conn, $_POST['produto']);
-$quantidade = mysqli_real_escape_string($conn, $_POST['quantidade']);
+//$dinheiro = trim(mysqli_real_escape_string($conn, $_POST['dinheiro']));
+//$produto = mysqli_real_escape_string($conn, $_POST['produto']);
+//$quantidade = mysqli_real_escape_string($conn, $_POST['quantidade']);
 $observacao = mysqli_real_escape_string($conn, $_POST['observacao']);
 $data_doacao = mysqli_real_escape_string($conn, $_POST['data_doacao']);
 
 if (isset($_POST['dinheiro']))
-    $valor = $dinheiro;
+    $valor = str_replace(',', '', $_POST['dinheiro']);
 else
     $valor = 0;
 
@@ -83,7 +83,7 @@ $inserir = mysqli_query($conn, $sql);
                         <h4 class="titulos-topo">Doação registrada com sucesso.</h4>
                         <div style="padding-top: 20px">
 
-                            <a href="../menu.php" role="button" class="btn btn-success">Voltar</a>
+                            <a href="http://sospirapo.br/crud_doacao/listar_doacoes.php" role="button" class="btn btn-success">Voltar</a>
                         </div>
                     </div>
                 </div>

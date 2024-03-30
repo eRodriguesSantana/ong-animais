@@ -10,12 +10,12 @@ if (!$_POST) {
 
 include "../sql/conexao.php";
 
-$matricula = $_SESSION['matricula'];
+//$matricula = $_SESSION['matricula'];
 
-$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
-$buscar = mysqli_query($conn, $sql);
-$arr = mysqli_fetch_array($buscar);
-$nome_completo = $arr['nome_completo'];
+//$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
+//$buscar = mysqli_query($conn, $sql);
+//$arr = mysqli_fetch_array($buscar);
+//$nome_completo = $arr['nome_completo'];
 
 $nomeusuario = mysqli_real_escape_string($conn, $_POST['nomeusuario']);
 $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -81,7 +81,7 @@ mysqli_close($conn);
               <h4>Adotante adicionado e ativado com sucesso.</h4>
             <?php } ?>
             <div style="padding-top: 20px">
-              <a href="../menu.php" role="button" class="btn btn-grupo">Voltar</a>
+              <a href="http://sospirapo.br/menu.php" role="button" class="btn btn-success">Voltar</a>
             </div>
           </div>
         </div>

@@ -12,7 +12,7 @@ $matricula = $_SESSION['matricula'];
 
 include "../sql/conexao.php";
 
-$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
@@ -76,7 +76,7 @@ $inserirHistoricoAnimal = mysqli_query($conn, $sqlHistoricoAnimal);
                     <div class="btn-cadastrar text-center">
                         <h4 class="titulos-topo">Cancelamento de adoção realizado com sucesso.</h4>
                         <div style="padding-top: 20px"></div>
-                        <a href="listar_adocao.php" role="button" class="btn btn-success">Voltar</a>
+                        <a href="http://sospirapo.br/crud_adocao/listar_adocao.php" role="button" class="btn btn-success">Voltar</a>
                     </div>
                 </div>
 

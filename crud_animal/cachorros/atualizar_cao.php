@@ -12,7 +12,7 @@ $matricula = $_SESSION['matricula'];
 
 include "../../sql/conexao.php";
 
-$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
@@ -70,7 +70,7 @@ $atualizar = mysqli_query($conn, $sql);
           <div class="btn-cadastrar text-center">
             <h4 class="titulos-topo">Registro do cachorro <?php echo $nome_animal_cachorro; ?> atualizado com sucesso.</h4>
             <div class="btn btn-grupo">
-              <a href="listagem_caes.php" role="button" class="">Voltar</a>
+              <a href="http://sospirapo.br/crud_animal/cachorros/listagem_caes.php" role="button" class="">Voltar</a>
             </div>
           </div>
 

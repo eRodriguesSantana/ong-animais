@@ -12,7 +12,7 @@ $matricula = $_SESSION['matricula'];
 
 include "../../sql/conexao.php";
 
-$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
@@ -53,8 +53,8 @@ function formataData($date)
             <div id="container-adocao-listagem" class="principal col">
                 <h4 class="titulos-topo">Todos os cães na ONG</h4>
                 <div class="btn-grupo-principal">
-                    <a href="cadastrar_cao.php" class="btn btn-grupo" role="button">Cadastrar Cachorro</a><!--Entrada Pet-->
-                    <a href="../../crud_adocao/listar_adocao.php" class="btn btn-grupo" role="button">Nova Adoção</a><!--Saída Pet-->
+                    <a href="http://sospirapo.br/crud_animal/cachorros/cadastrar_cao.php" class="btn btn-grupo" role="button">Cadastrar Cachorro</a><!--Entrada Pet-->
+                    <a href="http://sospirapo.br/crud_adocao/listar_adocao.php" class="btn btn-grupo" role="button">Nova Adoção</a><!--Saída Pet-->
                 </div>
                 <hr>
                 <div class="busca">
@@ -100,20 +100,13 @@ function formataData($date)
                                 <td><?php echo formataData($data_entrada_cachorro); ?></td>
                                 <td><?php echo $image_cachorro; ?></td>
                                 <td>
-                                    <?php
-                                    if (($matricula == 2) || $matricula == 12) {
-                                    ?>
-                                        <a class="btn btn-warning btn-sm" href="editar_cao.php?id_cachorro=<?php echo $id_cachorro; ?>" role="button"><i class="fas fa-eye"></i>Editar
-                                        </a>
-
-                                        <a class="btn btn-danger btn-sm" href="confirmar_exclusao_cao.php?id_cachorro=<?php echo $id_cachorro; ?>" role="button"><i class="fas fa-eye"></i>Excluir
-                                        </a>
-                                    <?php } else
-                                        echo "Sem permissão para alterar ou excluir. Solicite ao seu Gerente/Supervisor"
-                                    ?>
-                                </td>
-                            <?php } ?>
+                                    <a class="btn btn-warning btn-sm" href="editar_cao.php?id_cachorro=<?php echo $id_cachorro; ?>" role="button"><i class="fas fa-eye"></i>Editar
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="confirmar_exclusao_cao.php?id_cachorro=<?php echo $id_cachorro; ?>" role="button"><i class="fas fa-eye"></i>Excluir
+                                    </a>
+                                </td>                            
                             </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>

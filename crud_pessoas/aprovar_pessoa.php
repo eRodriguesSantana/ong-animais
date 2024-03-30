@@ -13,7 +13,7 @@ $matricula = $_SESSION['matricula'];
 
 include "../sql/conexao.php";
 
-$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
@@ -50,7 +50,7 @@ $nome_completo = $arr['nome_completo'];
             <div id="container-adocao-listagem" class="principal col" style="height: 100vh;">
                 <h4 class="titulos-topo">Aprovação de acesso voluntário/não voluntário</h4>
                 <div class="btn-grupo-principal">
-                    <a href="cadastro_pessoa.php" class="btn btn-grupo" role="button">Cadastrar Pessoa</a>
+                    <a href="http://sospirapo.br/crud_pessoas/cadastro_pessoa.php" class="btn btn-grupo" role="button">Cadastrar Pessoa</a>
                 </div>
                 <hr>
                 <div class="busca">

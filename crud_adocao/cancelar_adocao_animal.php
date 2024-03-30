@@ -12,7 +12,7 @@ $matricula = $_SESSION['matricula'];
 
 include "../sql/conexao.php";
 
-$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
@@ -55,7 +55,7 @@ $id_animal = $_GET['id_animal'];
               <textarea name="observacao" rows="4" cols="50" class="form-control" required></textarea>
             </div>
               <button type="submit" role="button" class="btn btn-danger">Sim</button>
-              <a href='listar_adocao.php' role='button' class='btn btn-success'>Não</a>
+              <a href='http://sospirapo.br/crud_adocao/listar_adocao.php' role='button' class='btn btn-success'>Não</a>
             </form>
           </div>
         </div>

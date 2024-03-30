@@ -12,7 +12,7 @@ $matricula = $_SESSION['matricula'];
 
 include "../sql/conexao.php";
 
-$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
@@ -72,7 +72,7 @@ if(isset($_GET['id_pessoa'])){
             <div id="container-visualizar-pet" class="principal col">
                 <h4 class="titulos-topo">Visualizar dados do adotante</h4>
                 <div class="btn-grupo-principal">
-                    <a href="listar_pessoas_adotantes.php" role="button" class="btn-grupo btn">Voltar</a>
+                    <a href="http://sospirapo.br/crud_pessoas/listar_pessoas_adotantes.php" role="button" class="btn-grupo btn">Voltar</a>
                 </div>
 
                 <hr>

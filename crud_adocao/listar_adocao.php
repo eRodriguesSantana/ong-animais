@@ -12,7 +12,7 @@ $matricula = $_SESSION['matricula'];
 
 include "../sql/conexao.php";
 
-$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
@@ -51,9 +51,9 @@ function formataData($date)
             <div id="container-adocao-listagem" class="principal col" style="height: 100vh;">
                 <h4 class="titulos-topo">Registro de adoções na ONG</h4>
                 <div class="btn-grupo-principal">
-                    <a href="../crud_animal/cadastro_animal.php" class="btn btn-grupo" role="button">Cadastrar Animal</a>
-                    <a href="../crud_pessoas/cadastro_pessoa.php" class="btn btn-grupo" role="button">Cadastrar Adotante</a>
-                    <a href="cadastro_adocao.php" class="btn btn-grupo" role="button">Registrar Adoção</a>
+                    <a href="http://sospirapo.br/crud_animal/cadastro_animal.php" class="btn btn-grupo" role="button">Cadastrar Animal</a>
+                    <a href="http://sospirapo.br/crud_pessoas/cadastro_pessoa.php" class="btn btn-grupo" role="button">Cadastrar Adotante</a>
+                    <a href="http://sospirapo.br/crud_adocao/cadastro_adocao.php" class="btn btn-grupo" role="button">Registrar Adoção</a>
                 </div>
                 <hr>
                 <div class="busca">
@@ -75,12 +75,12 @@ function formataData($date)
                     <tbody>
                         <?php
                         $sql = "SELECT p.id_pessoa, ad.situacao, a.id_animal, p.nome_completo, p.endereco, p.telefone, a.nome_animal, a.sexo_animal, a.tipo_animal
-                                FROM pessoas AS p
-                                INNER JOIN adocao AS ad
-                                ON p.id_pessoa = ad.id_adotante
-                                INNER JOIN animal AS a
-                                ON a.id_animal = ad.id_animal 
-                                ORDER BY id_adocao ASC";
+                            FROM pessoas AS p
+                            INNER JOIN adocao AS ad
+                            ON p.id_pessoa = ad.id_adotante
+                            INNER JOIN animal AS a
+                            ON a.id_animal = ad.id_animal 
+                            ORDER BY id_adocao ASC";
                         $busca = mysqli_query($conn, $sql);
 
                         while ($array = mysqli_fetch_array($busca)) {
@@ -97,29 +97,24 @@ function formataData($date)
                             if($situacao == 1){
                         ?>
                                 <tr style="font-size: 14px">
-                                    <td><a href="../crud_pessoas/visualizar_adotante.php?id_pessoa=<?php echo $id_pessoa; ?>"><?php echo $nome_adotante; ?></a></td>
+                                    <td><a href="http://sospirapo.br/crud_pessoas/visualizar_adotante.php?id_pessoa=<?php echo $id_pessoa; ?>"><?php echo $nome_adotante; ?></a></td>
                                     <td><?php echo $endereco; ?></td>
                                     <td><?php echo $telefone; ?></td>
-                                    <td><a href="../crud_animal/visualizar_animal.php?id_animal=<?php echo $id_animal; ?>"><?php echo $nome_animal; ?></a></td>
+                                    <td><a href="http://sospirapo.br/crud_animal/visualizar_animal.php?id_animal=<?php echo $id_animal; ?>"><?php echo $nome_animal; ?></a></td>
                                     <td><?php echo $sexo_animal; ?></td>
                                     <td><?php echo $tipo_animal; ?></td>
-                                    <td>
-                                        <?php
-                                        if (($matricula == 2) || $matricula == 12) {
-                                        ?>
-                                            <div class="row">
-                                                <!--<div class="col-md-6 col-xs-6">
-                                    <a class="btn btn-warning btn-sm" href="editar_animal.php?id_animal=<?php echo $id_animal; ?>" 
-                                    role="button"><i class="fas fa-eye"></i>Editar
-                                    </a>  
-                                </div>-->
-                                                <div class="col-md-6 col-xs-6">
-                                                    <a class="btn btn-danger btn-sm" href="cancelar_adocao_animal.php?id_animal=<?php echo $id_animal; ?>" role="button"><i class="fas fa-eye"></i>Cancela adoção
-                                                    </a>
-                                                </div>
-                                            <?php } else
-                                            echo "Sem permissão para alterar ou excluir. Solicite ao seu Gerente/Supervisor"
-                                            ?>
+                                    <td> 
+                                        <div class="row">
+                                            <!--<div class="col-md-6 col-xs-6">
+                                                <a class="btn btn-warning btn-sm" href="editar_animal.php?id_animal=<?php echo $id_animal; ?>" 
+                                                    role="button"><i class="fas fa-eye"></i>Editar
+                                                </a>  
+                                            </div>-->
+                                            <div class="col-md-6 col-xs-6">
+                                                <a class="btn btn-danger btn-sm" href="cancelar_adocao_animal.php?id_animal=<?php echo $id_animal; ?>" role="button"><i class="fas fa-eye"></i>Cancela adoção
+                                                </a>
+                                            </div>
+                                        </div>                                            
                                     </td>                            
                                 </tr>
                             <?php } ?>

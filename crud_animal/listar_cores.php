@@ -13,7 +13,7 @@ $matricula = $_SESSION['matricula'];
 
 include "../sql/conexao.php";
 
-$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
@@ -44,7 +44,7 @@ function formataData($date){
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <title>Raças</title>
+    <title>Cores</title>
 </head>
 
 <body>
@@ -56,8 +56,13 @@ function formataData($date){
 
             <div id="container-racas-listagem" class="principal col">
                 <h4 class="titulos-topo">Todas as cores</h4>
+                <div class="btn-grupo-principal">
+                  <a href="http://sospirapo.br/crud_animal/listar_racas.php" class="btn btn-grupo" role="button">Gerenciar Raças</a>
+                  <a href="http://sospirapo.br/crud_animal/cadastro_animal.php" class="btn btn-grupo" role="button">Cadastrar Animal</a><!--Entrada Pet-->
+                  <a href="http://sospirapo.br/crud_adocao/cadastro_adocao.php" class="btn btn-grupo" role="button">Nova Adoção</a><!--Saída Pet-->
+                </div>
                 <hr>
-                <a href="cadastrar_cor_animal.php" class="btn btn-grupo" role="button">Cadastrar Cor animal</a><!--Entrada Pet-->
+                <a href="http://sospirapo.br/crud_animal/cadastrar_cor_animal.php" class="btn btn-grupo" role="button">Cadastrar Cor animal</a><!--Entrada Pet-->
                 <table id="busca-animal" class="table">
                     <thead>
                         <tr class="topo-colunas">

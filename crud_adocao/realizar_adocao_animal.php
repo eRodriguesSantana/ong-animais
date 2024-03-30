@@ -13,7 +13,7 @@ $matricula = $_SESSION['matricula'];
 
 include "../sql/conexao.php";
 
-$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
@@ -53,8 +53,8 @@ $nome_animal = $arr_animal['nome_animal'];
             <div id="container-cadastro-pet" class="principal col">
                 <h4 class="titulos-topo">Registro de Adoção</h4>
                 <div class="btn-grupo-principal">
-                    <a href="../menu.php" role="button" class="btn-grupo btn">Voltar</a>
-                    <a href="listar_adocao.php" role="button" class="btn-grupo btn">Listar Adoções</a>
+                    <a href="http://sospirapo.br/menu.php" role="button" class="btn-grupo btn">Voltar</a>
+                    <a href="http://sospirapo.br/crud_adocao/listar_adocao.php" role="button" class="btn-grupo btn">Listar Adoções</a>
                 </div>
 
                 <hr>
@@ -77,7 +77,7 @@ $nome_animal = $arr_animal['nome_animal'];
                             </select>
 
                             <div style="text-align: start; font-size: 13px;">
-                                <a href="../crud_pessoas/cadastro_pessoa.php" target="_blank">
+                                <a href="http://sospirapo.br/crud_pessoas/cadastro_pessoa.php" target="_blank">
                                     Adicionar novo adotante (abrirá em outra aba - recarregar essa página após cadastrar)
                                 </a>
                             </div>

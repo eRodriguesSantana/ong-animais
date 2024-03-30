@@ -13,7 +13,7 @@ $matricula = $_SESSION['matricula'];
 
 include "../sql/conexao.php";
 
-$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
@@ -115,11 +115,11 @@ function formataData($date){
             <div id="container-adocao-listagem" class="principal col">
                 <h4 class="titulos-topo">Todos os animais na ONG</h4>
                 <div class="btn-grupo-principal">
-                    <a href="../relatorios/animais/gerarRelatorioAnimais.php" class="btn btn-grupo" role="button">Gerar Relatório</a>
-                    <a href="listar_cores.php" class="btn btn-grupo" role="button">Gerenciar Cores</a>
-                    <a href="listar_racas.php" class="btn btn-grupo" role="button">Gerenciar Raças</a>
-                    <a href="cadastro_animal.php" class="btn btn-grupo" role="button">Cadastrar Animal</a><!--Entrada Pet-->
-                    <a href="../crud_adocao/cadastro_adocao.php" class="btn btn-grupo" role="button">Nova Adoção</a><!--Saída Pet-->
+                    <a href="http://sospirapo.br/relatorios/animais/gerarRelatorioAnimais.php" class="btn btn-grupo" role="button">Gerar Relatório</a>
+                    <a href="http://sospirapo.br/crud_animal/listar_cores.php" class="btn btn-grupo" role="button">Gerenciar Cores</a>
+                    <a href="http://sospirapo.br/crud_animal/listar_racas.php" class="btn btn-grupo" role="button">Gerenciar Raças</a>
+                    <a href="http://sospirapo.br/crud_animal/cadastro_animal.php" class="btn btn-grupo" role="button">Cadastrar Animal</a><!--Entrada Pet-->
+                    <a href="http://sospirapo.br/crud_adocao/cadastro_adocao.php" class="btn btn-grupo" role="button">Nova Adoção</a><!--Saída Pet-->
                 </div>
                 <hr>
                 <div class="busca">

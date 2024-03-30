@@ -12,7 +12,7 @@ include "../sql/conexao.php";
 
 $matricula = $_SESSION['matricula'];
 
-$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
@@ -56,7 +56,7 @@ mysqli_close($conn);
             <div class="btn-cadastrar text-center">
               <h4 class="titulos-topo">Cor do animal adicionada com sucesso.</h4>
               <div class="btn btn-grupo">
-                <a href="listar_cores.php" role="button">Voltar</a>
+                <a href="http://sospirapo.br/crud_animal/listar_cores.php" role="button">Voltar</a>
               </div>
             </div>
           </div>

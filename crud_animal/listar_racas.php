@@ -13,7 +13,7 @@ $matricula = $_SESSION['matricula'];
 
 include "../sql/conexao.php";
 
-$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
@@ -49,111 +49,123 @@ function formataData($date){
 
 <body>
     <div id="ong" class="container-ong">
-        <div class="row">
+      <div class="row">
 
         <?php include('menu_lateral.php') ?>
-            <!--Menu lateral FIM-->
+        <!--Menu lateral FIM-->
 
-            <div id="container-racas-listagem" class="principal col">
-                <h4 class="titulos-topo">Todas as raças</h4>
-                <hr>
-                <a href="./gatos/cadastrar_gato.php" class="btn btn-grupo" role="button">Cadastrar Raça Gato</a><!--Entrada Pet-->
-                <table id="busca-animal" class="table">
-                    <thead>
-                        <tr class="topo-colunas">
-                          <th scope="col">ID</th>
-                          <th scope="col">Nome</th>
-                          <th scope="col">Observação</th>
-                          <th scope="col">Ação</th>
+        <div id="container-racas-listagem" class="principal col">
+          <h4 class="titulos-topo">Todas as raças</h4>
+          <div class="btn-grupo-principal">
+                    <a href="http://sospirapo.br/crud_animal/listar_animais.php" role="button" class="btn-grupo btn">Listar Animais</a>
+                    <a href="http://sospirapo.br/crud_animal/listar_cores.php" class="btn btn-grupo" role="button">Gerenciar Cores</a>
+                    <a href="http://sospirapo.br/crud_animal/cadastro_animal.php" class="btn btn-grupo" role="button">Cadastrar Animal</a><!--Entrada Pet-->
+                    <a href="http://sospirapo.br/crud_adocao/cadastro_adocao.php" class="btn btn-grupo" role="button">Nova Adoção</a><!--Saída Pet-->
+                </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-6 col-xs-6">
+              <a href="http://sospirapo.br/crud_animal/gatos/cadastrar_gato.php" class="btn btn-grupo" role="button">Cadastrar Raça Gato</a><!--Entrada Pet-->
+              <table id="busca-animal" class="table">
+                  <thead>
+                      <tr class="topo-colunas">
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Observação</th>
+                        <th scope="col">Ação</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+                    $sql = "SELECT * 
+                        FROM raca_gato
+                        ORDER BY id_raca_gato ASC";
+                    $busca = mysqli_query($conn, $sql);
+                    while ($array = mysqli_fetch_array($busca)){
+                      $id_raca_gato = $array['id_raca_gato'];
+                      $nome = $array['nome_raca_gato'];
+                      $observacao = $array['nivel_cuidado_gato'];
+                    ?>
+                        <tr style="font-size: 14px">
+                          <td><?php echo $id_raca_gato; ?></td>
+                          <td><?php echo $nome; ?></td>
+                          <td><?php echo $observacao; ?></td>            
+                          <td>
+                            <div class="row">
+                              <div class="col-md-4 col-xs-4">
+                                <a class="btn btn-warning btn-sm" href="editar_raca_gato.php?id_raca_gato=<?php echo $id_raca_gato; ?>" 
+                                  role="button"><i class="fas fa-eye"></i>Editar
+                                </a>  
+                              </div>
+                              <div class="col-md-4 col-xs-4">
+                                <a class="btn btn-danger btn-sm" href="confirmar_exclusao_raca_gato.php?id_raca_gato=<?php echo $id_raca_gato; ?>" 
+                                  role="button"><i class="fas fa-eye"></i>Excluir
+                                </a>
+                              </div>
+                              <!-- <div class="col-md-4 col-xs-4">
+                                <a class="btn btn-primary btn-sm" href="../crud_animal/visualizar_animal.php?id_animal=<?php echo $id_raca_gato; ?>" 
+                                  role="button"><i class="fas fa-eye"></i>Visualizar
+                                </a>
+                              </div> -->
+                          </td>                      
                         </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                      $sql = "SELECT * 
-                          FROM raca_gato
-                          ORDER BY id_raca_gato ASC";
-                      $busca = mysqli_query($conn, $sql);
-                      while ($array = mysqli_fetch_array($busca)){
-                        $id_raca_gato = $array['id_raca_gato'];
-                        $nome = $array['nome_raca_gato'];
-                        $observacao = $array['nivel_cuidado_gato'];
-                      ?>
-                          <tr style="font-size: 14px">
-                            <!-- <td><?php echo $id_raca_gato; ?></td> -->
-                            <td><?php echo $nome; ?></td>
-                            <td><?php echo $observacao; ?></td>            
-                            <td>
-                              <div class="row">
-                                <div class="col-md-4 col-xs-4">
-                                  <a class="btn btn-warning btn-sm" href="editar_raca_gato.php?id_raca_gato=<?php echo $id_raca_gato; ?>" 
-                                    role="button"><i class="fas fa-eye"></i>Editar
-                                  </a>  
-                                </div>
-                                <div class="col-md-4 col-xs-4">
-                                  <a class="btn btn-danger btn-sm" href="confirmar_exclusao_raca_gato.php?id_raca_gato=<?php echo $id_raca_gato; ?>" 
-                                    role="button"><i class="fas fa-eye"></i>Excluir
-                                  </a>
-                                </div>
-                                <!-- <div class="col-md-4 col-xs-4">
-                                  <a class="btn btn-primary btn-sm" href="../crud_animal/visualizar_animal.php?id_animal=<?php echo $id_raca_gato; ?>" 
-                                    role="button"><i class="fas fa-eye"></i>Visualizar
-                                  </a>
-                                </div> -->
-                            </td>                      
-                          </tr>
-                      <?php }?>
-                    </tbody>
-                </table>
-                <hr>
-                <a href="./cachorros/cadastrar_cao.php" class="btn btn-grupo" role="button">Cadastrar Raça Cão</a><!--Entrada Pet-->
-                <table id="busca-animal" class="table">
-                    <thead>
-                        <tr class="topo-colunas">
-                          <th scope="col">ID</th>
-                          <th scope="col">Nome</th>
-                          <th scope="col">Observação</th>
-                          <th scope="col">Ação</th>
+                    <?php }?>
+                  </tbody>
+              </table>
+            </div>                
+            <hr>
+            <div class="col-md-6 col-xs-6">
+              <a href="http://sospirapo.br/crud_animal/cachorros/cadastrar_cao.php" class="btn btn-grupo" role="button">Cadastrar Raça Cão</a><!--Entrada Pet-->
+              <table id="busca-animal" class="table">
+                  <thead>
+                      <tr class="topo-colunas">
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Observação</th>
+                        <th scope="col">Ação</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+                    $sql = "SELECT * 
+                        FROM raca_cao
+                        ORDER BY id_raca_cao ASC";
+                    $busca = mysqli_query($conn, $sql);
+                    while ($array = mysqli_fetch_array($busca)){
+                      $id_raca_cao = $array['id_raca_cao'];
+                      $nome = $array['nome_raca_cao'];
+                      $observacao = $array['nivel_cuidado_cao'];
+                    ?>
+                        <tr style="font-size: 14px">
+                          <td><?php echo $id_raca_cao; ?></td>
+                          <td><?php echo $nome; ?></td>
+                          <td><?php echo $observacao; ?></td>            
+                          <td>
+                            <div class="row">
+                              <div class="col-md-4 col-xs-4">
+                                <a class="btn btn-warning btn-sm" href="editar_raca_cao.php?id_raca_cao=<?php echo $id_raca_cao; ?>" 
+                                  role="button"><i class="fas fa-eye"></i>Editar
+                                </a>  
+                              </div>
+                              <div class="col-md-4 col-xs-4">
+                                <a class="btn btn-danger btn-sm" href="confirmar_exclusao_raca_cao.php?id_raca_cao=<?php echo $id_raca_cao; ?>" 
+                                  role="button"><i class="fas fa-eye"></i>Excluir
+                                </a>
+                              </div>
+                              <!-- <div class="col-md-4 col-xs-4">
+                                <a class="btn btn-primary btn-sm" href="../crud_animal/visualizar_animal.php?id_animal=<?php echo $id_raca_cao; ?>" 
+                                  role="button"><i class="fas fa-eye"></i>Visualizar
+                                </a>
+                              </div> -->
+                          </td>                      
                         </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                      $sql = "SELECT * 
-                          FROM raca_cao
-                          ORDER BY id_raca_cao ASC";
-                      $busca = mysqli_query($conn, $sql);
-                      while ($array = mysqli_fetch_array($busca)){
-                        $id_raca_cao = $array['id_raca_cao'];
-                        $nome = $array['nome_raca_cao'];
-                        $observacao = $array['nivel_cuidado_cao'];
-                      ?>
-                          <tr style="font-size: 14px">
-                            <!-- <td><?php echo $id_raca_cao; ?></td> -->
-                            <td><?php echo $nome; ?></td>
-                            <td><?php echo $observacao; ?></td>            
-                            <td>
-                              <div class="row">
-                                <div class="col-md-4 col-xs-4">
-                                  <a class="btn btn-warning btn-sm" href="editar_raca_cao.php?id_raca_cao=<?php echo $id_raca_cao; ?>" 
-                                    role="button"><i class="fas fa-eye"></i>Editar
-                                  </a>  
-                                </div>
-                                <div class="col-md-4 col-xs-4">
-                                  <a class="btn btn-danger btn-sm" href="confirmar_exclusao_raca_cao.php?id_raca_cao=<?php echo $id_raca_cao; ?>" 
-                                    role="button"><i class="fas fa-eye"></i>Excluir
-                                  </a>
-                                </div>
-                                <!-- <div class="col-md-4 col-xs-4">
-                                  <a class="btn btn-primary btn-sm" href="../crud_animal/visualizar_animal.php?id_animal=<?php echo $id_raca_cao; ?>" 
-                                    role="button"><i class="fas fa-eye"></i>Visualizar
-                                  </a>
-                                </div> -->
-                            </td>                      
-                          </tr>
-                      <?php }?>
-                    </tbody>
-                </table>
+                    <?php }?>
+                  </tbody>
+              </table>
             </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <!--JS do Bootstrap-->

@@ -62,7 +62,7 @@ mysqli_close($conn);
           <div class="btn-cadastrar text-center">
             <h4>Voluntário/Não Voluntário adicionado e pendente de ativação.</h4>
             <div style="padding-top: 20px">
-              <a href="../menu.php" role="button" class="btn btn-success">Início</a>
+              <a href="http://sospirapo.br/menu.php" role="button" class="btn btn-success">Início</a>
             </div>
           </div>
         </div>
