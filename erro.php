@@ -5,6 +5,6 @@
   </center>
   <div style="padding-top: 20px"></div>
   <center>
-    <a href="index.php" role="button" class="btn btn-success">Você nã possui cadastro.</a>
+    <a href="http://sospirapo.br/index.php" role="button" class="btn btn-success">Vocï¿½ nï¿½ possui cadastro.</a>
   </center>
 </div>

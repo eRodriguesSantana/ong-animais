@@ -5,6 +5,6 @@
   </center>
   <div style="padding-top: 20px"></div>
   <center>
-    <a href="index.php" role="button" class="btn btn-success">Usuário ou senha incorretos.</a>
+    <a href="http://sospirapo.br/index.php" role="button" class="btn btn-success">Usuário ou senha incorretos.</a>
   </center>
 </div>

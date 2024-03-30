@@ -12,11 +12,11 @@ $matricula = $_SESSION['matricula'];
 
 include "sql/conexao.php";
 
-$sql = "SELECT nivelUsuario, nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nivelUsuario, nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
-$nivel = $arr['nivelUsuario']
+$nivel = $arr['nivelUsuario'];
 ?>
 
 <!DOCTYPE html>
@@ -79,33 +79,29 @@ $nivel = $arr['nivelUsuario']
                     <h5 class="card-title">Gerenciar Usuários</h5>
                     <p class="card-text">Cadastro e listagem de usuários, voluntários e não voluntários.</p>
                     <div class="botao-card-inicio">
-                      <a href="crud_pessoas/listar_pessoas.php" class="btn btn-card">Adicionar Usuários</a>
+                      <a href="http://sospirapo.br/crud_pessoas/listar_pessoas.php" class="btn btn-card">Adicionar Usuários</a>
                     </div>
                   </div>
                 </div>
               </div>
-              <?php
-              if (($matricula == 12)) {
-              ?>
                 <div class="col-sm-4">
                   <div class="card espaco-card">
                     <div class="card-body card-altura card-inicio">
                       <h5 class="card-title">Ativar Voluntários</h5>
                       <p class="card-text">Controle de ativação e desativação de cadastro de voluntários.</p>
                       <div class="botao-card-inicio">
-                        <a href="crud_pessoas/aprovar_pessoa.php" class="btn btn-card">Ativar Voluntarios</a>
+                        <a href="http://sospirapo.br/crud_pessoas/aprovar_pessoa.php" class="btn btn-card">Ativar Voluntarios</a>
                       </div>
                     </div>
                   </div>
                 </div>
-              <?php } ?>
               <div class="col-sm-4">
                 <div class="card espaco-card">
                   <div class="card-body card-altura card-inicio">
                     <h5 class="card-title">Gerenciar Animais</h5>
                     <p class="card-text">Opção para cadastrar animais que estão chegando na ONG.</p>
                     <div class="botao-card-inicio">
-                      <a href="crud_animal/listar_animais.php" class="btn btn-card">Adicionar Animal</a>
+                      <a href="http://sospirapo.br/crud_animal/listar_animais.php" class="btn btn-card">Adicionar Animal</a>
                     </div>
                   </div>
                 </div>
@@ -116,7 +112,7 @@ $nivel = $arr['nivelUsuario']
                     <h5 class="card-title">Gerenciar Adoção</h5>
                     <p class="card-text">Opção para gerenciar adoção de animais da ONG.</p>
                     <div class="botao-card-inicio">
-                      <a href="crud_adocao/listar_adocao.php" class="btn btn-card">Adicionar Adoção</a>
+                      <a href="http://sospirapo.br/crud_adocao/listar_adocao.php" class="btn btn-card">Adicionar Adoção</a>
                     </div>
                   </div>
                 </div>
@@ -127,7 +123,7 @@ $nivel = $arr['nivelUsuario']
                     <h5 class="card-title">Adicionar Usuários</h5>
                     <p class="card-text">Opção para adicionar usuário (pendente de ativação do perfil criado) ou adotante.</p>
                     <div class="botao-card-inicio">
-                      <a href="crud_pessoas/cadastro_pessoa.php" class="btn btn-card">Adicionar Usuário/Adotante</a>
+                      <a href="http://sospirapo.br/crud_pessoas/cadastro_pessoa.php" class="btn btn-card">Adicionar Usuário/Adotante</a>
                     </div>
                   </div>
                 </div>
@@ -138,7 +134,7 @@ $nivel = $arr['nivelUsuario']
                     <h5 class="card-title">Gerenciar Doação</h5>
                     <p class="card-text">Opção para gerenciar doações.</p>
                     <div class="botao-card-inicio">
-                      <a href="crud_doacao/listar_doacoes.php" class="btn btn-card">Gerenciar Doação</a>
+                      <a href="http://sospirapo.br/crud_doacao/listar_doacoes.php" class="btn btn-card">Gerenciar Doação</a>
                     </div>
                   </div>
                 </div>

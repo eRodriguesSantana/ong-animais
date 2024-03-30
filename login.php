@@ -25,6 +25,7 @@ $sql = "SELECT matriculausuario
 $buscar = mysqli_query($conn, $sql);
 
 $total = mysqli_num_rows($buscar);
+
 if($buscar && $total == 1)
 {
   $_SESSION['matricula'] = $matricula;
