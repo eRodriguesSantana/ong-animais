@@ -30,7 +30,7 @@ ADD CONSTRAINT `f_adotante_id`
 ALTER TABLE `ong`.`adocao` 
 ADD COLUMN `data_adocao` VARCHAR(50) NOT NULL AFTER `id_adotante`,
 ADD COLUMN `condicoes_saida` VARCHAR(100) NOT NULL AFTER `data_adocao`,
-ADD COLUMN `observacao` VARCHAR(100) NOT NULL AFTER `condicoes_saida`;
+ADD COLUMN `observacao` VARCHAR(100) NOT NULL AFTER `condicoes_saida`,
 ADD COLUMN `situacao` INT NOT NULL AFTER `observacao`;
 
 

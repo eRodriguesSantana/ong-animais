@@ -22,4 +22,4 @@ CREATE TABLE `pessoas` (
   primary key (id_pessoa)
 );
 
-INSERT INTO `pessoas` VALUES (1,'Edu','t@t.com','111','ggg','7777','Gerente','12',SHA1('12345'),'Ativo');
+INSERT INTO `pessoas` VALUES (1,'Edlamar','sem_email@sm.com','11111111111','Rod. Assis Chateaubriand, 36000, Pirapozinho - SP, 19200-000','18981364672','Voluntario','001',SHA1('12345'),'Ativo');

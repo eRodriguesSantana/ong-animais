@@ -19,13 +19,11 @@ CREATE TABLE animal(
     raca_cao int NOT NULL,
     peso_aproximado int NOT NULL,
     observacao VARCHAR(100) NOT NULL,
+    situacao int NOT NULL,
     data_entrada VARCHAR(50) NOT NULL,
     imagem VARCHAR(50) NOT NULL,
     CONSTRAINT pk_animal PRIMARY KEY (id_animal)
 );
-
-ALTER TABLE `ong`.`animal` 
-CHANGE COLUMN `situacao` `situacao` INT NOT NULL ;
 
 ALTER TABLE `ong`.`animal` 
 CHANGE COLUMN `cor_animal` `cor_animal` INT NOT NULL ;
@@ -40,12 +38,12 @@ ADD CONSTRAINT `f_raca_gato_id`
   FOREIGN KEY (`raca_gato`)
   REFERENCES `ong`.`raca_gato` (`id_raca_gato`)
   ON DELETE CASCADE
-  ON UPDATE CASCADE;
+  ON UPDATE CASCADE,
 ADD CONSTRAINT `f_adocao_id`
   FOREIGN KEY (`situacao`)
   REFERENCES `ong`.`adocao` (`id_adocao`)
   ON DELETE CASCADE
-  ON UPDATE CASCADE;
+  ON UPDATE CASCADE,
 ADD CONSTRAINT `f_cor_animal_id`
   FOREIGN KEY (`cor_animal`)
   REFERENCES `ong`.`cor_animal` (`id_cor`)

@@ -19,7 +19,7 @@ function formataData($date){
     return $newDate2[0]."-".$newDate[1]."-".$newDate[0]." ".$newDate2[1];
 }
 
-$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
@@ -85,7 +85,7 @@ $inserir = mysqli_query($conn, $sql);
                         <h4 class="titulos-topo">Pagamento registrado com sucesso.</h4>
                         <div style="padding-top: 20px">
 
-                            <a href="../sub_menu_lancar_despesas.php" role="button" class="btn btn-success">Voltar</a>
+                            <a href="http://sospirapo.br/lancar_despesa/sub_menu_lancar_despesas.php" role="button" class="btn btn-success">Voltar</a>
                         </div>
                     </div>
                 </div>

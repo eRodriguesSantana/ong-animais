@@ -12,7 +12,7 @@ $matricula = $_SESSION['matricula'];
 
 include "../../sql/conexao.php";
 
-$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
@@ -47,8 +47,8 @@ date_default_timezone_set('America/Sao_Paulo');
             <div id="container-cadastro-pet" class="principal col">
                 <h4 class="titulos-topo">Cadastro de Compras</h4>
                 <div class="btn-grupo-principal">
-                    <a href="../sub_menu_lancar_despesas.php" role="button" class="btn-grupo btn">Voltar</a>
-                    <a href="listar_compras.php" role="button" class="btn-grupo btn">Listar Compras</a>
+                    <a href="http://sospirapo.br/lancar_despesa/sub_menu_lancar_despesas.php" role="button" class="btn-grupo btn">Voltar</a>
+                    <a href="http://sospirapo.br/lancar_despesa/compra/listar_compras.php" role="button" class="btn-grupo btn">Listar Compras</a>
                 </div>
 
                 <hr>
@@ -77,7 +77,7 @@ date_default_timezone_set('America/Sao_Paulo');
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-10 col-xs-10">
+                            <div class="col-md-8 col-xs-8">
                                 <div class="form-group">
                                     <label for="endereco">Endereço:</label>
                                     <input 
@@ -93,7 +93,7 @@ date_default_timezone_set('America/Sao_Paulo');
                                         placeholder="Rua/Av, N°, Bairro, Município">
                                 </div>
                             </div>
-                            <div class="col-md-2 col-xs-2">
+                            <div class="col-md-4 col-xs-4">
                                 <div class="form-group">
                                     <label for="estado">Estado:</label>
                                     <select 

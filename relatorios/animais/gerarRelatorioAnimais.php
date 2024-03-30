@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once '../../domPDF/vendor/autoload.php';
+require_once '../../vendor/autoload.php';
 
 if (!isset($_SESSION['matricula']) || empty($_SESSION['matricula'])) {
     unset($_SESSION['matricula']);
@@ -10,9 +10,10 @@ if (!isset($_SESSION['matricula']) || empty($_SESSION['matricula'])) {
 
 $matricula = $_SESSION['matricula'];
 
-include "../sql/conexao.php";
+include "../../sql/conexao.php";
 
 $dataAnimais = $_SESSION['dataAnimais'];
+
 // referenciando o namespace do dompdf
 use Dompdf\Dompdf;
 
@@ -72,3 +73,5 @@ $dompdf->render();
 
 // Enviando o PDF para o browser
 $dompdf->stream('relatorio-animais.pdf');
+
+?>

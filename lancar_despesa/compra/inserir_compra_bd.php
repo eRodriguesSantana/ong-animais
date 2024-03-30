@@ -12,7 +12,7 @@ include "../../sql/conexao.php";
 
 $matricula = $_SESSION['matricula'];
 
-$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
@@ -25,7 +25,7 @@ $cpfcnpj = mysqli_real_escape_string($conn, $_POST['cpfcnpj']);
 $valor_pagar = mysqli_real_escape_string($conn, $_POST['valor_pagar']);
 $forma_pagamento = mysqli_real_escape_string($conn, $_POST['forma_pagamento']);
 $dinheiro = trim(mysqli_real_escape_string($conn, $_POST['dinheiro']));
-$parcelado = mysqli_real_escape_string($conn, $_POST['parcelado']);
+//$parcelado = mysqli_real_escape_string($conn, $_POST['parcelado']);
 $observacao_compra = mysqli_real_escape_string($conn, $_POST['observacao_compra']);
 $data_compra = mysqli_real_escape_string($conn, $_POST['data_compra']);
 
@@ -41,7 +41,7 @@ if (isset($_POST['parcelado'])){
 }
 
 $sql = "INSERT INTO lancar_despesa_compra (tipo_compra, endereco, estado, telefone, cpfcnpj, valor_pagar, forma_pagamento, dinheiro, parcelado, observacao_compra, data_compra)
-        VALUES ('$tipo_compra', '$endereco', '$estado', '$telefone', '$cpfcnpj', '$valor_pagar', '$forma_pagamento', $valor, '$parcelado', '$observacao_compra', '$data_compra');
+        VALUES ('$tipo_compra', '$endereco', '$estado', '$telefone', '$cpfcnpj', '$valor_pagar', '$forma_pagamento', $valor, $parcelado, '$observacao_compra', '$data_compra');
         ";
 
 $inserir = mysqli_query($conn, $sql);
@@ -78,7 +78,7 @@ $inserir = mysqli_query($conn, $sql);
                         <h4 class="titulos-topo">Compra registrada com sucesso.</h4>
                         <div style="padding-top: 20px">
 
-                            <a href="../sub_menu_lancar_despesas.php" role="button" class="btn btn-success">Voltar</a>
+                            <a href="http://sospirapo.br/lancar_despesa/sub_menu_lancar_despesas.php" role="button" class="btn btn-success">Voltar</a>
                         </div>
                     </div>
                 </div>

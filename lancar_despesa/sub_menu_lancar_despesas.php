@@ -13,7 +13,7 @@ $matricula = $_SESSION['matricula'];
 
 include "../sql/conexao.php";
 
-$sql = "SELECT nivelUsuario FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nivelUsuario FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nivel = $arr['nivelUsuario'];
@@ -44,29 +44,36 @@ $nivel = $arr['nivelUsuario'];
 
         <?php include('./menu_lateral.php') ?>
         <!--Menu lateral FIM-->
+
+        <div id="container-menu" class="principal col" style="text-align: center">
+          <div>
+            <div class="container">
+              <div class="row top-80">
+                <h4 class="titulos-topo">Lançamento de Despesas</h4>
         
-        <div class="container" style="margin-top: 10%">
-        <h4 class="titulos-topo" style="text-align: center">Lançamento de Despesas</h4>
-       
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="card espaco-card">
-              <div class="card-body card-altura card-inicio">
-                <h5 class="card-title">Gerenciar Pagamentos</h5>
-                <p class="card-text">Cadastro e listagem de pagamentos.</p>
-                <div class="botao-card-inicio">
-                  <a href="pagamento/cadastro_pagamento.php" class="btn btn-card">Adicionar Pagamentos</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="card espaco-card">
-              <div class="card-body card-altura card-inicio">
-                <h5 class="card-title">Gerenciar Compras</h5>
-                <p class="card-text">Cadastro e listagem de compras.</p>
-                <div class="botao-card-inicio">
-                  <a href="compra/cadastro_compra.php" class="btn btn-card">Adicionar Compras</a>
+                <div class="row">
+                  <div class="col-sm-5">
+                    <div class="card espaco-card">
+                      <div class="card-body card-altura card-inicio">
+                        <h5 class="card-title">Gerenciar Pagamentos</h5>
+                        <p class="card-text">Cadastro e listagem de pagamentos.</p>
+                        <div class="botao-card-inicio">
+                          <a href="http://sospirapo.br/lancar_despesa/pagamento/cadastro_pagamento.php" class="btn btn-card">Adicionar Pagamentos</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-5">
+                    <div class="card espaco-card">
+                      <div class="card-body card-altura card-inicio">
+                        <h5 class="card-title">Gerenciar Compras</h5>
+                        <p class="card-text">Cadastro e listagem de compras.</p>
+                        <div class="botao-card-inicio">
+                          <a href="http://sospirapo.br/lancar_despesa/compra/cadastro_compra.php" class="btn btn-card">Adicionar Compras</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

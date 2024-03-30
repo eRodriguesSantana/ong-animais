@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once '../../domPDF/vendor/autoload.php';
+require_once '../../vendor/autoload.php';
 
 if (!isset($_SESSION['matricula']) || empty($_SESSION['matricula'])) {
     unset($_SESSION['matricula']);

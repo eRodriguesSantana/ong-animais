@@ -13,7 +13,7 @@ $matricula = $_SESSION['matricula'];
 
 include "../../sql/conexao.php";
 
-$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = $matricula and status='Ativo'";
+$sql = "SELECT nome_completo FROM pessoas WHERE matriculausuario = '$matricula' and status='Ativo'";
 $buscar = mysqli_query($conn, $sql);
 $arr = mysqli_fetch_array($buscar);
 $nome_completo = $arr['nome_completo'];
@@ -58,8 +58,8 @@ function formataData($date){
             <div id="container-adocao-listagem" class="principal col">
                 <h4 style="font-size: 20px; font-weight: 300">Pagamentos</h4>
                 <div class="btn-grupo-principal">
-                    <a href="cadastro_pagamento.php" class="btn btn-grupo" role="button">Cadastrar Pagamento</a>
-                    <a href="../../relatorios/lancar_despesa_pagamento/gerarRelatorioPagamento.php" class="btn btn-grupo" role="button">Gerar Relatório</a>
+                    <a href="http://sospirapo.br/lancar_despesa/pagamento/cadastro_pagamento.php" class="btn btn-grupo" role="button">Cadastrar Pagamento</a>
+                    <a href="http://sospirapo.br/relatorios/lancar_despesa_pagamento/gerarRelatorioPagamento.php" class="btn btn-grupo" role="button">Gerar Relatório</a>
                 </div>
                 <hr>
                 <div class="busca">
